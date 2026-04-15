@@ -1,0 +1,20 @@
+{
+  "agent_skills": {
+    "gsd-planner": [
+      ".agents/skills/frontend-skill"
+    ],
+    "gsd-executor": [
+      ".agents/skills/frontend-skill"
+    ],
+    "gsd-ui-researcher": [
+      ".agents/skills/frontend-skill"
+    ],
+    "gsd-ui-checker": [
+      ".agents/skills/frontend-skill"
+    ]
+  },
+  "workflow": {
+    "_auto_chain_active": false,
+    "nyquist_validation": true
+  }
+}

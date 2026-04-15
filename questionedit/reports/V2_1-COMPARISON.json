@@ -1,0 +1,297 @@
+{
+  "meta": {
+    "seed": 20260415,
+    "monteCarlo": 100000,
+    "noiseTrials": 1200,
+    "pairTrials": 800,
+    "evaluator": "/home/carl/MYGObti/questionedit/eval_question_v2.py"
+  },
+  "versions": {
+    "baseline": {
+      "label": "baseline",
+      "source": "/home/carl/MYGObti/questionedit/questionnewV2.md",
+      "changes": "基线，不做额外修改",
+      "sayosaki": {
+        "pairOnlyAccuracy": 0.6625,
+        "pairOnlyDeltaVsBaseline": 0.0,
+        "fullModelAccuracy": 0.2975,
+        "fullModelDeltaVsBaseline": 0.0,
+        "tieBreakerTriggerRate": 0.2425
+      },
+      "focusRecovery": {
+        "长崎爽世": {
+          "rate": 0.274167,
+          "deltaVsBaseline": 0.0
+        },
+        "丰川祥子": {
+          "rate": 0.3,
+          "deltaVsBaseline": 0.0
+        }
+      },
+      "tieBreakerHealth": {
+        "overallTriggerRate": 0.10084,
+        "flipRateWithinTriggered": 0.277172
+      },
+      "distribution": {
+        "finalDistribution": {
+          "三角初华": 0.15543,
+          "丰川祥子": 0.07927,
+          "千早爱音": 0.15861,
+          "椎名立希": 0.11666,
+          "若叶睦": 0.14367,
+          "要乐奈": 0.15672,
+          "长崎爽世": 0.07229,
+          "高松灯": 0.11735
+        },
+        "disappearingRolesBelow5Percent": [],
+        "magnetRolesAbove20Percent": [],
+        "minShareRole": "长崎爽世",
+        "minShare": 0.07229,
+        "maxShareRole": "千早爱音",
+        "maxShare": 0.15861
+      },
+      "otherRiskPairs": {
+        "若叶睦 vs 高松灯": {
+          "pairOnlyAccuracy": 0.779375,
+          "fullModelAccuracy": 0.608125,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        },
+        "三角初华 vs 椎名立希": {
+          "pairOnlyAccuracy": 0.6025,
+          "fullModelAccuracy": 0.28125,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        },
+        "千早爱音 vs 高松灯": {
+          "pairOnlyAccuracy": 0.740625,
+          "fullModelAccuracy": 0.424375,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        }
+      },
+      "passLine": false,
+      "verdict": "暂不合格，不建议直接冻结 V2。"
+    },
+    "A": {
+      "label": "A",
+      "source": "/home/carl/MYGObti/questionedit/candidates/questionnewV2_1A.md",
+      "changes": "仅把 priorityPair lambda 从 0.12 调到 0.14",
+      "sayosaki": {
+        "pairOnlyAccuracy": 0.66375,
+        "pairOnlyDeltaVsBaseline": 0.0012499999999999734,
+        "fullModelAccuracy": 0.299375,
+        "fullModelDeltaVsBaseline": 0.0018750000000000155,
+        "tieBreakerTriggerRate": 0.2425
+      },
+      "focusRecovery": {
+        "长崎爽世": {
+          "rate": 0.275,
+          "deltaVsBaseline": 0.0008330000000000282
+        },
+        "丰川祥子": {
+          "rate": 0.301667,
+          "deltaVsBaseline": 0.0016670000000000296
+        }
+      },
+      "tieBreakerHealth": {
+        "overallTriggerRate": 0.10084,
+        "flipRateWithinTriggered": 0.285403
+      },
+      "distribution": {
+        "finalDistribution": {
+          "三角初华": 0.15543,
+          "丰川祥子": 0.0793,
+          "千早爱音": 0.15861,
+          "椎名立希": 0.11666,
+          "若叶睦": 0.14367,
+          "要乐奈": 0.15672,
+          "长崎爽世": 0.07226,
+          "高松灯": 0.11735
+        },
+        "disappearingRolesBelow5Percent": [],
+        "magnetRolesAbove20Percent": [],
+        "minShareRole": "长崎爽世",
+        "minShare": 0.07226,
+        "maxShareRole": "千早爱音",
+        "maxShare": 0.15861
+      },
+      "otherRiskPairs": {
+        "若叶睦 vs 高松灯": {
+          "pairOnlyAccuracy": 0.779375,
+          "fullModelAccuracy": 0.608125,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        },
+        "三角初华 vs 椎名立希": {
+          "pairOnlyAccuracy": 0.6025,
+          "fullModelAccuracy": 0.28125,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        },
+        "千早爱音 vs 高松灯": {
+          "pairOnlyAccuracy": 0.740625,
+          "fullModelAccuracy": 0.424375,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        }
+      },
+      "passLine": true,
+      "verdict": "暂不合格，不建议直接冻结 V2。"
+    },
+    "B": {
+      "label": "B",
+      "source": "/home/carl/MYGObti/questionedit/candidates/questionnewV2_1B.md",
+      "changes": "继承 A，并只重写 Q18 的题面与 latentDelta",
+      "sayosaki": {
+        "pairOnlyAccuracy": 0.666875,
+        "pairOnlyDeltaVsBaseline": 0.004375000000000018,
+        "fullModelAccuracy": 0.30375,
+        "fullModelDeltaVsBaseline": 0.006250000000000033,
+        "tieBreakerTriggerRate": 0.2425
+      },
+      "focusRecovery": {
+        "长崎爽世": {
+          "rate": 0.276667,
+          "deltaVsBaseline": 0.0025000000000000022
+        },
+        "丰川祥子": {
+          "rate": 0.3125,
+          "deltaVsBaseline": 0.012500000000000011
+        }
+      },
+      "tieBreakerHealth": {
+        "overallTriggerRate": 0.10084,
+        "flipRateWithinTriggered": 0.29165
+      },
+      "distribution": {
+        "finalDistribution": {
+          "三角初华": 0.15537,
+          "丰川祥子": 0.07975,
+          "千早爱音": 0.15861,
+          "椎名立希": 0.11663,
+          "若叶睦": 0.14369,
+          "要乐奈": 0.15628,
+          "长崎爽世": 0.07232,
+          "高松灯": 0.11735
+        },
+        "disappearingRolesBelow5Percent": [],
+        "magnetRolesAbove20Percent": [],
+        "minShareRole": "长崎爽世",
+        "minShare": 0.07232,
+        "maxShareRole": "千早爱音",
+        "maxShare": 0.15861
+      },
+      "otherRiskPairs": {
+        "若叶睦 vs 高松灯": {
+          "pairOnlyAccuracy": 0.779375,
+          "fullModelAccuracy": 0.608125,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        },
+        "三角初华 vs 椎名立希": {
+          "pairOnlyAccuracy": 0.6025,
+          "fullModelAccuracy": 0.28125,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        },
+        "千早爱音 vs 高松灯": {
+          "pairOnlyAccuracy": 0.740625,
+          "fullModelAccuracy": 0.424375,
+          "pairOnlyDeltaVsBaseline": 0.0,
+          "fullModelDeltaVsBaseline": 0.0,
+          "noticeableRegression": false
+        }
+      },
+      "passLine": true,
+      "verdict": "暂不合格，不建议直接冻结 V2。"
+    },
+    "C": {
+      "label": "C",
+      "source": "/home/carl/MYGObti/questionedit/candidates/questionnewV2_1C.md",
+      "changes": "继承 B，并只再改 1 道主轴题 Q14",
+      "sayosaki": {
+        "pairOnlyAccuracy": 0.76625,
+        "pairOnlyDeltaVsBaseline": 0.10375000000000001,
+        "fullModelAccuracy": 0.548125,
+        "fullModelDeltaVsBaseline": 0.250625,
+        "tieBreakerTriggerRate": 0.379375
+      },
+      "focusRecovery": {
+        "长崎爽世": {
+          "rate": 0.53,
+          "deltaVsBaseline": 0.25583300000000003
+        },
+        "丰川祥子": {
+          "rate": 0.535,
+          "deltaVsBaseline": 0.23500000000000004
+        }
+      },
+      "tieBreakerHealth": {
+        "overallTriggerRate": 0.1013,
+        "flipRateWithinTriggered": 0.289339
+      },
+      "distribution": {
+        "finalDistribution": {
+          "三角初华": 0.16239,
+          "丰川祥子": 0.07813,
+          "千早爱音": 0.1602,
+          "椎名立希": 0.12246,
+          "若叶睦": 0.13995,
+          "要乐奈": 0.15261,
+          "长崎爽世": 0.07352,
+          "高松灯": 0.11074
+        },
+        "disappearingRolesBelow5Percent": [],
+        "magnetRolesAbove20Percent": [],
+        "minShareRole": "长崎爽世",
+        "minShare": 0.07352,
+        "maxShareRole": "三角初华",
+        "maxShare": 0.16239
+      },
+      "otherRiskPairs": {
+        "若叶睦 vs 高松灯": {
+          "pairOnlyAccuracy": 0.79,
+          "fullModelAccuracy": 0.5925,
+          "pairOnlyDeltaVsBaseline": 0.010624999999999996,
+          "fullModelDeltaVsBaseline": -0.015625,
+          "noticeableRegression": false
+        },
+        "三角初华 vs 椎名立希": {
+          "pairOnlyAccuracy": 0.596875,
+          "fullModelAccuracy": 0.284375,
+          "pairOnlyDeltaVsBaseline": -0.005624999999999991,
+          "fullModelDeltaVsBaseline": 0.003124999999999989,
+          "noticeableRegression": false
+        },
+        "千早爱音 vs 高松灯": {
+          "pairOnlyAccuracy": 0.72875,
+          "fullModelAccuracy": 0.415625,
+          "pairOnlyDeltaVsBaseline": -0.011874999999999969,
+          "fullModelDeltaVsBaseline": -0.00874999999999998,
+          "noticeableRegression": false
+        }
+      },
+      "passLine": true,
+      "verdict": "暂不合格，不建议直接冻结 V2。"
+    }
+  },
+  "candidateScores": {
+    "A": 0.45,
+    "B": 2.1875,
+    "C": 69.4833
+  },
+  "recommendedVersion": "C",
+  "recommendationReason": "满足通过线，且在通过版本里对 `爽世 vs 祥子` 提升最稳。",
+  "nextPatchSuggestion": [
+    "下一轮先冻结当前补丁组合，只围绕 `Q14` 或 `Q18` 的单档位做 `0.1` 级微调，不要同时再开新题。"
+  ]
+}
