@@ -1,0 +1,1184 @@
+{
+  "seed": 20260415,
+  "source": "/home/carl/MYGObti/questionedit/candidates/questionnewV2_1C1.md",
+  "plan": "/home/carl/MYGObti/questionedit/plans/v2-modification-plan.md",
+  "monteCarloSamples": 100000,
+  "noiseTrialsPerRole": 1200,
+  "pairTrialsPerRole": 800,
+  "static": {
+    "axisCountsQ1Q16": {
+      "emotionExpression": 5,
+      "socialStrategy": 5,
+      "selfRecognition": 6
+    },
+    "axisCountsAllScored": {
+      "emotionExpression": 5,
+      "socialStrategy": 5,
+      "selfRecognition": 7
+    },
+    "deltaValues": {
+      "+0.0": 69,
+      "+0.1": 34,
+      "+0.3": 16,
+      "+0.4": 1,
+      "+0.7": 17,
+      "-0.1": 34,
+      "-0.3": 16,
+      "-0.7": 17
+    },
+    "deltaAbsValues": {
+      "0.0": 69,
+      "0.1": 68,
+      "0.3": 32,
+      "0.4": 1,
+      "0.7": 34
+    },
+    "latentDeltaValues": {
+      "+0.3": 2,
+      "+0.4": 1,
+      "+0.8": 2,
+      "+0.9": 1,
+      "-0.3": 2,
+      "-0.5": 1,
+      "-0.8": 2,
+      "-0.9": 1
+    },
+    "latentPollution": [],
+    "rolePairCosines": [
+      {
+        "pair": "丰川祥子 vs 长崎爽世",
+        "cosine": 0.9073010984729339
+      },
+      {
+        "pair": "若叶睦 vs 高松灯",
+        "cosine": 0.6773203722005843
+      },
+      {
+        "pair": "丰川祥子 vs 要乐奈",
+        "cosine": 0.6706378775985719
+      },
+      {
+        "pair": "三角初华 vs 椎名立希",
+        "cosine": 0.5565240062702013
+      },
+      {
+        "pair": "千早爱音 vs 高松灯",
+        "cosine": 0.47572736174018326
+      },
+      {
+        "pair": "椎名立希 vs 长崎爽世",
+        "cosine": 0.4755948656056709
+      },
+      {
+        "pair": "要乐奈 vs 长崎爽世",
+        "cosine": 0.3628951205720101
+      },
+      {
+        "pair": "三角初华 vs 长崎爽世",
+        "cosine": 0.305260182663791
+      },
+      {
+        "pair": "丰川祥子 vs 椎名立希",
+        "cosine": 0.26616365517270496
+      },
+      {
+        "pair": "椎名立希 vs 要乐奈",
+        "cosine": 0.2132007163556104
+      },
+      {
+        "pair": "要乐奈 vs 高松灯",
+        "cosine": -0.11454649588196857
+      },
+      {
+        "pair": "三角初华 vs 丰川祥子",
+        "cosine": -0.12295081967213112
+      },
+      {
+        "pair": "千早爱音 vs 若叶睦",
+        "cosine": -0.135544475686613
+      },
+      {
+        "pair": "三角初华 vs 若叶睦",
+        "cosine": -0.14395154830479567
+      },
+      {
+        "pair": "丰川祥子 vs 若叶睦",
+        "cosine": -0.1535483181917822
+      },
+      {
+        "pair": "千早爱音 vs 椎名立希",
+        "cosine": -0.18641092980035998
+      },
+      {
+        "pair": "若叶睦 vs 长崎爽世",
+        "cosine": -0.18862800519692
+      },
+      {
+        "pair": "千早爱音 vs 要乐奈",
+        "cosine": -0.22521001469639568
+      },
+      {
+        "pair": "三角初华 vs 千早爱音",
+        "cosine": -0.2420650340851158
+      },
+      {
+        "pair": "丰川祥子 vs 高松灯",
+        "cosine": -0.4355058793690574
+      },
+      {
+        "pair": "若叶睦 vs 要乐奈",
+        "cosine": -0.4831918778060757
+      },
+      {
+        "pair": "三角初华 vs 要乐奈",
+        "cosine": -0.6396853601709453
+      },
+      {
+        "pair": "三角初华 vs 高松灯",
+        "cosine": -0.6890093016883595
+      },
+      {
+        "pair": "长崎爽世 vs 高松灯",
+        "cosine": -0.6993266016575206
+      },
+      {
+        "pair": "丰川祥子 vs 千早爱音",
+        "cosine": -0.8735390360462875
+      },
+      {
+        "pair": "椎名立希 vs 若叶睦",
+        "cosine": -0.878218684488614
+      },
+      {
+        "pair": "椎名立希 vs 高松灯",
+        "cosine": -0.9402237066553368
+      },
+      {
+        "pair": "千早爱音 vs 长崎爽世",
+        "cosine": -0.9472202349728193
+      }
+    ],
+    "tieBreakerRule": {
+      "enabledWhenTop2DiffBelow": 0.08,
+      "onlyWhenTop2IncludesAnyOf": [
+        "长崎爽世",
+        "丰川祥子"
+      ],
+      "primaryTrait": "controlServiceOrientation",
+      "latentScoreAggregation": "mean(Q17,Q18,Q19)",
+      "latentScoreRange": [
+        -1,
+        1
+      ],
+      "lambda": {
+        "default": 0.08,
+        "priorityPair": 0.14
+      },
+      "priorityPairs": [
+        [
+          "长崎爽世",
+          "丰川祥子"
+        ]
+      ],
+      "formula": "finalTieScore = baseCosine + lambda * (1 - abs(latentScore - characterLatentAnchor))"
+    },
+    "latentSayosaki": {
+      "baseCosine": 0.9073010984729339,
+      "latentAnchorGap": 1.5,
+      "crossoverLatentScore": 0.050000000000000044,
+      "samples": [
+        {
+          "latentScore": -1.0,
+          "爽世AdvantagePriorityLambda": -0.21000000000000002,
+          "爽世AdvantageDefaultLambda": -0.12
+        },
+        {
+          "latentScore": -0.8,
+          "爽世AdvantagePriorityLambda": -0.21000000000000002,
+          "爽世AdvantageDefaultLambda": -0.12
+        },
+        {
+          "latentScore": -0.3,
+          "爽世AdvantagePriorityLambda": -0.09800000000000003,
+          "爽世AdvantageDefaultLambda": -0.056000000000000015
+        },
+        {
+          "latentScore": 0.0,
+          "爽世AdvantagePriorityLambda": -0.014000000000000014,
+          "爽世AdvantageDefaultLambda": -0.008000000000000007
+        },
+        {
+          "latentScore": 0.3,
+          "爽世AdvantagePriorityLambda": 0.07,
+          "爽世AdvantageDefaultLambda": 0.04
+        },
+        {
+          "latentScore": 0.8,
+          "爽世AdvantagePriorityLambda": 0.21000000000000002,
+          "爽世AdvantageDefaultLambda": 0.12
+        },
+        {
+          "latentScore": 1.0,
+          "爽世AdvantagePriorityLambda": 0.21000000000000002,
+          "爽世AdvantageDefaultLambda": 0.12
+        }
+      ],
+      "maxPriorityPairMarginGain": 0.21000000000000002
+    }
+  },
+  "monteCarlo": {
+    "sampleCount": 100000,
+    "baseDistribution": {
+      "三角初华": 0.16285,
+      "丰川祥子": 0.07972,
+      "千早爱音": 0.16248,
+      "椎名立希": 0.12364,
+      "若叶睦": 0.13623,
+      "要乐奈": 0.14701,
+      "长崎爽世": 0.07998,
+      "高松灯": 0.10809
+    },
+    "finalDistribution": {
+      "三角初华": 0.16488,
+      "丰川祥子": 0.07668,
+      "千早爱音": 0.16248,
+      "椎名立希": 0.12521,
+      "若叶睦": 0.13704,
+      "要乐奈": 0.15201,
+      "长崎爽世": 0.07357,
+      "高松灯": 0.10813
+    },
+    "top2DiffBelow008RateBase": 0.22036,
+    "top2DiffBelow008RateFinal": 0.18534,
+    "tieBreakerTriggerRate": 0.10036,
+    "tieBreakerFlipRateOverall": 0.02915,
+    "tieBreakerFlipRateWithinTriggered": 0.290454,
+    "tieBreakPairCounts": {
+      "三角初华 vs 长崎爽世": 934,
+      "丰川祥子 vs 椎名立希": 42,
+      "丰川祥子 vs 若叶睦": 499,
+      "丰川祥子 vs 要乐奈": 2624,
+      "丰川祥子 vs 长崎爽世": 4454,
+      "丰川祥子 vs 高松灯": 8,
+      "椎名立希 vs 长崎爽世": 1143,
+      "若叶睦 vs 长崎爽世": 332
+    },
+    "tieBreakPairTriggerRates": {
+      "三角初华 vs 长崎爽世": 0.00934,
+      "丰川祥子 vs 椎名立希": 0.00042,
+      "丰川祥子 vs 若叶睦": 0.00499,
+      "丰川祥子 vs 要乐奈": 0.02624,
+      "丰川祥子 vs 长崎爽世": 0.04454,
+      "丰川祥子 vs 高松灯": 8e-05,
+      "椎名立希 vs 长崎爽世": 0.01143,
+      "若叶睦 vs 长崎爽世": 0.00332
+    },
+    "tieBreakPairFlipRatesWithinPair": {
+      "三角初华 vs 长崎爽世": 0.234475,
+      "丰川祥子 vs 椎名立希": 0.285714,
+      "丰川祥子 vs 若叶睦": 0.116232,
+      "丰川祥子 vs 要乐奈": 0.25686,
+      "丰川祥子 vs 长崎爽世": 0.378761,
+      "丰川祥子 vs 高松灯": 0.5,
+      "椎名立希 vs 长崎爽世": 0.146982,
+      "若叶睦 vs 长崎爽世": 0.28012
+    },
+    "sayosakiTriggeredCount": 4454,
+    "sayosakiAverageGapImprovement": 0.0542
+  },
+  "targeted": {
+    "高松灯": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "A",
+        "Q7": "A",
+        "Q8": "A",
+        "Q9": "A",
+        "Q10": "C",
+        "Q11": "B",
+        "Q12": "B",
+        "Q13": "A",
+        "Q14": "B",
+        "Q15": "C",
+        "Q16": "B",
+        "Q20": "B",
+        "Q17": "A",
+        "Q18": "D",
+        "Q19": "D"
+      },
+      "idealWinner": "高松灯",
+      "idealBaseWinner": "高松灯",
+      "idealUserVector": [
+        -0.9,
+        -0.8,
+        -0.7
+      ],
+      "idealLatentScore": -0.3,
+      "idealTop3": [
+        {
+          "role": "高松灯",
+          "score": 1.0
+        },
+        {
+          "role": "若叶睦",
+          "score": 0.67732
+        },
+        {
+          "role": "千早爱音",
+          "score": 0.475727
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.3925,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.035,
+        "丰川祥子": 0.0375,
+        "千早爱音": 0.209167,
+        "椎名立希": 0.020833,
+        "若叶睦": 0.180833,
+        "要乐奈": 0.1125,
+        "长崎爽世": 0.011667,
+        "高松灯": 0.3925
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.048333,
+        "丰川祥子": 0.073333,
+        "千早爱音": 0.16,
+        "椎名立希": 0.030833,
+        "若叶睦": 0.228333,
+        "要乐奈": 0.085833,
+        "长崎爽世": 0.035833,
+        "高松灯": 0.3375
+      },
+      "tieBreakerTriggerRate": 0.035833,
+      "tieBreakerFlipRate": 0.008333,
+      "top2Pairs": {
+        "若叶睦 vs 高松灯": 0.348333,
+        "千早爱音 vs 高松灯": 0.291667,
+        "要乐奈 vs 高松灯": 0.09,
+        "丰川祥子 vs 要乐奈": 0.068333,
+        "三角初华 vs 若叶睦": 0.033333
+      }
+    },
+    "千早爱音": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "A",
+        "Q7": "A",
+        "Q8": "A",
+        "Q9": "A",
+        "Q10": "A",
+        "Q11": "C",
+        "Q12": "A",
+        "Q13": "C",
+        "Q14": "B",
+        "Q15": "C",
+        "Q16": "B",
+        "Q20": "A",
+        "Q17": "B",
+        "Q18": "D",
+        "Q19": "B"
+      },
+      "idealWinner": "千早爱音",
+      "idealBaseWinner": "千早爱音",
+      "idealUserVector": [
+        0.3,
+        -0.7,
+        -0.4
+      ],
+      "idealLatentScore": -0.1,
+      "idealTop3": [
+        {
+          "role": "千早爱音",
+          "score": 1.0
+        },
+        {
+          "role": "高松灯",
+          "score": 0.475727
+        },
+        {
+          "role": "若叶睦",
+          "score": -0.135544
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.406667,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.115,
+        "丰川祥子": 0.010833,
+        "千早爱音": 0.406667,
+        "椎名立希": 0.100833,
+        "若叶睦": 0.071667,
+        "要乐奈": 0.144167,
+        "长崎爽世": 0.0075,
+        "高松灯": 0.143333
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.106667,
+        "丰川祥子": 0.0775,
+        "千早爱音": 0.136667,
+        "椎名立希": 0.1525,
+        "若叶睦": 0.108333,
+        "要乐奈": 0.0675,
+        "长崎爽世": 0.036667,
+        "高松灯": 0.314167
+      },
+      "tieBreakerTriggerRate": 0.023333,
+      "tieBreakerFlipRate": 0.0075,
+      "top2Pairs": {
+        "千早爱音 vs 高松灯": 0.331667,
+        "若叶睦 vs 高松灯": 0.1025,
+        "千早爱音 vs 椎名立希": 0.084167,
+        "三角初华 vs 千早爱音": 0.083333,
+        "椎名立希 vs 要乐奈": 0.080833
+      }
+    },
+    "要乐奈": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "A",
+        "Q7": "A",
+        "Q8": "A",
+        "Q9": "A",
+        "Q10": "A",
+        "Q11": "B",
+        "Q12": "A",
+        "Q13": "A",
+        "Q14": "C",
+        "Q15": "A",
+        "Q16": "A",
+        "Q20": "B",
+        "Q17": "A",
+        "Q18": "C",
+        "Q19": "C"
+      },
+      "idealWinner": "要乐奈",
+      "idealBaseWinner": "要乐奈",
+      "idealUserVector": [
+        -0.2,
+        -0.3,
+        0.8
+      ],
+      "idealLatentScore": 0.0,
+      "idealTop3": [
+        {
+          "role": "要乐奈",
+          "score": 1.0
+        },
+        {
+          "role": "丰川祥子",
+          "score": 0.670638
+        },
+        {
+          "role": "长崎爽世",
+          "score": 0.362895
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.385,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.040833,
+        "丰川祥子": 0.100833,
+        "千早爱音": 0.100833,
+        "椎名立希": 0.134167,
+        "若叶睦": 0.074167,
+        "要乐奈": 0.385,
+        "长崎爽世": 0.06,
+        "高松灯": 0.104167
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.0525,
+        "丰川祥子": 0.299167,
+        "千早爱音": 0.100833,
+        "椎名立希": 0.091667,
+        "若叶睦": 0.074167,
+        "要乐奈": 0.143333,
+        "长崎爽世": 0.095,
+        "高松灯": 0.143333
+      },
+      "tieBreakerTriggerRate": 0.133333,
+      "tieBreakerFlipRate": 0.035,
+      "top2Pairs": {
+        "丰川祥子 vs 要乐奈": 0.275833,
+        "椎名立希 vs 要乐奈": 0.113333,
+        "丰川祥子 vs 长崎爽世": 0.110833,
+        "若叶睦 vs 高松灯": 0.105833,
+        "要乐奈 vs 高松灯": 0.070833
+      }
+    },
+    "长崎爽世": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "C",
+        "Q7": "A",
+        "Q8": "A",
+        "Q9": "C",
+        "Q10": "B",
+        "Q11": "B",
+        "Q12": "D",
+        "Q13": "A",
+        "Q14": "D",
+        "Q15": "A",
+        "Q16": "D",
+        "Q20": "B",
+        "Q17": "A",
+        "Q18": "A",
+        "Q19": "A"
+      },
+      "idealWinner": "长崎爽世",
+      "idealBaseWinner": "长崎爽世",
+      "idealUserVector": [
+        -0.1,
+        0.8,
+        0.7
+      ],
+      "idealLatentScore": 0.8333333333,
+      "idealTop3": [
+        {
+          "role": "长崎爽世",
+          "score": 1.0
+        },
+        {
+          "role": "丰川祥子",
+          "score": 0.907301
+        },
+        {
+          "role": "椎名立希",
+          "score": 0.475595
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.299167,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.145,
+        "丰川祥子": 0.084167,
+        "千早爱音": 0.046667,
+        "椎名立希": 0.105,
+        "若叶睦": 0.115,
+        "要乐奈": 0.163333,
+        "长崎爽世": 0.299167,
+        "高松灯": 0.041667
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.1175,
+        "丰川祥子": 0.3675,
+        "千早爱音": 0.0525,
+        "椎名立希": 0.104167,
+        "若叶睦": 0.065,
+        "要乐奈": 0.049167,
+        "长崎爽世": 0.160833,
+        "高松灯": 0.083333
+      },
+      "tieBreakerTriggerRate": 0.224167,
+      "tieBreakerFlipRate": 0.083333,
+      "top2Pairs": {
+        "丰川祥子 vs 长崎爽世": 0.288333,
+        "丰川祥子 vs 要乐奈": 0.145833,
+        "三角初华 vs 椎名立希": 0.090833,
+        "三角初华 vs 长崎爽世": 0.080833,
+        "三角初华 vs 若叶睦": 0.079167
+      }
+    },
+    "椎名立希": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "A",
+        "Q7": "A",
+        "Q8": "A",
+        "Q9": "A",
+        "Q10": "B",
+        "Q11": "B",
+        "Q12": "D",
+        "Q13": "C",
+        "Q14": "D",
+        "Q15": "A",
+        "Q16": "A",
+        "Q20": "A",
+        "Q17": "B",
+        "Q18": "A",
+        "Q19": "B"
+      },
+      "idealWinner": "椎名立希",
+      "idealBaseWinner": "椎名立希",
+      "idealUserVector": [
+        0.3,
+        0.1,
+        0.2
+      ],
+      "idealLatentScore": 0.5,
+      "idealTop3": [
+        {
+          "role": "椎名立希",
+          "score": 1.0
+        },
+        {
+          "role": "三角初华",
+          "score": 0.556524
+        },
+        {
+          "role": "长崎爽世",
+          "score": 0.475595
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.180833,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.195,
+        "丰川祥子": 0.06,
+        "千早爱音": 0.150833,
+        "椎名立希": 0.180833,
+        "若叶睦": 0.110833,
+        "要乐奈": 0.135,
+        "长崎爽世": 0.119167,
+        "高松灯": 0.048333
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.149167,
+        "丰川祥子": 0.146667,
+        "千早爱音": 0.096667,
+        "椎名立希": 0.1675,
+        "若叶睦": 0.059167,
+        "要乐奈": 0.083333,
+        "长崎爽世": 0.149167,
+        "高松灯": 0.148333
+      },
+      "tieBreakerTriggerRate": 0.1175,
+      "tieBreakerFlipRate": 0.0325,
+      "top2Pairs": {
+        "三角初华 vs 椎名立希": 0.168333,
+        "丰川祥子 vs 长崎爽世": 0.1225,
+        "千早爱音 vs 高松灯": 0.0925,
+        "若叶睦 vs 高松灯": 0.076667,
+        "椎名立希 vs 长崎爽世": 0.073333
+      }
+    },
+    "三角初华": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "A",
+        "Q7": "A",
+        "Q8": "A",
+        "Q9": "A",
+        "Q10": "D",
+        "Q11": "A",
+        "Q12": "D",
+        "Q13": "D",
+        "Q14": "A",
+        "Q15": "C",
+        "Q16": "B",
+        "Q20": "A",
+        "Q17": "A",
+        "Q18": "A",
+        "Q19": "D"
+      },
+      "idealWinner": "三角初华",
+      "idealBaseWinner": "三角初华",
+      "idealUserVector": [
+        0.7,
+        0.8,
+        -0.3
+      ],
+      "idealLatentScore": 0.3,
+      "idealTop3": [
+        {
+          "role": "三角初华",
+          "score": 1.0
+        },
+        {
+          "role": "椎名立希",
+          "score": 0.556524
+        },
+        {
+          "role": "长崎爽世",
+          "score": 0.30526
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.425833,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.425833,
+        "丰川祥子": 0.026667,
+        "千早爱音": 0.100833,
+        "椎名立希": 0.184167,
+        "若叶睦": 0.095,
+        "要乐奈": 0.038333,
+        "长崎爽世": 0.1075,
+        "高松灯": 0.021667
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.165833,
+        "丰川祥子": 0.095,
+        "千早爱音": 0.070833,
+        "椎名立希": 0.251667,
+        "若叶睦": 0.134167,
+        "要乐奈": 0.041667,
+        "长崎爽世": 0.151667,
+        "高松灯": 0.089167
+      },
+      "tieBreakerTriggerRate": 0.1,
+      "tieBreakerFlipRate": 0.025,
+      "top2Pairs": {
+        "三角初华 vs 椎名立希": 0.294167,
+        "三角初华 vs 若叶睦": 0.145833,
+        "丰川祥子 vs 长崎爽世": 0.089167,
+        "三角初华 vs 长崎爽世": 0.076667,
+        "椎名立希 vs 长崎爽世": 0.076667
+      }
+    },
+    "若叶睦": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "B",
+        "Q7": "A",
+        "Q8": "C",
+        "Q9": "B",
+        "Q10": "B",
+        "Q11": "B",
+        "Q12": "B",
+        "Q13": "A",
+        "Q14": "C",
+        "Q15": "A",
+        "Q16": "D",
+        "Q20": "B",
+        "Q17": "C",
+        "Q18": "D",
+        "Q19": "C"
+      },
+      "idealWinner": "若叶睦",
+      "idealBaseWinner": "若叶睦",
+      "idealUserVector": [
+        -2.1,
+        0.6,
+        -1.8
+      ],
+      "idealLatentScore": -0.5,
+      "idealTop3": [
+        {
+          "role": "若叶睦",
+          "score": 1.0
+        },
+        {
+          "role": "高松灯",
+          "score": 0.67732
+        },
+        {
+          "role": "千早爱音",
+          "score": -0.135544
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.745,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.033333,
+        "丰川祥子": 0.040833,
+        "千早爱音": 0.013333,
+        "若叶睦": 0.745,
+        "要乐奈": 0.004167,
+        "长崎爽世": 0.009167,
+        "高松灯": 0.154167
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.075833,
+        "丰川祥子": 0.050833,
+        "千早爱音": 0.013333,
+        "椎名立希": 0.005833,
+        "若叶睦": 0.184167,
+        "要乐奈": 0.005,
+        "长崎爽世": 0.05,
+        "高松灯": 0.615
+      },
+      "tieBreakerTriggerRate": 0.023333,
+      "tieBreakerFlipRate": 0.008333,
+      "top2Pairs": {
+        "若叶睦 vs 高松灯": 0.748333,
+        "三角初华 vs 若叶睦": 0.0975,
+        "丰川祥子 vs 若叶睦": 0.053333,
+        "丰川祥子 vs 长崎爽世": 0.0325,
+        "若叶睦 vs 长崎爽世": 0.026667
+      }
+    },
+    "丰川祥子": {
+      "idealAnswers": {
+        "Q1": "A",
+        "Q2": "A",
+        "Q3": "A",
+        "Q4": "A",
+        "Q5": "A",
+        "Q6": "C",
+        "Q7": "A",
+        "Q8": "A",
+        "Q9": "C",
+        "Q10": "D",
+        "Q11": "B",
+        "Q12": "B",
+        "Q13": "A",
+        "Q14": "D",
+        "Q15": "A",
+        "Q16": "D",
+        "Q20": "B",
+        "Q17": "D",
+        "Q18": "C",
+        "Q19": "D"
+      },
+      "idealWinner": "丰川祥子",
+      "idealBaseWinner": "丰川祥子",
+      "idealUserVector": [
+        -0.4,
+        0.5,
+        0.9
+      ],
+      "idealLatentScore": -0.7,
+      "idealTop3": [
+        {
+          "role": "丰川祥子",
+          "score": 1.0
+        },
+        {
+          "role": "长崎爽世",
+          "score": 0.907301
+        },
+        {
+          "role": "要乐奈",
+          "score": 0.670638
+        }
+      ],
+      "idealResponseInconsistency": false,
+      "noisyRecoveryRate": 0.3,
+      "noisyPredictionDistribution": {
+        "三角初华": 0.094167,
+        "丰川祥子": 0.3,
+        "千早爱音": 0.023333,
+        "椎名立希": 0.11,
+        "若叶睦": 0.121667,
+        "要乐奈": 0.190833,
+        "长崎爽世": 0.105833,
+        "高松灯": 0.054167
+      },
+      "noisyRunnerUpDistribution": {
+        "三角初华": 0.086667,
+        "丰川祥子": 0.21,
+        "千早爱音": 0.036667,
+        "椎名立希": 0.095833,
+        "若叶睦": 0.055833,
+        "要乐奈": 0.095833,
+        "长崎爽世": 0.310833,
+        "高松灯": 0.108333
+      },
+      "tieBreakerTriggerRate": 0.238333,
+      "tieBreakerFlipRate": 0.085,
+      "top2Pairs": {
+        "丰川祥子 vs 长崎爽世": 0.293333,
+        "丰川祥子 vs 要乐奈": 0.189167,
+        "若叶睦 vs 高松灯": 0.088333,
+        "三角初华 vs 椎名立希": 0.086667,
+        "椎名立希 vs 长崎爽世": 0.071667
+      }
+    }
+  },
+  "pairAnalysis": {
+    "长崎爽世 vs 丰川祥子": {
+      "pair": [
+        "长崎爽世",
+        "丰川祥子"
+      ],
+      "anchorCosine": 0.907301,
+      "latentAnchorGap": 1.5,
+      "pairOnlyAccuracyBase": 0.56,
+      "pairOnlyAccuracy": 0.65875,
+      "fullModelAccuracy": 0.301875,
+      "fullModelCrossConfusion": {
+        "长崎爽世": 0.09875,
+        "丰川祥子": 0.13125
+      },
+      "tieBreakerTriggerRate": 0.23125,
+      "topContributingQuestions": [
+        {
+          "questionId": "Q10",
+          "qtype": "scored",
+          "accuracyDrop": 0.04625
+        },
+        {
+          "questionId": "Q12",
+          "qtype": "scored",
+          "accuracyDrop": 0.04625
+        },
+        {
+          "questionId": "Q9",
+          "qtype": "scored",
+          "accuracyDrop": 0.018125
+        },
+        {
+          "questionId": "Q3",
+          "qtype": "scored",
+          "accuracyDrop": 0.015625
+        },
+        {
+          "questionId": "Q17",
+          "qtype": "latent",
+          "accuracyDrop": 0.011875
+        },
+        {
+          "questionId": "Q6",
+          "qtype": "scored",
+          "accuracyDrop": 0.010625
+        }
+      ],
+      "needsPatch": true
+    },
+    "若叶睦 vs 高松灯": {
+      "pair": [
+        "若叶睦",
+        "高松灯"
+      ],
+      "anchorCosine": 0.67732,
+      "latentAnchorGap": 0.2,
+      "pairOnlyAccuracyBase": 0.8075,
+      "pairOnlyAccuracy": 0.8075,
+      "fullModelAccuracy": 0.615,
+      "fullModelCrossConfusion": {
+        "若叶睦": 0.1375,
+        "高松灯": 0.16875
+      },
+      "tieBreakerTriggerRate": 0.030625,
+      "topContributingQuestions": [
+        {
+          "questionId": "Q10",
+          "qtype": "scored",
+          "accuracyDrop": 0.24375
+        },
+        {
+          "questionId": "Q13",
+          "qtype": "scored",
+          "accuracyDrop": 0.031875
+        },
+        {
+          "questionId": "Q9",
+          "qtype": "scored",
+          "accuracyDrop": 0.02375
+        },
+        {
+          "questionId": "Q5",
+          "qtype": "scored",
+          "accuracyDrop": 0.01875
+        },
+        {
+          "questionId": "Q8",
+          "qtype": "scored",
+          "accuracyDrop": 0.01375
+        },
+        {
+          "questionId": "Q4",
+          "qtype": "scored",
+          "accuracyDrop": 0.01125
+        }
+      ],
+      "needsPatch": true
+    },
+    "三角初华 vs 椎名立希": {
+      "pair": [
+        "三角初华",
+        "椎名立希"
+      ],
+      "anchorCosine": 0.556524,
+      "latentAnchorGap": 0.2,
+      "pairOnlyAccuracyBase": 0.5975,
+      "pairOnlyAccuracy": 0.5975,
+      "fullModelAccuracy": 0.2875,
+      "fullModelCrossConfusion": {
+        "三角初华": 0.18875,
+        "椎名立希": 0.2225
+      },
+      "tieBreakerTriggerRate": 0.104375,
+      "topContributingQuestions": [
+        {
+          "questionId": "Q16",
+          "qtype": "scored",
+          "accuracyDrop": 0.129375
+        },
+        {
+          "questionId": "Q13",
+          "qtype": "scored",
+          "accuracyDrop": 0.08125
+        },
+        {
+          "questionId": "Q15",
+          "qtype": "scored",
+          "accuracyDrop": 0.064375
+        },
+        {
+          "questionId": "Q3",
+          "qtype": "scored",
+          "accuracyDrop": 0.024375
+        },
+        {
+          "questionId": "Q6",
+          "qtype": "scored",
+          "accuracyDrop": 0.023125
+        },
+        {
+          "questionId": "Q9",
+          "qtype": "scored",
+          "accuracyDrop": 0.015625
+        }
+      ],
+      "needsPatch": true
+    },
+    "千早爱音 vs 高松灯": {
+      "pair": [
+        "千早爱音",
+        "高松灯"
+      ],
+      "anchorCosine": 0.475727,
+      "latentAnchorGap": 0.2,
+      "pairOnlyAccuracyBase": 0.735625,
+      "pairOnlyAccuracy": 0.735625,
+      "fullModelAccuracy": 0.411875,
+      "fullModelCrossConfusion": {
+        "千早爱音": 0.1375,
+        "高松灯": 0.16625
+      },
+      "tieBreakerTriggerRate": 0.0275,
+      "topContributingQuestions": [
+        {
+          "questionId": "Q12",
+          "qtype": "scored",
+          "accuracyDrop": 0.175625
+        },
+        {
+          "questionId": "Q4",
+          "qtype": "scored",
+          "accuracyDrop": 0.090625
+        },
+        {
+          "questionId": "Q11",
+          "qtype": "scored",
+          "accuracyDrop": 0.01625
+        },
+        {
+          "questionId": "Q20",
+          "qtype": "reverse_check",
+          "accuracyDrop": 0.010625
+        },
+        {
+          "questionId": "Q6",
+          "qtype": "scored",
+          "accuracyDrop": 0.003125
+        },
+        {
+          "questionId": "Q16",
+          "qtype": "scored",
+          "accuracyDrop": 0.001875
+        }
+      ],
+      "needsPatch": true
+    }
+  },
+  "riskRanking": [
+    {
+      "role": "长崎爽世",
+      "riskScore": 0.783833,
+      "closestRole": "丰川祥子",
+      "closestCosine": 0.907301,
+      "noisyRecoveryRate": 0.299167,
+      "finalShare": 0.07357
+    },
+    {
+      "role": "丰川祥子",
+      "riskScore": 0.779809,
+      "closestRole": "长崎爽世",
+      "closestCosine": 0.907301,
+      "noisyRecoveryRate": 0.3,
+      "finalShare": 0.07668
+    },
+    {
+      "role": "椎名立希",
+      "riskScore": 0.676091,
+      "closestRole": "三角初华",
+      "closestCosine": 0.556524,
+      "noisyRecoveryRate": 0.180833,
+      "finalShare": 0.12521
+    },
+    {
+      "role": "要乐奈",
+      "riskScore": 0.665321,
+      "closestRole": "丰川祥子",
+      "closestCosine": 0.670638,
+      "noisyRecoveryRate": 0.385,
+      "finalShare": 0.15201
+    },
+    {
+      "role": "高松灯",
+      "riskScore": 0.652199,
+      "closestRole": "若叶睦",
+      "closestCosine": 0.67732,
+      "noisyRecoveryRate": 0.3925,
+      "finalShare": 0.10813
+    },
+    {
+      "role": "三角初华",
+      "riskScore": 0.637945,
+      "closestRole": "椎名立希",
+      "closestCosine": 0.556524,
+      "noisyRecoveryRate": 0.425833,
+      "finalShare": 0.16488
+    },
+    {
+      "role": "千早爱音",
+      "riskScore": 0.621574,
+      "closestRole": "高松灯",
+      "closestCosine": 0.475727,
+      "noisyRecoveryRate": 0.406667,
+      "finalShare": 0.16248
+    },
+    {
+      "role": "若叶睦",
+      "riskScore": 0.523028,
+      "closestRole": "高松灯",
+      "closestCosine": 0.67732,
+      "noisyRecoveryRate": 0.745,
+      "finalShare": 0.13704
+    }
+  ],
+  "verdict": {
+    "verdict": "暂不合格，不建议直接冻结 V2。",
+    "severeIssues": [
+      "重点角色轻噪声回收不足: 长崎爽世, 丰川祥子, 高松灯"
+    ],
+    "moderateIssues": [
+      "高风险角色对仍需补丁: 长崎爽世 vs 丰川祥子, 若叶睦 vs 高松灯, 三角初华 vs 椎名立希, 千早爱音 vs 高松灯"
+    ],
+    "patchSuggestions": [
+      "优先微调 `lambda` 到 0.13~0.14，并保留 `top2 diff < 0.08`。",
+      "优先检查 `Q17-Q19` 的档位对称性，避免 `+0.8/-0.8` 之外的中档过弱。",
+      "补一题轻量的内敛但是否主动承受关系压力题，避免灯/睦/爱音都落在负向角落。"
+    ]
+  }
+}
