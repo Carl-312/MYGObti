@@ -27,17 +27,32 @@
 
 ### UX & Guardrails
 
-- [ ] **UX-01**: 首页与结果页明确展示“娱乐向、非心理诊断”的免责声明
-- [ ] **UX-02**: 整体体验以移动端 H5 为先，不依赖后端
+- [x] **UX-01**: 首页与结果页明确展示“娱乐向、非心理诊断”的免责声明
+- [x] **UX-02**: 整体体验以移动端 H5 为先，不依赖后端
 - [ ] **UX-03**: 不采集手机号、邮箱、登录信息等个人数据
 
 ## v2 Requirements
+
+### Frontend Experience Rebuild
+
+- **FRONTEND-01**: 前端重构必须基于 `frontend-design/mygo-fronted` 模板做渐进迁移，不允许一次性重写后再整体替换
+- **FRONTEND-02**: 做题体验必须呈现为类似 LINE 群聊的连续消息流，并复用 `DialogueRow` 相关动效语义
+- **FRONTEND-03**: 结果页与头像系统必须支持 8 个角色的圆形头像与 Live2D 静态图插槽，资源通过本地 manifest 解析
+- **FRONTEND-04**: 执行重构 phase 时必须保持 web/api 开发服务器常驻，并在浏览器完成每个计划的手动验收后才允许清理旧实现
 
 ### Fan Content Deepening
 
 - **FAN-01**: 题目文案升级为粉丝能识别的剧情场景改写
 - **FAN-02**: 结果页毒舌锐评、金句、羁绊信息替换为 MyGO 梗化文案
 - **FAN-03**: 角色锚点通过 3-5 位深度粉丝的独立标注校准
+
+### Architecture Evolution
+
+- **ARCH-01**: 项目拆分为可独立启动与部署的前端 Web 和后端 API，但继续保持单仓协作
+- **ARCH-02**: 浏览器端不再通过 Vite `?raw` 直接读取 `questionedit/questionnewV2.md`；canonical 内容解析与序列化由后端负责
+- **ARCH-03**: 前端通过环境变量配置的 API 基址读取 quiz meta / content，开发态支持 Vite dev server proxy 联调
+- **ARCH-04**: 题目、角色、匹配结果相关的类型与评分逻辑在前后端之间共享，避免再次出现双轨真相漂移
+- **ARCH-05**: Phase `02.1` 的后端保持文件驱动与只读 API，不引入数据库、登录或后台管理台
 
 ## Out of Scope
 
@@ -66,10 +81,19 @@
 | RESULT-01 | Phase 2 | Complete |
 | RESULT-02 | Phase 2 | Complete |
 | RESULT-03 | Phase 2 | Complete |
+| ARCH-01 | Phase 02.1 | Complete |
+| ARCH-02 | Phase 02.1 | Complete |
+| ARCH-03 | Phase 02.1 | Complete |
+| ARCH-04 | Phase 02.1 | Complete |
+| ARCH-05 | Phase 02.1 | Complete |
+| FRONTEND-01 | Phase 02.3 | Complete |
+| FRONTEND-02 | Phase 02.3 | Pending |
+| FRONTEND-03 | Phase 02.3 | Pending |
+| FRONTEND-04 | Phase 02.3 | Complete |
 | FAN-01 | Phase 3 | Pending |
 | FAN-02 | Phase 3 | Pending |
 | FAN-03 | Phase 3 | Pending |
 
 ---
 *Requirements defined: 2026-04-15*
-*Last updated: 2026-04-15 after Phase 2 completion alignment*
+*Last updated: 2026-04-22 after adding Phase 02.3 frontend rebuild requirements*

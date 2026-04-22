@@ -2,19 +2,19 @@
 gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
-current_phase: 02
-current_phase_name: result-display-and-sharing-poster
-current_plan: Done
-status: planning
-stopped_at: Completed 02-02-PLAN.md
-last_updated: "2026-04-15T10:15:59.284Z"
-last_activity: 2026-04-15
+current_phase: 02.3
+current_phase_name: template-driven-frontend-rebuild-and-gradual-migration
+current_plan: 2
+status: executing
+stopped_at: Completed 02.3-01-PLAN.md
+last_updated: "2026-04-22T08:31:40.387Z"
+last_activity: 2026-04-22
 progress:
-  total_phases: 3
-  completed_phases: 2
-  total_plans: 5
-  completed_plans: 5
-  percent: 100
+  total_phases: 6
+  completed_phases: 4
+  total_plans: 14
+  completed_plans: 10
+  percent: 71
 ---
 
 # Project State
@@ -24,47 +24,63 @@ progress:
 See: `.planning/PROJECT.md`
 
 **Core value:** 用最小工程重量把 MyGO 恶搞人格测试做成一个可玩、可扩写、可分享的小项目。
-**Current focus:** Phase 2 已完成；下一步是内容校准与粉丝向润色的规划与落盘。
+**Current focus:** Phase 02.3 — template-driven-frontend-rebuild-and-gradual-migration
 
 ## Current Position
 
-Phase: 02 (result-display-and-sharing-poster) — COMPLETED
-Plan: 2 of 2
+Phase: 02.3 (template-driven-frontend-rebuild-and-gradual-migration) — EXECUTING
+Plan: 2 of 5
 **Milestone:** v1 bootstrap milestone
-**Current Phase:** 02
-**Current Phase Name:** result-display-and-sharing-poster
-**Completed Phases:** 2
-**Total Phases:** 3
-**Current Plan:** Done
-**Total Plans in Phase:** 2
-**Status:** Phase 2 complete; next step is planning the content-deepening work
-**Last Activity:** 2026-04-15
-**Last Activity Description:** Completed 02-02 poster export/share flow and closed Phase 2
-**Progress:** [██████████] 100%
+**Current Phase:** 02.3
+**Current Phase Name:** template-driven-frontend-rebuild-and-gradual-migration
+**Completed Phases:** 4
+**Total Phases:** 6
+**Current Plan:** 2
+**Total Plans in Phase:** 5
+**Status:** `02.3-01` 已完成；下一步是执行 `02.3-02`，把聊天消息原子和角色素材 contract 接到当前壳层上
+**Last Activity:** 2026-04-22
+**Last Activity Description:** Phase 02.3 execution started
+**Progress:** [███████░░░] 71%
 
 ## Accumulated Context
 
 ### Decisions
 
 - Use React + TypeScript + Vite for a lightweight static H5 baseline.
-- Keep the project fully frontend-only until the MVP proves the loop.
+- Keep the project frontend-first in user experience even after introducing a backend boundary.
 - Keep GSD usage intentionally minimal: only `.planning` core docs and current phase artifacts.
 - Treat `start.md` as product PRD and `.planning/**` as execution truth.
 - Keep the MVP as a single-page state machine first, and defer heavier routing or poster-generation work to later phases.
-- Keep hidden Sakiko as a dedicated triggered signal in Phase 2 UI and poster, but do not let her overwrite the public top-ranked result.
-- Keep Phase 2 poster export lightweight: dedicated poster subtree + client-side PNG export + Web Share fallback to download.
+- Keep hidden Sakiko as a dedicated triggered signal in UI and poster, but do not let her overwrite the public top-ranked result.
+- Insert Phase `02.1` before Phase 3 so content deepening does not need to be redone against the old frontend-only content model.
+- Lock the target repo shape to `apps/web + apps/api + packages/quiz-core`.
+- Keep the first backend iteration file-backed and read-only; no database, login, or admin console in this phase.
+- Keep quiz scoring logic shared and primarily client-side for now; the backend owns canonical content truth and serialization.
+- Use Fastify + TypeScript for the API layer, and use Vite `server.proxy` plus `VITE_` env vars for local web/api integration.
+- Keep root onboarding docs and `.planning` core files aligned to the actual workspace layout; remove empty root leftovers instead of preserving confusing placeholders.
+
+### Roadmap Evolution
+
+- Phase `02.1` inserted after Phase 2: frontend/backend separation and content service refactor.
+- Phase `02.2` inserted after Phase `02.1`: repo entrypoint cleanup and documentation alignment.
+- Phase `02.3` inserted after Phase `02.2`: template-driven frontend rebuild and gradual migration before fan-content polishing.
+- Removed the mistaken end-of-roadmap Phase 4 placeholder that was created by `gsd phase add` with a non-ASCII slug.
 
 ### Pending Todos
 
-- Execute 02-02 to add poster export and mobile share/failure states.
-- Calibrate character anchors with deeper fan feedback before content-polish work.
+- Execute Phase `02.3-02` next: extract reusable chat message primitives and character asset contracts on top of the new shell.
+- Keep `npm run dev:api` and `npm run dev:web` resident during Phase `02.3` execution instead of restarting them per task.
+- Clear the stale/non-responsive listener currently occupying port `3001` before relying on the canonical API QA loop again.
+- Resume Phase 3 fan-content polishing only after Phase `02.3` completes and the new frontend flow is accepted in-browser.
 
 ### Blockers/Concerns
 
 - Character anchors are still initial estimates and need later fan calibration.
-- Mobile browser support for file sharing and DOM-to-image export will vary, so Phase 2 execution must keep a clear download fallback.
+- 运行时内容边界已经稳定，但后续如果继续扩 API，仍要避免把只读内容服务做成过重后端。
+- `questionedit/` 仍是内容编辑与评估工作区；后续如果继续整理仓库，不要把这次主入口收口误扩成全仓大扫除。
+- 当前环境里的 `3001` 端口存在非响应式占用，导致默认 `dev:api` QA 需要先清端口再恢复。
 
 ## Session Continuity
 
-**Stopped At:** Completed 02-02-PLAN.md
+**Stopped At:** Completed 02.3-01-PLAN.md
 **Resume file:** None
