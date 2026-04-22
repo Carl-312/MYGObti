@@ -1,0 +1,33 @@
+{
+  "name": "apps-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@mygobti/quiz-core": "file:../../packages/quiz-core",
+    "html-to-image": "^1.11.13",
+    "motion": "^12.23.24",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.14.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^5.0.0",
+    "jsdom": "^29.0.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.3.1",
+    "vitest": "^4.1.4"
+  }
+}
