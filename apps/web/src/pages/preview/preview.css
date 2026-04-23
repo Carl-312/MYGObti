@@ -38,7 +38,7 @@
 .phase-preview__eyebrow {
   margin: 0;
   color: rgba(248, 246, 255, 0.58);
-  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.74rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;

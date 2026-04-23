@@ -92,67 +92,48 @@ export function HomeHeroSection({
       <SparkleSticker className="hero-stage__sticker hero-stage__sticker--sparkle" />
       <MusicNoteSticker className="hero-stage__sticker hero-stage__sticker--note" />
       <div className="hero-stage__inner">
-        <header className="masthead">
-          <div className="masthead__title-block">
-            <div className="masthead__label-row">
-              <p className="masthead__label">MyGObti</p>
-              <span className="masthead__mini-badge">
-                <StoryBadgeIcon kind="ticket" />
-                MyGO 恶搞人格测试
-              </span>
-            </div>
-            <h1>{`${estimatedMinutes} 分钟测出你最像哪位 MyGO 角色。`}</h1>
-            <p className="masthead__logline">
-              {`这是一个 MyGO 恶搞人格测试。答完 ${questionsCount} 道情境单选题，你会拿到角色匹配、三轴倾向和可分享结果海报。`}
-            </p>
+
+        {/* ── 主行动区：居中，开始按钮最优先 ── */}
+        <div className="hero-cta-block">
+          <div className="hero-cta-block__label-row">
+            <p className="masthead__label">MyGObti</p>
+            <span className="masthead__mini-badge">
+              <StoryBadgeIcon kind="ticket" />
+              MyGO 恶搞人格测试
+            </span>
           </div>
-        </header>
-
-        <section className="hero-grid">
-          <article className="hero-copy">
-            <div className="hero-copy__stickers" aria-hidden="true">
-              <EpisodeSeal className="hero-copy__seal" label="START" />
-              <SparkleSticker className="hero-copy__sparkle" />
-              <ComicArrow className="hero-copy__arrow" direction="right" />
-            </div>
-            <p className="hero-copy__eyebrow">MyGO 恶搞人格测试</p>
-            <p className="hero-copy__lede">
-              别找标准答案，选更像你第一反应会做的事。首页只负责让你开始测试，结果页再把结论和分享入口给出来。
-            </p>
-            <div className="hero-copy__actions">
-              <button className="primary-button" onClick={primaryAction} type="button">
-                <StoryBadgeIcon kind="bubble" />
-                {primaryActionLabel}
+          <h1>{`${estimatedMinutes} 分钟测出你最像哪位 MyGO 角色。`}</h1>
+          <p className="hero-cta-block__logline">
+            {`答完 ${questionsCount} 道情境单选题，你会拿到角色匹配、三轴倾向和可分享结果海报。`}
+          </p>
+          <div className="hero-cta-block__actions">
+            <button className="primary-button primary-button--hero" onClick={primaryAction} type="button">
+              <StoryBadgeIcon kind="bubble" />
+              {primaryActionLabel}
+            </button>
+            {stage === "idle" ? (
+              <a className="ghost-button" href="#test-brief">
+                <StoryBadgeIcon kind="spark" />
+                查看测试说明
+              </a>
+            ) : (
+              <button className="ghost-button" onClick={onRestart} type="button">
+                <StoryBadgeIcon kind="spark" />
+                {stage === "answering" ? "重新开始测试" : "再测一次"}
               </button>
-              {stage === "idle" ? (
-                <a className="ghost-button" href="#test-brief">
-                  <StoryBadgeIcon kind="spark" />
-                  查看测试说明
-                </a>
-              ) : (
-                <button className="ghost-button" onClick={onRestart} type="button">
-                  <StoryBadgeIcon kind="spark" />
-                  {stage === "answering" ? "重新开始测试" : "再测一次"}
-                </button>
-              )}
-            </div>
-            <p className="hero-copy__action-note">
-              {stage === "idle"
-                ? "从这里直接进入第 1 题。"
-                : stage === "answering"
-                  ? "先回到题流把测试做完，结果页会在后面等你。"
-                  : "先看结论，再决定是否重测或分享。"}
-            </p>
-            <div className="hero-copy__timeline" aria-label="test flow">
-              {stageCopy.map((item, index) => (
-                <div className="hero-copy__timeline-item" key={item}>
-                  <span>0{index + 1}</span>
-                  <p>{item}</p>
-                </div>
-              ))}
-            </div>
-          </article>
+            )}
+          </div>
+          <p className="hero-copy__action-note">
+            {stage === "idle"
+              ? "按第一反应选，不用找标准答案。"
+              : stage === "answering"
+                ? "先回到题流把测试做完，结果页在后面等你。"
+                : "先看结论，再决定是否重测或分享。"}
+          </p>
+        </div>
 
+        {/* ── 辅助信息区：预览 + 流程步骤 ── */}
+        <div className="hero-sub">
           <aside className="hero-preview" aria-label="quiz preview">
             <div className="hero-preview__badges">
               <span className="hero-preview__badge hero-preview__badge--event">
@@ -168,7 +149,7 @@ export function HomeHeroSection({
               <p className="hero-preview__title">测试主线</p>
               <div className="chat-bubble chat-bubble--question">
                 <span>开始</span>
-                <p>点左侧主按钮，直接进入第 1 题，不需要先看设定或附页。</p>
+                <p>点上方主按钮，直接进入第 1 题，不需要先看设定或附页。</p>
               </div>
               <div className="chat-bubble chat-bubble--answer">
                 <span>{stage === "idle" ? "完成后" : "当前状态"}</span>
@@ -176,7 +157,17 @@ export function HomeHeroSection({
               </div>
             </div>
           </aside>
-        </section>
+
+          <div className="hero-steps" aria-label="test flow">
+            <p className="hero-steps__kicker">测试流程</p>
+            {stageCopy.map((item, index) => (
+              <div className="hero-copy__timeline-item" key={item}>
+                <span>0{index + 1}</span>
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
 
         <div className="disclaimer-banner">{disclaimerText}</div>
       </div>

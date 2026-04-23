@@ -47,6 +47,14 @@ npm run typecheck
 npm run build
 ```
 
+备份当前仓库快照：
+
+```bash
+npm run backup:snapshot
+```
+
+默认会把快照写到仓库外的 `$HOME/git-backups/MYGObti/<timestamp>/`，并显式排除 `.git-backups/`、`node_modules/`、`dist/`、`.planning/tmp/`，避免把备份目录或构建产物再次打包进去。
+
 Web 单独验收：
 
 ```bash

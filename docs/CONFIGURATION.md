@@ -7,7 +7,7 @@ This project has a small configuration surface. The runtime is split across:
 
 - `apps/web`: Vite frontend, using `VITE_` variables
 - `apps/api`: Fastify read-only content service, using process env at startup
-- root `package.json`: shared workspace scripts
+- root `package.json` and `scripts/*.mjs`: shared workspace scripts and local dev orchestration
 
 The canonical quiz content source is `questionedit/questionnewV2.md`. No database, auth provider, or external CMS configuration exists in the repository.
 
@@ -72,6 +72,56 @@ Example:
 PORT=3001
 WEB_ORIGIN=http://localhost:5177,https://mygobti.example.com
 ```
+
+## Root Dev Helper Environment
+
+The root `npm run dev` helper in `scripts/dev.mjs` uses a few extra variables for local orchestration.
+
+### `VITE_API_PROXY_TARGET`
+
+- Purpose: requested API target for Vite dev proxy and root dev orchestration
+- Default: `http://127.0.0.1:3001`
+- Behavior:
+  - if local, the root helper may reuse an already healthy API or start `apps/api`
+  - if local but occupied by an unhealthy process, the helper may move to the next free local port
+  - if non-local, the helper treats the API as external and does not start `apps/api`
+
+### `MYGOBTI_API_HEALTH_URL`
+
+- Purpose: override the health-check URL used by root `npm run dev`
+- Default: derived from the selected API origin plus `/api/health`
+
+### `MYGOBTI_API_START_TIMEOUT_MS`
+
+- Purpose: how long root `npm run dev` waits for a spawned local API to become healthy
+- Default: `30000`
+
+### `MYGOBTI_API_POLL_INTERVAL_MS`
+
+- Purpose: polling interval for API health checks during local startup
+- Default: `300`
+
+### `MYGOBTI_API_PORT_SCAN_LIMIT`
+
+- Purpose: maximum number of sequential local ports to probe when the requested API port is unavailable
+- Default: `10`
+
+Example:
+
+```bash
+VITE_API_PROXY_TARGET=http://127.0.0.1:3001 \
+MYGOBTI_API_START_TIMEOUT_MS=45000 \
+npm run dev
+```
+
+## Backup Utility Environment
+
+`npm run backup:snapshot` supports one optional environment override:
+
+### `MYGOBTI_BACKUP_ROOT`
+
+- Purpose: default root directory for snapshot output when `--dest` is not provided
+- Default: `$HOME/git-backups/MYGObti`
 
 ## Content and Runtime Assumptions
 

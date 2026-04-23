@@ -10,6 +10,7 @@
     "dev": "node scripts/dev.mjs",
     "dev:web": "npm run dev --workspace apps/web",
     "dev:api": "npm run dev --workspace apps/api",
+    "backup:snapshot": "bash scripts/backup-snapshot.sh",
     "build": "npm run build:web && npm run typecheck:api && npm run typecheck:core",
     "build:web": "npm run build --workspace apps/web",
     "preview:web": "npm run preview --workspace apps/web",

@@ -40,13 +40,20 @@ In another terminal:
 npm run dev:web
 ```
 
-You can also start the frontend only:
+You can also use the root helper:
 
 ```bash
 npm run dev
 ```
 
-But the app needs the API to serve quiz metadata and content.
+This root script does more than just start the frontend:
+
+- if `VITE_API_PROXY_TARGET` points to a local API origin, it checks `/api/health` first
+- if a healthy API is already running, it reuses it
+- if the default local API port is occupied by an unhealthy process, it picks the next free local port and passes that target to `apps/web`
+- if `VITE_API_PROXY_TARGET` points to a non-local origin, it treats that API as external and only starts `apps/web`
+
+If you want the most predictable two-terminal flow, keep using `npm run dev:api` plus `npm run dev:web`. If you want a one-command local bootstrap, use `npm run dev`.
 
 ## Default Local Addresses
 
@@ -56,6 +63,8 @@ With default config:
 - Web: Vite default is `http://127.0.0.1:5173`
 
 If those ports are already occupied, Vite may move to another free port. The API can also be moved with `PORT=...`.
+
+When you use root `npm run dev`, the helper may also move the local API from `3001` to the next free local port if `3001` is occupied and unhealthy.
 
 ## Sanity Checks
 
@@ -118,6 +127,12 @@ Then point the frontend proxy at it:
 VITE_API_PROXY_TARGET=http://127.0.0.1:3002 npm run dev:web
 ```
 
+Or let the root helper find a free local API port automatically:
+
+```bash
+npm run dev
+```
+
 ### CORS blocks non-default local origins
 
 Set `WEB_ORIGIN` for the API process:
@@ -132,6 +147,7 @@ WEB_ORIGIN=http://localhost:5177 npm run dev:api
 npm run typecheck
 npm run build
 npm run test --workspace apps/web
+npm run backup:snapshot
 ```
 
 For architecture context before making larger changes, read `README.md` and `docs/ARCHITECTURE.md`.

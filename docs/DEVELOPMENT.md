@@ -31,6 +31,20 @@ For UI refinement, the important constraint is that frontend polish should not f
 - `.planning`
   - GSD workflow state and execution artifacts
 
+## Root Dev Orchestration
+
+The root `npm run dev` entrypoint is implemented by `scripts/dev.mjs`.
+
+Current behavior:
+
+- it treats `VITE_API_PROXY_TARGET` as the requested API target, defaulting to `http://127.0.0.1:3001`
+- for local targets, it checks `/api/health` before starting `apps/api`
+- if a healthy API is already running, it reuses that process instead of spawning another one
+- if the requested local API port is unavailable and unhealthy, it scans for the next free local port and forwards that target to `apps/web`
+- for non-local targets, it assumes you want an external API and only starts `apps/web`
+
+This makes `npm run dev` the quickest local bootstrap, while `npm run dev:api` plus `npm run dev:web` remains the clearest split-terminal workflow for debugging.
+
 ## Frontend Development Notes
 
 The frontend entrypoint is `apps/web/src/main.tsx`, which mounts `App` under `BrowserRouter`.
@@ -104,6 +118,7 @@ Validate with:
 
 - `npm run test --workspace apps/web`
 - `npm run build --workspace apps/web`
+- if the UI depends on runtime content, also verify `npm run dev` or the split web/api loop still boots cleanly
 
 ### Runtime content loading changes
 
@@ -158,6 +173,12 @@ That means most active work is either:
 - frontend behavior and UI refinement
 - content parsing and runtime contract maintenance
 - quiz-core scoring logic
+
+## Repository Safety Utility
+
+Use `npm run backup:snapshot` before riskier refactors when you want a portable Git snapshot outside the repo.
+
+The backup script writes bundle, diff, and untracked-file artifacts outside the repository by default and excludes bulky transient paths such as `node_modules/`, `dist/`, and `.planning/tmp/`.
 
 ## Development Tips For Upcoming UI Polish
 

@@ -67,7 +67,7 @@
 
 .dialogue-row__name {
   margin: 0 0 0 3.15rem;
-  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.64rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -175,7 +175,7 @@
 
 .dialogue-timestamp {
   margin: 0;
-  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.64rem;
   letter-spacing: 0.08em;
 }

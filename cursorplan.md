@@ -194,3 +194,325 @@
 | 第 5 轮（微调） | ✅ 完成 | --radius-* token 4级体系、padding 对称化、kicker 选择器合并、pulse-glow 去重、IBM Plex Mono 硬编码清零 |
 
 **全部 5 轮已完成。** 下一阶段：进入视觉精细打磨（边缘光晕、组件细化、微交互）。
+
+
+---
+
+## 第六阶段：视觉精细打磨
+
+### 一、扫描报告 — 当前实现行数标注
+
+#### `styles.css`（共 2183 行）
+
+| 目标 ID | 相关选择器 / 特性 | 行号 | 现状 |
+|---|---|---|---|
+| A1 edge glow | `.primary-button` hover | L683-687 共享 `translateY(-2px)` | 无内描边发光 |
+| A1 pulse-glow | `@keyframes pulse-glow` | L2090-2103 | 仅 box-shadow 脉冲，无 hover rim light |
+| A1 primary 渐变 | `.primary-button`（暗色版） | L1949-1955 | 渐变色 + 静态 box-shadow |
+| A2 ghost hover | `.ghost-button` | L1957-1962 | 仅共享 hover translateY，**无背景/边框过渡** |
+| A3 active | — | **缺失** | 全文无 `:active` 伪类 |
+| B1 card hover | `.hero-steps` / `.result-panel` / `.signal-card` | L567-630, L1184-1187, L1239-1264 | **无任何 hover 效果** |
+| B2 inset highlight | 主卡片统一声明 | L1851-1853 | 已有 `inset 0 1px 0 rgba(255,255,255,0.08)` |
+| B3 glow 一致性 | `.hero-stage__glow--left/right` | L467-481 | 使用旧色 `rgba(255,141,134)` / `rgba(111,168,255)`，**与 accent 色不匹配** |
+| B3 shell glow | `.page-shell__glow--violet/rose` | L128-142 | ✅ 已匹配 accent |
+| C1 h1 text-shadow | 暗色标题统一 | L1869 | 已有 `text-shadow: 0 0 24px rgba(218,185,255,0.14)` 但强度偏低 |
+| C2 kicker 字号 | `.section-kicker` 等合并选择器 | L588-592 | 当前 `0.82rem`（需降至 `0.7rem`） |
+| C3 tabular-nums | — | **缺失** | 全项目无 `font-variant-numeric` |
+| D1 progress @property | `.progress-rail` / `.progress-rail__fill` | L1964-1976 | 静态渐变，**无 @property** |
+| D2 option-tile 竖条 | `.option-tile--active` | L1985-1994 | border-color 变化，**无左侧竖条** |
+| D3 score 计数动画 | `.result-room__score` | L2003-2008 | 纯静态显示，**无动画标记** |
+| E1 SVG currentColor | TSX 内联 SVG | 项目共 41 处 fill/stroke | **未使用 currentColor** |
+| E2 :focus-visible | — | **缺失** | styles.css 无任何 :focus-visible（仅 dialogue.css 有局部定义） |
+| E3 disabled opacity | `button:disabled` | L85-88 | `opacity: 0.45`（需统一为 `0.38`） |
+
+#### `result-page.css`（共 641 行）
+
+| 目标 ID | 相关选择器 | 行号 | 现状 |
+|---|---|---|---|
+| B1 card hover | `.result-report__section` / signal-card / relation-card | L7-19, L110-117, L364-394 | **无 hover 效果** |
+| B2 inset highlight | `.result-report__hero/section/footer` | L18 | 已有 `inset 0 1px 0 rgba(255,255,255,0.62)` — 亮色版本，较强 |
+| C2 kicker 字号 | `.result-report__headline-meta span` 等 | L134 | `0.76rem`（结果页偏小，也需调整） |
+| E2 :focus-visible | — | **缺失** | 无 |
+
+---
+
+### 二、评估矩阵
+
+| 目标 | 描述 | 文件 | 难度 | 视觉收益 | 建议轮次 |
+|---|---|---|---|---|---|
+| A3 | 按钮 `:active` 状态（scale + shadow 收缩） | styles.css | 低 | 高 | 🥇 R1 |
+| A1 | primary-button hover edge glow（visionOS rim light） | styles.css | 中 | 高 | 🥇 R1 |
+| A2 | ghost-button hover 背景微发光 + 边框过渡 | styles.css | 低 | 中 | 🥇 R1 |
+| B1 | 卡片 hover 浮起（translateY + shadow） | styles.css + result-page.css | 低 | 高 | 🥈 R2 |
+| B2 | 卡片内侧高光线统一增强 | styles.css | 低 | 中 | 🥈 R2 |
+| B3 | hero-stage__glow 色相修正 | styles.css | 低 | 中 | 🥈 R2 |
+| E2 | :focus-visible 统一焦点环 | styles.css | 低 | 高（可访问性） | 🥉 R3 |
+| E3 | disabled opacity 统一 0.38 | styles.css | 低 | 低 | 🥉 R3 |
+| C3 | tabular-nums 防数字抖动 | styles.css | 低 | 中 | 🥉 R3 |
+| C1 | h1 text-shadow 增强 glow | styles.css | 低 | 中 | R4 |
+| C2 | kicker 字号统一 0.7rem | styles.css + result-page.css | 低 | 中 | R4 |
+| D2 | option-tile 选中态左侧竖条 | styles.css | 低 | 中 | R4 |
+| D1 | progress-rail @property 动态渐变 | styles.css | 高 | 中 | R5 |
+| D3 | result-room__score 计数动画占位 | styles.css | 低 | 低 | R5 |
+| E1 | SVG fill/stroke → currentColor | TSX 组件 | 中 | 中 | R5 |
+
+---
+
+### 三、逐轮改动规划
+
+#### R1 — 按钮微交互三件套（A1 + A2 + A3）
+
+**A1: primary-button hover edge glow**
+
+```css
+/* 在 .primary-button 暗色块（L1949）之后添加 */
+.primary-button:hover {
+  box-shadow:
+    0 18px 40px rgba(218, 185, 255, 0.28),
+    0 0 32px rgba(255, 175, 215, 0.18),
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.28),   /* visionOS rim light */
+    inset 0 1px 0 rgba(255, 255, 255, 0.36);
+  filter: brightness(1.06);
+}
+```
+
+**A2: ghost-button hover 补全**
+
+```css
+/* 在 .ghost-button（L1957-1962）之后添加 */
+.ghost-button:hover:not(:disabled) {
+  border-color: rgba(218, 185, 255, 0.36);
+  background: rgba(218, 185, 255, 0.08);
+  box-shadow:
+    0 0 20px rgba(218, 185, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+```
+
+**A3: 按钮 :active 状态（全局）**
+
+```css
+/* 新增全局按钮 active */
+.primary-button:active {
+  transform: scale(0.97);
+  box-shadow:
+    0 8px 18px rgba(218, 185, 255, 0.14),
+    0 0 16px rgba(255, 175, 215, 0.08);
+  filter: brightness(0.96);
+  transition-duration: 80ms;
+}
+
+.ghost-button:active:not(:disabled) {
+  transform: scale(0.97);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition-duration: 80ms;
+}
+```
+
+---
+
+#### R2 — 卡片层次三件套（B1 + B2 + B3）
+
+**B1: 卡片 hover 浮起**
+
+```css
+/* styles.css — 主卡片 hover */
+.hero-steps,
+.hero-preview,
+.result-panel,
+.signal-card {
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-steps:hover,
+.hero-preview:hover,
+.result-panel:hover,
+.signal-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 32px 72px rgba(0, 0, 0, 0.32),
+    0 0 24px rgba(218, 185, 255, 0.08);
+}
+
+/* result-page.css — 结果报告卡片 hover */
+.result-report__section,
+.result-report__signal-card,
+.result-report__relation-card {
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.result-report__section:hover,
+.result-report__signal-card:hover,
+.result-report__relation-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 28px 74px rgba(23, 24, 38, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.68);
+}
+```
+
+**B2: 卡片内侧高光增强 — 统一为 0.10**
+
+```css
+/* 修改 styles.css L1851 的 inset shadow */
+/* 从 rgba(255,255,255,0.08) → rgba(255,255,255,0.10) */
+```
+
+**B3: hero-stage__glow 色相修正**
+
+```css
+/* styles.css L467-481 修正 */
+.hero-stage__glow--left {
+  background: rgba(218, 185, 255, 0.24); /* 旧: rgba(255, 141, 134, 0.24) → accent violet */
+}
+
+.hero-stage__glow--right {
+  background: rgba(124, 232, 255, 0.22); /* 旧: rgba(111, 168, 255, 0.24) → accent cyan */
+}
+```
+
+---
+
+#### R3 — 可访问性与稳定性（E2 + E3 + C3）
+
+**E2: 全局 :focus-visible 焦点环**
+
+```css
+/* 新增到 styles.css 全局区域 */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+.primary-button:focus-visible,
+.ghost-button:focus-visible,
+.option-tile:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+```
+
+**E3: disabled 统一 0.38**
+
+```css
+/* 修改 styles.css L87 */
+/* button:disabled { opacity: 0.45 } → opacity: 0.38 */
+
+/* 新增通用禁用 */
+.primary-button:disabled,
+.ghost-button:disabled,
+.option-tile:disabled {
+  opacity: 0.38;
+  pointer-events: none;
+}
+```
+
+**C3: tabular-nums**
+
+```css
+/* 新增到 styles.css 全局区域 */
+.result-room__score strong,
+.progress-summary strong,
+.ranking-list em,
+.result-poster__scoreband strong,
+.result-report__headline-meta strong,
+.result-report__ranking-meta em {
+  font-variant-numeric: tabular-nums;
+}
+```
+
+---
+
+#### R4 — 文字层级精修（C1 + C2 + D2）
+
+**C1: h1 text-shadow 增强**
+
+```css
+/* 修改 styles.css L1869 */
+/* 从 text-shadow: 0 0 24px rgba(218, 185, 255, 0.14) */
+/* → text-shadow: 0 0 32px rgba(218, 185, 255, 0.24), 0 0 64px rgba(218, 185, 255, 0.08) */
+```
+
+**C2: kicker 统一 0.7rem**
+
+```css
+/* 修改 styles.css L589: font-size 0.82rem → 0.7rem */
+/* 修改 result-page.css L134: font-size 0.76rem → 0.7rem */
+```
+
+**D2: option-tile 选中态左侧竖条**
+
+```css
+/* 修改 .option-tile--active (L1985-1994) 增加左条 */
+.option-tile--active {
+  border-left: 3px solid var(--accent);
+  /* 保留其余现有属性 */
+}
+```
+
+---
+
+#### R5 — 进阶收尾（D1 + D3 + E1）
+
+**D1: progress-rail @property 动态渐变**
+
+```css
+@property --rail-hue {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.progress-rail__fill {
+  --rail-hue: 0deg;
+  background: linear-gradient(
+    calc(90deg + var(--rail-hue)),
+    #dab9ff 0%, #ffafd7 50%, #00dfc1 100%
+  );
+  animation: rail-shift 3s ease-in-out infinite alternate;
+}
+
+@keyframes rail-shift {
+  to { --rail-hue: 12deg; }
+}
+```
+
+**D3: score 计数动画占位**
+
+```css
+/* 在 .result-room__score strong 后新增 */
+.result-room__score--animate strong {
+  /* JS 接入后启用 counter animation，当前仅作标记 */
+  will-change: contents;
+}
+```
+
+**E1: SVG currentColor** — 需逐个修改 TSX 内联 SVG 的 `fill` / `stroke` 属性为 `currentColor`，属于组件层改动，建议配合组件 review 一并处理。
+
+---
+
+### 四、依赖关系
+
+```
+R1（按钮微交互）← 无依赖，立即开始
+R2（卡片层次） ← 无依赖，可与 R1 并行
+R3（可访问性）  ← 无依赖，可与 R1/R2 并行
+R4（文字精修）  ← 建议 R1 完成后（按钮文字视觉协调）
+R5（进阶收尾）  ← 依赖 R1-R4 全部完成
+```
+
+### 五、当前进度
+
+| 轮次 | 状态 | 核心改动 |
+|---|---|---|
+| R1（按钮微交互） | ⏳ 待执行 | primary edge glow, ghost hover, :active 状态 |
+| R2（卡片层次） | ⏳ 待执行 | hover 浮起, inset 高光增强, glow 色修正 |
+| R3（可访问性） | ⏳ 待执行 | :focus-visible, disabled 0.38, tabular-nums |
+| R4（文字精修） | ⏳ 待执行 | text-shadow 增强, kicker 0.7rem, 竖条 |
+| R5（进阶收尾） | ⏳ 待执行 | @property 进度条, 计数占位, SVG currentColor |
