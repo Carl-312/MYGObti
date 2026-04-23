@@ -541,6 +541,14 @@ a:focus-visible,
 
 **E1: SVG currentColor** — 需逐个修改 TSX 内联 SVG 的 `fill` / `stroke` 属性为 `currentColor`，属于组件层改动，建议配合组件 review 一并处理。
 
+**R5 实施记录（2026-04-23）**
+
+| 目标 | 状态 | 实际改动 |
+|---|---|---|
+| D1 progress-rail @property | ✅ 完成 | 增加 `--rail-hue` 注册属性、`rail-shift` 动画与动态渐变；保留 width 过渡，并在 `prefers-reduced-motion: reduce` 下关闭动画 |
+| D3 score 计数动画占位 | ✅ 完成 | 新增 `.result-room__score--animate strong { will-change: contents; }`，为后续 JS 计数动画预留标记 |
+| E1 SVG currentColor | ✅ 完成 | `StoryBadgeIcon` 与 `ComicArrow` 改为继承 `currentColor`；多色插画类 SVG 保留固定色，避免破坏角色/故事资产 |
+
 ---
 
 ### 四、依赖关系
@@ -561,4 +569,4 @@ R5（进阶收尾）  ← 依赖 R1-R4 全部完成
 | R2（卡片层次） | ✅ 完成 | hover 浮起, inset 高光增强, glow 色修正；hover 限定在精细指针设备 |
 | R3（可访问性） | ✅ 完成 | :focus-visible, disabled 0.38, tabular-nums |
 | R4（文字精修） | ✅ 完成 | text-shadow 增强, kicker 0.7rem, 竖条 |
-| R5（进阶收尾） | ⏳ 待执行 | @property 进度条, 计数占位, SVG currentColor |
+| R5（进阶收尾） | ✅ 完成 | @property 进度条, 计数占位, SVG currentColor |

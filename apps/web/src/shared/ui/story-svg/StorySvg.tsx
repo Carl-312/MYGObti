@@ -170,15 +170,15 @@ export function ComicArrow({
     >
       <path
         d="M4 16h60"
-        stroke="#c9d2ff"
+        stroke="currentColor"
         strokeDasharray="6 6"
         strokeLinecap="round"
         strokeWidth="3"
       />
       <path
         d="M48 4l24 12-24 12"
-        fill="#ffafd7"
-        stroke="#0b0f19"
+        fill="currentColor"
+        stroke="currentColor"
         strokeLinejoin="round"
         strokeWidth="3"
       />
@@ -203,36 +203,36 @@ export function StoryBadgeIcon({
         <>
           <path
             d="M7 8h22a5 5 0 0 1 5 5v7a5 5 0 0 1-5 5H18l-7 5 1.6-5H7a5 5 0 0 1-5-5v-7a5 5 0 0 1 5-5z"
-            fill="#111625"
-            stroke="#c9d2ff"
+            fill="currentColor"
+            stroke="currentColor"
             strokeLinejoin="round"
             strokeWidth="2.4"
           />
-          <circle cx="12" cy="16.5" fill="#ffafd7" r="2" />
-          <circle cx="18" cy="16.5" fill="#7ce8ff" r="2" />
-          <circle cx="24" cy="16.5" fill="#00dfc1" r="2" />
+          <circle cx="12" cy="16.5" fill="currentColor" opacity="0.48" r="2" />
+          <circle cx="18" cy="16.5" fill="currentColor" opacity="0.72" r="2" />
+          <circle cx="24" cy="16.5" fill="currentColor" r="2" />
         </>
       ) : kind === "ticket" ? (
         <>
           <path
             d="M5 11a3 3 0 0 0 0 14v0h26v0a3 3 0 0 0 0-14v0H5z"
-            fill="#111625"
-            stroke="#ffafd7"
+            fill="currentColor"
+            stroke="currentColor"
             strokeLinejoin="round"
             strokeWidth="2.4"
           />
-          <path d="M18 11v14" stroke="#7ce8ff" strokeDasharray="3 3" strokeWidth="2" />
+          <path d="M18 11v14" stroke="currentColor" strokeDasharray="3 3" strokeWidth="2" />
         </>
       ) : (
         <>
           <path
             d="M18 4l2.9 8.1L29 15l-8.1 2.9L18 26l-2.9-8.1L7 15l8.1-2.9L18 4z"
-            fill="#dab9ff"
-            stroke="#0b0f19"
+            fill="currentColor"
+            stroke="currentColor"
             strokeLinejoin="round"
             strokeWidth="2.4"
           />
-          <circle cx="28.5" cy="8.5" fill="#00dfc1" r="3.5" />
+          <circle cx="28.5" cy="8.5" fill="currentColor" opacity="0.72" r="3.5" />
         </>
       )}
     </svg>
