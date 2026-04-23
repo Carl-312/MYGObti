@@ -652,7 +652,8 @@ a {
     transform 180ms ease,
     background-color 180ms ease,
     border-color 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    filter 180ms ease;
 }
 
 .primary-button {
@@ -680,7 +681,7 @@ a {
   height: 20px;
 }
 
-.primary-button:hover {
+.primary-button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow:
     0 20px 44px rgba(218, 185, 255, 0.3),
@@ -690,7 +691,7 @@ a {
   filter: brightness(1.06);
 }
 
-.primary-button:active {
+.primary-button:active:not(:disabled) {
   transform: scale(0.97);
   box-shadow:
     0 8px 18px rgba(218, 185, 255, 0.14),

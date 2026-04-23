@@ -202,6 +202,8 @@
 
 ### 一、扫描报告 — 当前实现行数标注
 
+> 注：本扫描报告保留为第六阶段实施前基线；R1 完成状态见下方「R1 实施记录」与「当前进度」。
+
 #### `styles.css`（共 2183 行）
 
 | 目标 ID | 相关选择器 / 特性 | 行号 | 现状 |
@@ -266,7 +268,7 @@
 
 ```css
 /* 在 .primary-button 暗色块（L1949）之后添加 */
-.primary-button:hover {
+.primary-button:hover:not(:disabled) {
   box-shadow:
     0 18px 40px rgba(218, 185, 255, 0.28),
     0 0 32px rgba(255, 175, 215, 0.18),
@@ -293,7 +295,7 @@
 
 ```css
 /* 新增全局按钮 active */
-.primary-button:active {
+.primary-button:active:not(:disabled) {
   transform: scale(0.97);
   box-shadow:
     0 8px 18px rgba(218, 185, 255, 0.14),
@@ -308,6 +310,15 @@
   transition-duration: 80ms;
 }
 ```
+
+**R1 实施记录（2026-04-23）**
+
+| 目标 | 状态 | 实际改动 |
+|---|---|---|
+| A1 primary hover edge glow | ✅ 完成 | `.primary-button:hover:not(:disabled)` 增加外发光、rim light 内描边与 `brightness(1.06)` |
+| A2 ghost hover 补全 | ✅ 完成 | `.ghost-button:hover:not(:disabled)` 增加 accent 边框、微发光背景与内侧高光 |
+| A3 按钮 active 状态 | ✅ 完成 | primary / ghost active 增加 `scale(0.97)`、阴影收缩与 80ms 按压反馈 |
+| 过渡补强 | ✅ 完成 | `.primary-button, .ghost-button` 的 transition 补入 `filter 180ms ease` |
 
 ---
 
@@ -511,7 +522,7 @@ R5（进阶收尾）  ← 依赖 R1-R4 全部完成
 
 | 轮次 | 状态 | 核心改动 |
 |---|---|---|
-| R1（按钮微交互） | ⏳ 待执行 | primary edge glow, ghost hover, :active 状态 |
+| R1（按钮微交互） | ✅ 完成 | primary edge glow, ghost hover, :active 状态；补入 filter 过渡与 disabled 防护 |
 | R2（卡片层次） | ⏳ 待执行 | hover 浮起, inset 高光增强, glow 色修正 |
 | R3（可访问性） | ⏳ 待执行 | :focus-visible, disabled 0.38, tabular-nums |
 | R4（文字精修） | ⏳ 待执行 | text-shadow 增强, kicker 0.7rem, 竖条 |
