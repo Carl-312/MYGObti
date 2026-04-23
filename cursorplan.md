@@ -334,18 +334,22 @@
 .signal-card {
   transition:
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero-steps:hover,
-.hero-preview:hover,
-.result-panel:hover,
-.signal-card:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 32px 72px rgba(0, 0, 0, 0.32),
-    0 0 24px rgba(218, 185, 255, 0.08);
+@media (hover: hover) and (pointer: fine) {
+  .hero-steps:hover,
+  .hero-preview:hover,
+  .result-panel:hover,
+  .signal-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(218, 185, 255, 0.24);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 32px 72px rgba(0, 0, 0, 0.32),
+      0 0 24px rgba(218, 185, 255, 0.08);
+  }
 }
 
 /* result-page.css — 结果报告卡片 hover */
@@ -354,16 +358,19 @@
 .result-report__relation-card {
   transition:
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.result-report__section:hover,
-.result-report__signal-card:hover,
-.result-report__relation-card:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 28px 74px rgba(23, 24, 38, 0.18),
-    inset 0 1px 0 rgba(255, 255, 255, 0.68);
+@media (hover: hover) and (pointer: fine) {
+  .result-report__section:hover,
+  .result-report__signal-card:hover,
+  .result-report__relation-card:hover {
+    transform: translateY(-3px);
+    box-shadow:
+      0 28px 74px rgba(23, 24, 38, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.68);
+  }
 }
 ```
 
@@ -386,6 +393,15 @@
   background: rgba(124, 232, 255, 0.22); /* 旧: rgba(111, 168, 255, 0.24) → accent cyan */
 }
 ```
+
+**R2 实施记录（2026-04-23）**
+
+| 目标 | 状态 | 实际改动 |
+|---|---|---|
+| B1 主站卡片 hover 浮起 | ✅ 完成 | `.hero-steps` / `.hero-preview` / `.result-panel` / `.signal-card` 增加 transform、border-color、shadow 过渡；hover 仅在 `(hover: hover) and (pointer: fine)` 生效 |
+| B1 结果页卡片 hover 浮起 | ✅ 完成 | `.result-report__section` / `.result-report__signal-card` / `.result-report__relation-card` 增加同节奏 hover 浮起与亮色阴影 |
+| B2 卡片内侧高光增强 | ✅ 完成 | 主暗色卡片统一 inset highlight 从 `0.08` 增强到 `0.10` |
+| B3 hero glow 色相修正 | ✅ 完成 | 左侧 glow 改为 accent violet，右侧 glow 改为 accent cyan，和 shell glow 体系对齐 |
 
 ---
 
@@ -523,7 +539,7 @@ R5（进阶收尾）  ← 依赖 R1-R4 全部完成
 | 轮次 | 状态 | 核心改动 |
 |---|---|---|
 | R1（按钮微交互） | ✅ 完成 | primary edge glow, ghost hover, :active 状态；补入 filter 过渡与 disabled 防护 |
-| R2（卡片层次） | ⏳ 待执行 | hover 浮起, inset 高光增强, glow 色修正 |
+| R2（卡片层次） | ✅ 完成 | hover 浮起, inset 高光增强, glow 色修正；hover 限定在精细指针设备 |
 | R3（可访问性） | ⏳ 待执行 | :focus-visible, disabled 0.38, tabular-nums |
 | R4（文字精修） | ⏳ 待执行 | text-shadow 增强, kicker 0.7rem, 竖条 |
 | R5（进阶收尾） | ⏳ 待执行 | @property 进度条, 计数占位, SVG currentColor |
