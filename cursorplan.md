@@ -485,12 +485,22 @@ a:focus-visible,
 **D2: option-tile 选中态左侧竖条**
 
 ```css
-/* 修改 .option-tile--active (L1985-1994) 增加左条 */
+/* 修改 .option-tile--active 增加左条；使用 inset shadow 避免 border-left 引发布局抖动 */
 .option-tile--active {
-  border-left: 3px solid var(--accent);
+  box-shadow:
+    inset 3px 0 0 var(--accent),
+    /* 保留其余现有 shadow */;
   /* 保留其余现有属性 */
 }
 ```
+
+**R4 实施记录（2026-04-23）**
+
+| 目标 | 状态 | 实际改动 |
+|---|---|---|
+| C1 h1 text-shadow 增强 | ✅ 完成 | 暗色标题统一改为双层 glow：`32px` 主光 + `64px` 外扩散 |
+| C2 kicker 统一 0.7rem | ✅ 完成 | 主站 kicker / eyebrow 标签与结果报告 meta 小标签统一到 `0.7rem` |
+| D2 option-tile 选中竖条 | ✅ 完成 | `.option-tile--active` 增加 `inset 3px 0 0 var(--accent)` 左侧竖条，避免改变布局尺寸 |
 
 ---
 
@@ -550,5 +560,5 @@ R5（进阶收尾）  ← 依赖 R1-R4 全部完成
 | R1（按钮微交互） | ✅ 完成 | primary edge glow, ghost hover, :active 状态；补入 filter 过渡与 disabled 防护 |
 | R2（卡片层次） | ✅ 完成 | hover 浮起, inset 高光增强, glow 色修正；hover 限定在精细指针设备 |
 | R3（可访问性） | ✅ 完成 | :focus-visible, disabled 0.38, tabular-nums |
-| R4（文字精修） | ⏳ 待执行 | text-shadow 增强, kicker 0.7rem, 竖条 |
+| R4（文字精修） | ✅ 完成 | text-shadow 增强, kicker 0.7rem, 竖条 |
 | R5（进阶收尾） | ⏳ 待执行 | @property 进度条, 计数占位, SVG currentColor |
