@@ -4,7 +4,7 @@
 
 ## UI 排版与样式打磨 — 细颗粒度规划
 
-### 一、已扫描文件清单（第 1-3 轮共 9 个文件）
+### 一、已扫描文件清单（第 1-4 轮共 9 个文件）
 
 | # | 文件 | 行数 | 阅读范围 |
 |---|---|---|---|
@@ -113,15 +113,52 @@
 
 **预计改动文件**：`result-page.css`、`styles.css`（共 2 文件）
 
-#### 第 4 轮：首屏信息精简（P4）
+#### 第 4 轮：首屏信息精简 + 布局重构（P4）✅ 已完成
 
-| 步骤 | 改动范围 | 内容 |
+**4A — 信息精简**
+
+删除所有重复表达"N题/N分钟/角色+三轴"的结构块：
+
+| 步骤 | 改动范围 | 实际操作 |
 |---|---|---|
-| 4.1 | `HomePageSections.tsx` | 精简 hero 区域：去掉重复的 fact-card 和 announcement-banner，只保留标题 + logline + 主按钮 + 进度提示 |
-| 4.2 | `styles.css` | 删除对应的冗余样式 class（masthead\_\_archive、announcement-banner 等） |
-| 4.3 | hero-preview | 评估是否保留右侧预览栏，或将关键信息合并到左列 |
+| 4.1 | `HomePageSections.tsx` | 删除 `masthead__archive`（announcement-banner + badge + archive-meta）、`hero-copy__fact-grid`（4 张 fact-card）、`hero-preview__metrics`（3 格）、`hero-preview__footer-note` |
+| 4.2 | `styles.css` | 删除对应 12 个 CSS 类块，修复 6 处复合选择器，清理 760px / 480px 断点中的冗余规则 |
+| 4.3 | hero-preview | 保留 badges + chat-preview 两块，去掉 metrics 和 footer-note |
 
-**预计改动文件**：`HomePageSections.tsx`、`styles.css`（共 2 文件）
+**4B — 布局重构：CTA 优先**
+
+原有的"masthead 大标题 + hero-grid 双列（左：按钮，右：预览）"改为"居中 CTA 优先 + 辅助信息下沉"：
+
+| 新结构 | 说明 |
+|---|---|
+| `hero-cta-block`（居中全宽） | label-row → h1 → logline → **大按钮**（68px 高）→ action-note |
+| `hero-sub`（双列卡片区） | 左：`hero-preview`（badges + chat），右：`hero-steps`（流程步骤） |
+
+**新增 CSS 类**：
+
+| 类名 | 用途 |
+|---|---|
+| `.hero-cta-block` | 居中 CTA 容器，`text-align: center` |
+| `.hero-cta-block__label-row` | 标签行（居中 flex） |
+| `.hero-cta-block__logline` | 副标题，替代旧 `masthead__logline` |
+| `.hero-cta-block__actions` | 按钮行（居中 flex） |
+| `.primary-button--hero` | 大号主按钮（min-height 68px，font-size 1.2rem） |
+| `.hero-sub` | 辅助信息双列网格 |
+| `.hero-steps` | 流程步骤卡片（替代旧 `hero-copy` 左列） |
+| `.hero-steps__kicker` | 步骤区标签 |
+
+**删除 CSS 类**：`masthead`（布局容器）、`masthead__title-block`、`masthead__label-row`、`masthead h1`、`masthead__logline`、`hero-grid`、`hero-copy`（卡片）、`hero-copy__lede`、`hero-copy__stickers/seal/sparkle/arrow`、`hero-copy__eyebrow`、`hero-copy__actions`（已移入 cta-block）、`hero-copy__story-link`、`hero-copy__timeline`（wrapper）
+
+**断点行为**：
+
+| 断点 | 行为 |
+|---|---|
+| ≥981px | cta 居中，hero-sub 双列 |
+| ≤980px | hero-sub 折单列 |
+| ≤760px | cta padding 收缩，hero-sub 单列，hero-steps border-radius 缩小 |
+| ≤480px | cta 极窄，按钮全宽，primary-button--hero 降为 58px |
+
+**实际改动文件**：`HomePageSections.tsx`、`styles.css`（共 2 文件）
 
 #### 第 5 轮：排版微调与气质统一
 
@@ -146,8 +183,14 @@
 
 ---
 
-### 五、建议下一步
+### 五、当前进度
 
-从**第 1 轮（字体加载与统一）**开始——它是投入最小、效果最明显的改动，4 个文件就能让整站气质发生质变。
+| 轮次 | 状态 | 核心改动 |
+|---|---|---|
+| 第 1 轮（字体） | ✅ 完成 | Google Fonts 加载，全局 `var(--font-mono)` 统一 |
+| 第 2 轮（背景） | ✅ 完成 | body::before/after 删除，:root background 删除，shared card tokens 加入 :root |
+| 第 3 轮（断点） | ✅ 完成 | result-page.css 1120px→980px，两文件新增 480px 断点 |
+| 第 4 轮（精简+重构） | ✅ 完成 | 冗余块删除，CTA 优先布局，开始按钮居中放大 |
+| 第 5 轮（微调） | ✅ 完成 | --radius-* token 4级体系、padding 对称化、kicker 选择器合并、pulse-glow 去重、IBM Plex Mono 硬编码清零 |
 
-确认是否从第 1 轮开始？或者你想调整优先级 / 合并某几轮一起做？
+**全部 5 轮已完成。** 下一阶段：进入视觉精细打磨（边缘光晕、组件细化、微交互）。
