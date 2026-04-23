@@ -570,3 +570,33 @@ R5（进阶收尾）  ← 依赖 R1-R4 全部完成
 | R3（可访问性） | ✅ 完成 | :focus-visible, disabled 0.38, tabular-nums |
 | R4（文字精修） | ✅ 完成 | text-shadow 增强, kicker 0.7rem, 竖条 |
 | R5（进阶收尾） | ✅ 完成 | @property 进度条, 计数占位, SVG currentColor |
+
+---
+
+## 页面切分记录（2026-04-23）
+
+### 目标
+
+将原本首页内联展开的测试流程拆到独立测试页，首页只保留入口、介绍、视觉展示和免责声明。
+
+### 实施结果
+
+| 项目 | 状态 | 改动 |
+|---|---|---|
+| 独立测试路由 | ✅ 完成 | 新增 `/test` 路由，由 `TestPage` 承载答题、结果、分享、重新开始逻辑 |
+| 首页入口化 | ✅ 完成 | `HomePage` 只保留首屏入口内容；不再渲染答题流或结果区 |
+| 开始测试跳转 | ✅ 完成 | 首页“开始测试”改为路由跳转到 `/test`；旧 `/?start=1` 兼容重定向到 `/test` |
+| 测试主体迁移 | ✅ 完成 | 原免责声明下方的测试说明、答题流程、结果展示迁移到测试页主体 |
+| 重置流程 | ✅ 完成 | 测试页“重新开始测试”清空答案、结果和提示，并停留在 `/test` 第 1 题 |
+| 锚点清理 | ✅ 完成 | 首页旧 `#test-brief` 入口移除，改为 `/test` 路由链接 |
+| 回归测试 | ✅ 完成 | 新增 App 路由测试，覆盖首页不显示答题流、开始测试进入 `/test`、旧 start query 重定向 |
+
+### 修改文件
+
+- `apps/web/src/app/App.tsx`
+- `apps/web/src/app/App.test.tsx`
+- `apps/web/src/pages/home/HomePage.tsx`
+- `apps/web/src/pages/home/copy.ts`
+- `apps/web/src/pages/home/sections/HomePageSections.tsx`
+- `apps/web/src/pages/test/TestPage.tsx`
+- `apps/web/src/test/setup.ts`

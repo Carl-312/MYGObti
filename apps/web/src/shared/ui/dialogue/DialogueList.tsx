@@ -33,12 +33,22 @@ export function DialogueList({
   onSelect,
   selectedId,
 }: DialogueListProps) {
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (autoScroll && bottomRef.current) {
-      bottomRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+    if (!autoScroll || !listRef.current) {
+      return;
     }
+
+    const frameId = window.requestAnimationFrame(() => {
+      const list = listRef.current;
+
+      if (list) {
+        list.scrollTop = list.scrollHeight;
+      }
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
   }, [autoScroll, messages.length, selectedId]);
 
   function shouldShowAvatarAndName(index: number): boolean {
@@ -72,6 +82,7 @@ export function DialogueList({
       aria-live="polite"
       className={`dialogue-list${className ? ` ${className}` : ""}`}
       initial="hidden"
+      ref={listRef}
       role="log"
       variants={listVariants}
     >
@@ -107,7 +118,7 @@ export function DialogueList({
           );
         })}
       </AnimatePresence>
-      <div className="dialogue-list__bottom-anchor" ref={bottomRef} />
+      <div className="dialogue-list__bottom-anchor" />
     </motion.div>
   );
 }

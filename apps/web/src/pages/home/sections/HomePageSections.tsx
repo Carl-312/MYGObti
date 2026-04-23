@@ -1,4 +1,5 @@
 import type { Question, QuestionOption, QuizAnswerRecord } from "@mygobti/quiz-core";
+import { Link } from "react-router-dom";
 import { ChatQuizFlow } from "../../../features/quiz-chat";
 import {
   StoryFactGrid,
@@ -112,10 +113,10 @@ export function HomeHeroSection({
               {primaryActionLabel}
             </button>
             {stage === "idle" ? (
-              <a className="ghost-button" href="#test-brief">
+              <Link className="ghost-button" to="/test">
                 <StoryBadgeIcon kind="spark" />
-                查看测试说明
-              </a>
+                进入测试页
+              </Link>
             ) : (
               <button className="ghost-button" onClick={onRestart} type="button">
                 <StoryBadgeIcon kind="spark" />

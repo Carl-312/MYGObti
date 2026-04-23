@@ -7,8 +7,8 @@ current_phase_name: template-driven-frontend-rebuild-and-gradual-migration
 current_plan: 4
 status: executing
 stopped_at: Completed 02.3-03-PLAN.md
-last_updated: "2026-04-22T10:51:12Z"
-last_activity: 2026-04-22
+last_updated: "2026-04-23T20:10:19+08:00"
+last_activity: 2026-04-23
 progress:
   total_phases: 6
   completed_phases: 4
@@ -38,8 +38,8 @@ Plan: 4 of 5
 **Current Plan:** 4
 **Total Plans in Phase:** 5
 **Status:** `02.3-02` 和 `02.3-03` 已完成；下一步是执行 `02.3-04`，把结果页迁进模板语言并接上 8 角色素材槽位
-**Last Activity:** 2026-04-22
-**Last Activity Description:** Phase 02.3 chat quiz flow migrated and browser-accepted
+**Last Activity:** 2026-04-23
+**Last Activity Description:** Quick acceptance: quiz route split and answer-selection scroll fix passed web typecheck, tests, and build
 **Progress:** [█████████░] 86%
 
 ## Accumulated Context
@@ -74,6 +74,11 @@ Plan: 4 of 5
 - Execute Phase `02.3-04` next: migrate the result page into modular template-era sections and wire the asset resolver into hero / relationship / share surfaces.
 - Clear the stale/non-responsive listener currently occupying port `3001` before relying on the canonical API QA loop again.
 - Resume Phase 3 fan-content polishing only after Phase `02.3` completes and the new frontend flow is accepted in-browser.
+
+### Quick Tasks Accepted
+
+- 2026-04-23: Page split accepted. `/` is now entry-only, `/test` owns quiz answering/results/restart, old `/?start=1` redirects to `/test`, and `cursorplan.md` records the split.
+- 2026-04-23: Answer-selection scroll bug accepted. `DialogueList` now scrolls its own container instead of calling document-affecting `scrollIntoView`; verified with `npm run typecheck:web`, `npm test --workspace apps/web`, and `npm run build:web`.
 
 ### Blockers/Concerns
 
