@@ -1,0 +1,82 @@
+[
+  {
+    "id": "anon",
+    "name": "千早爱音",
+    "page": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+    "filePage": "https://bandori.fandom.com/wiki/File:Center_of_the_Band_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/2/24/Center_of_the_Band_Live2D_Model.png/revision/latest?cb=20240712183435",
+    "localFile": "live2d/anon.png",
+    "sourceFileTitle": "File:Center of the Band Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/2/24/Center_of_the_Band_Live2D_Model.png/revision/latest?cb=20240712183435&format=original"
+  },
+  {
+    "id": "tomori",
+    "name": "高松灯",
+    "page": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+    "filePage": "https://bandori.fandom.com/wiki/File:Girl_Who_Sings_from_Her_Heart_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/7/7b/Girl_Who_Sings_from_Her_Heart_Live2D_Model.png/revision/latest?cb=20240712183910",
+    "localFile": "live2d/tomori.png",
+    "sourceFileTitle": "File:Girl Who Sings from Her Heart Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/7/7b/Girl_Who_Sings_from_Her_Heart_Live2D_Model.png/revision/latest?cb=20240712183910&format=original"
+  },
+  {
+    "id": "raana",
+    "name": "要乐奈",
+    "page": "https://bandori.fandom.com/wiki/Kaname_Raana",
+    "filePage": "https://bandori.fandom.com/wiki/File:Like_A_Cat_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/b/be/Like_A_Cat_Live2D_Model.png/revision/latest?cb=20240712183743",
+    "localFile": "live2d/raana.png",
+    "sourceFileTitle": "File:Like A Cat Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/b/be/Like_A_Cat_Live2D_Model.png/revision/latest?cb=20240712183743&format=original"
+  },
+  {
+    "id": "soyo",
+    "name": "长崎爽世",
+    "page": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+    "filePage": "https://bandori.fandom.com/wiki/File:Everyone%27s_%22Mother%22_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/8/88/Everyone%27s_%22Mother%22_Live2D_Model.png/revision/latest?cb=20240712183646",
+    "localFile": "live2d/soyo.png",
+    "sourceFileTitle": "File:Everyone's \"Mother\" Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/8/88/Everyone%27s_%22Mother%22_Live2D_Model.png/revision/latest?cb=20240712183646&format=original"
+  },
+  {
+    "id": "taki",
+    "name": "椎名立希",
+    "page": "https://bandori.fandom.com/wiki/Shiina_Taki",
+    "filePage": "https://bandori.fandom.com/wiki/File:Rhythm_Re-Start_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/a/aa/Rhythm_Re-Start_Live2D_Model.png/revision/latest?cb=20240712183131",
+    "localFile": "live2d/taki.png",
+    "sourceFileTitle": "File:Rhythm Re-Start Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/a/aa/Rhythm_Re-Start_Live2D_Model.png/revision/latest?cb=20240712183131&format=original"
+  },
+  {
+    "id": "uika",
+    "name": "三角初华",
+    "page": "https://bandori.fandom.com/wiki/Misumi_Uika",
+    "filePage": "https://bandori.fandom.com/wiki/File:Misumi_Uika_-_Casual_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/b/be/Misumi_Uika_-_Casual_Live2D_Model.png/revision/latest?cb=20240311210508",
+    "localFile": "live2d/uika.png",
+    "sourceFileTitle": "File:Misumi Uika - Casual Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/b/be/Misumi_Uika_-_Casual_Live2D_Model.png/revision/latest?cb=20240311210508&format=original"
+  },
+  {
+    "id": "mutsumi",
+    "name": "若叶睦",
+    "page": "https://bandori.fandom.com/wiki/Wakaba_Mutsumi",
+    "filePage": "https://bandori.fandom.com/wiki/File:Wakaba_Mutsumi_-_Casual_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/c/c6/Wakaba_Mutsumi_-_Casual_Live2D_Model.png/revision/latest?cb=20240311211222",
+    "localFile": "live2d/mutsumi.png",
+    "sourceFileTitle": "File:Wakaba Mutsumi - Casual Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/c/c6/Wakaba_Mutsumi_-_Casual_Live2D_Model.png/revision/latest?cb=20240311211222&format=original"
+  },
+  {
+    "id": "sakiko",
+    "name": "丰川祥子",
+    "page": "https://bandori.fandom.com/wiki/Togawa_Sakiko",
+    "filePage": "https://bandori.fandom.com/wiki/File:Togawa_Sakiko_-_Casual_Live2D_Model.png",
+    "sourceImage": "https://static.wikia.nocookie.net/bandori/images/3/3d/Togawa_Sakiko_-_Casual_Live2D_Model.png/revision/latest?cb=20240311211835",
+    "localFile": "live2d/sakiko.png",
+    "sourceFileTitle": "File:Togawa Sakiko - Casual Live2D Model.png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/3/3d/Togawa_Sakiko_-_Casual_Live2D_Model.png/revision/latest?cb=20240311211835&format=original"
+  }
+]

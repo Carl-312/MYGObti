@@ -1,0 +1,55 @@
+.result-poster {
+  background:
+    radial-gradient(circle at top left, rgba(255, 161, 134, 0.18), transparent 28%),
+    linear-gradient(180deg, rgba(12, 16, 26, 0.99), rgba(18, 24, 36, 0.96));
+}
+
+.result-poster__hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 10rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+.result-poster__identity {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.result-poster__identity-row {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.result-poster__identity-row .character-round-avatar {
+  --avatar-size: 4.1rem;
+}
+
+.result-poster__live2d {
+  min-height: 9.8rem;
+  border-radius: 1.2rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0));
+}
+
+.result-poster__live2d .character-live2d-slot__image {
+  max-width: 8.4rem;
+}
+
+.result-poster__hero h3,
+.result-poster__title,
+.result-poster__summary {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .result-poster__hero {
+    grid-template-columns: 1fr;
+  }
+
+  .result-poster__live2d {
+    min-height: 8.2rem;
+  }
+}

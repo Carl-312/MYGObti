@@ -1,0 +1,112 @@
+.character-round-avatar {
+  --avatar-size: 2.75rem;
+  --avatar-accent: #ff8d86;
+  position: relative;
+  display: inline-flex;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: 999px;
+  border: 2px solid color-mix(in srgb, var(--avatar-accent) 55%, white 45%);
+  background:
+    radial-gradient(circle at 28% 24%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.22)),
+    rgba(18, 22, 31, 0.86);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+  flex: 0 0 auto;
+}
+
+.character-round-avatar--sm {
+  --avatar-size: 2.25rem;
+}
+
+.character-round-avatar--lg {
+  --avatar-size: 3.4rem;
+}
+
+.character-round-avatar__image,
+.character-round-avatar__fallback {
+  width: 100%;
+  height: 100%;
+}
+
+.character-round-avatar__image {
+  object-fit: cover;
+  display: block;
+}
+
+.character-round-avatar__fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.94);
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-size: calc(var(--avatar-size) * 0.34);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  background:
+    radial-gradient(circle at 32% 20%, rgba(255, 255, 255, 0.22), transparent 42%),
+    linear-gradient(145deg, color-mix(in srgb, var(--avatar-accent) 88%, #111 12%), rgba(17, 20, 29, 0.95));
+}
+
+.character-live2d-slot {
+  --slot-accent: #ff8d86;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 13.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid color-mix(in srgb, var(--slot-accent) 35%, white 65%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02)),
+    linear-gradient(180deg, rgba(15, 18, 27, 0.96), rgba(12, 15, 22, 0.9));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 22px 48px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.character-live2d-slot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 16%, color-mix(in srgb, var(--slot-accent) 18%, transparent 82%), transparent 38%),
+    linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.04));
+  pointer-events: none;
+}
+
+.character-live2d-slot__image {
+  width: 100%;
+  max-width: 14rem;
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 20px 22px rgba(0, 0, 0, 0.28));
+}
+
+.character-live2d-slot__placeholder {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.45rem;
+  justify-items: center;
+  text-align: center;
+  color: rgba(248, 246, 255, 0.86);
+}
+
+.character-live2d-slot__placeholder strong {
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.character-live2d-slot__placeholder span {
+  font-size: 0.78rem;
+  color: rgba(248, 246, 255, 0.62);
+}

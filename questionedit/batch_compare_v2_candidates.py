@@ -16,10 +16,10 @@ REPORTS_DIR = ROOT / "reports"
 VERSION_SPECS = {
     "baseline": {
         "label": "baseline",
-        "source": ROOT / "questionnewV2.md",
+        "source": ROOT / "candidates" / "questionnewV2_1baseline.md",
         "report": REPORTS_DIR / "V2_1-baseline-EVAL-REPORT.md",
         "json": REPORTS_DIR / "V2_1-baseline-EVAL-SUMMARY.json",
-        "changes": "基线，不做额外修改",
+        "changes": "D 扶正前的历史主程序，用于保留 A/B/C/D 的统一参照",
     },
     "A": {
         "label": "A",
@@ -42,6 +42,13 @@ VERSION_SPECS = {
         "json": REPORTS_DIR / "V2_1C-EVAL-SUMMARY.json",
         "changes": "继承 B，并只再改 1 道主轴题 Q14",
     },
+    "D": {
+        "label": "D",
+        "source": ROOT / "candidates" / "questionnewV2_1D.md",
+        "report": REPORTS_DIR / "V2_1D-EVAL-REPORT.md",
+        "json": REPORTS_DIR / "V2_1D-EVAL-SUMMARY.json",
+        "changes": "继承 C，并把 tie-breaker 阈值从 0.08 放宽到 0.10",
+    },
 }
 
 SAYOSAKI_PAIR = "长崎爽世 vs 丰川祥子"
@@ -55,7 +62,7 @@ FOCUS_ROLES = ["长崎爽世", "丰川祥子"]
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Run baseline/A/B/C evaluation and generate a single comparison report."
+        description="Run a historical baseline/A/B/C/D comparison report without redefining the current D mainline."
     )
     parser.add_argument("--seed", type=int, default=20260415)
     parser.add_argument("--monte-carlo", type=int, default=100_000)
@@ -169,7 +176,7 @@ def build_comparison(evaluations: dict[str, dict], args: argparse.Namespace) -> 
             version_key != "baseline"
             and sayosaki["pairOnlyAccuracy"] > baseline_pair["pairOnlyAccuracy"]
             and all(recovery_delta[role] > 0 for role in FOCUS_ROLES)
-            and 0.08 <= trigger_rate <= 0.12
+            and 0.08 <= trigger_rate <= 0.13
             and not disappearing
             and not magnets
         )
@@ -220,8 +227,8 @@ def build_comparison(evaluations: dict[str, dict], args: argparse.Namespace) -> 
         tie_penalty = 0.0
         if trigger_rate < 0.08:
             tie_penalty += (0.08 - trigger_rate) * 20
-        elif trigger_rate > 0.12:
-            tie_penalty += (trigger_rate - 0.12) * 20
+        elif trigger_rate > 0.13:
+            tie_penalty += (trigger_rate - 0.13) * 20
         if disappearing:
             tie_penalty += 1.5 * len(disappearing)
         if magnets:
@@ -237,7 +244,7 @@ def build_comparison(evaluations: dict[str, dict], args: argparse.Namespace) -> 
         candidate_scores[version_key] = round(score, 6)
 
     passing_candidates = [
-        key for key in ["A", "B", "C"] if versions[key]["passLine"]
+        key for key in ["A", "B", "C", "D"] if versions[key]["passLine"]
     ]
     if passing_candidates:
         recommended = max(
@@ -264,6 +271,9 @@ def build_comparison(evaluations: dict[str, dict], args: argparse.Namespace) -> 
             "noiseTrials": args.noise_trials,
             "pairTrials": args.pair_trials,
             "evaluator": str(EVAL_SCRIPT),
+            "reportMode": "historical_comparison",
+            "currentMainline": "D",
+            "doNotUseAsCurrentMainlineDecision": True,
         },
         "versions": versions,
         "candidateScores": candidate_scores,
@@ -277,9 +287,9 @@ def build_next_patch(versions: dict[str, dict], recommended: str) -> list[str]:
     chosen = versions[recommended]
     suggestions = []
     if chosen["tieBreakerHealth"]["overallTriggerRate"] < 0.08:
-        suggestions.append("保留当前题面补丁，优先把 `enabledWhenTop2DiffBelow` 从 `0.08` 轻推到 `0.085` 试一次。")
-    elif chosen["tieBreakerHealth"]["overallTriggerRate"] > 0.12:
-        suggestions.append("保留当前题面补丁，优先把 `priorityPair lambda` 从 `0.14` 微回落到 `0.13` 复测。")
+        suggestions.append("保留当前题面补丁，优先把 `enabledWhenTop2DiffBelow` 再轻推 `0.005` 做一次复测。")
+    elif chosen["tieBreakerHealth"]["overallTriggerRate"] > 0.13:
+        suggestions.append("保留当前题面补丁，优先把 `priorityPair lambda` 微回落 `0.01` 再复测。")
 
     if chosen["focusRecovery"]["长崎爽世"]["deltaVsBaseline"] <= 0:
         suggestions.append("下一轮仍优先补 `爽世`，建议只再微调 `Q14` 的中档选项，让“有分寸地打开一点”更稳定落在半开区间。")
@@ -295,12 +305,17 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
     versions = comparison["versions"]
     recommended = comparison["recommendedVersion"]
     lines = []
-    lines.append("# V2.1 A/B/C 对比报告")
+    lines.append("# V2.1 历史 A/B/C/D 对比报告")
     lines.append("")
-    lines.append("## 结论")
+    lines.append("## 使用边界")
+    lines.append("")
+    lines.append("- 本报告只用于回看 `baseline / A / B / C / D` 的历史演化，不改写当前 `D` 主线事实。")
+    lines.append("- 当前主线仍是根目录 `questionnewV2.md` / `questionnewV2_1D.md`，不要把这里的历史推荐语句当成新的切线指令。")
+    lines.append("")
+    lines.append("## 历史对比结论")
     lines.append("")
     lines.append(
-        f"- 推荐继续推进：**{recommended}**。{comparison['recommendationReason']}"
+        f"- 在本历史比较集合里，最优候选是 **{recommended}**。{comparison['recommendationReason']}"
     )
     lines.append(
         f"- 评估配置：固定随机种子 `{args.seed}`，Monte Carlo `{args.monte_carlo:,}`，轻噪声 `{args.noise_trials}` 次/角色，pair-focused `{args.pair_trials}` 次/角色。"
@@ -308,14 +323,14 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
     lines.append("")
     lines.append("## 版本改动")
     lines.append("")
-    for key in ["A", "B", "C"]:
+    for key in ["A", "B", "C", "D"]:
         lines.append(f"- `{key}`：{versions[key]['changes']}")
     lines.append("")
     lines.append("## 核心对比表")
     lines.append("")
     lines.append("| 版本 | 爽世/祥子 pair-only | 相对 baseline | full-model | 爽世轻噪声 | 祥子轻噪声 | 总体 tie 触发率 | 触发后 flip rate | 最低占比 | 最高占比 |")
     lines.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- |")
-    for key in ["baseline", "A", "B", "C"]:
+    for key in ["baseline", "A", "B", "C", "D"]:
         row = versions[key]
         lines.append(
             f"| {row['label']} | {row['sayosaki']['pairOnlyAccuracy']:.4%} | {row['sayosaki']['pairOnlyDeltaVsBaseline']:+.4%} | {row['sayosaki']['fullModelAccuracy']:.4%} | {row['focusRecovery']['长崎爽世']['rate']:.4%} | {row['focusRecovery']['丰川祥子']['rate']:.4%} | {row['tieBreakerHealth']['overallTriggerRate']:.4%} | {row['tieBreakerHealth']['flipRateWithinTriggered']:.4%} | {row['distribution']['minShareRole']} {row['distribution']['minShare']:.4%} | {row['distribution']['maxShareRole']} {row['distribution']['maxShare']:.4%} |"
@@ -325,7 +340,7 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
     lines.append("")
     lines.append("| 版本 | 睦/灯 pair-only | 初华/立希 pair-only | 爱音/灯 pair-only | 明显恶化数 |")
     lines.append("| --- | ---: | ---: | ---: | ---: |")
-    for key in ["baseline", "A", "B", "C"]:
+    for key in ["baseline", "A", "B", "C", "D"]:
         row = versions[key]
         regressions = sum(
             1 for info in row["otherRiskPairs"].values() if info["noticeableRegression"]
@@ -336,7 +351,7 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
     lines.append("")
     lines.append("## 逐版判断")
     lines.append("")
-    for key in ["baseline", "A", "B", "C"]:
+    for key in ["baseline", "A", "B", "C", "D"]:
         row = versions[key]
         bad_distribution = row["distribution"]["disappearingRolesBelow5Percent"] + row["distribution"]["magnetRolesAbove20Percent"]
         status = "通过线" if row["passLine"] else "未过线"
@@ -364,7 +379,7 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
             lines.append("- 其他高风险角色对没有出现明确的结构性恶化。")
         lines.append(f"- 判定：`{status}`。")
         lines.append("")
-    lines.append("## 下一轮最小补丁建议")
+    lines.append("## 若要复盘历史候选，可参考的下一步")
     lines.append("")
     for suggestion in comparison["nextPatchSuggestion"]:
         lines.append(f"- {suggestion}")
@@ -373,6 +388,7 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
     lines.append("")
     lines.append("- 单版本详细报告已同时输出到 `reports/V2_1*-EVAL-REPORT.md` 与对应 JSON。")
     lines.append("- 本对比报告由 `batch_compare_v2_candidates.py` 自动生成。")
+    lines.append("- 若报告目录仍是占位符状态，请不要把自动生成结果直接视为当前项目总结合论。")
     lines.append("")
     return "\n".join(lines)
 

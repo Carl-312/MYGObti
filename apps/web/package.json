@@ -12,6 +12,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@fontsource/space-mono": "^5.2.9",
+    "@fontsource/zcool-kuaile": "^5.2.8",
     "@mygobti/quiz-core": "file:../../packages/quiz-core",
     "html-to-image": "^1.11.13",
     "motion": "^12.23.24",

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MyGO!!!!! Archive - Band Story</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#5c3f41",
+                        "tertiary-container": "#727180",
+                        "on-surface-variant": "#e4bdbf",
+                        "error-container": "#93000a",
+                        "tertiary": "#c7c5d6",
+                        "on-primary-fixed-variant": "#91002d",
+                        "secondary-container": "#ca004f",
+                        "inverse-surface": "#e2e0fa",
+                        "on-secondary-fixed": "#400013",
+                        "surface-container-lowest": "#0c0c1e",
+                        "tertiary-fixed": "#e3e0f2",
+                        "on-tertiary-fixed": "#1a1a27",
+                        "surface-bright": "#37374c",
+                        "on-background": "#e2e0fa",
+                        "surface-container": "#1e1e31",
+                        "inverse-on-surface": "#2f2f42",
+                        "tertiary-fixed-dim": "#c7c5d6",
+                        "surface-dim": "#111224",
+                        "outline": "#ab888a",
+                        "on-secondary-container": "#ffdcdf",
+                        "on-secondary": "#670024",
+                        "primary-fixed-dim": "#ffb2b8",
+                        "on-error": "#690005",
+                        "secondary-fixed-dim": "#ffb2bd",
+                        "on-tertiary-container": "#fbf8ff",
+                        "on-tertiary": "#2f2f3c",
+                        "surface-variant": "#333347",
+                        "on-primary": "#67001d",
+                        "surface-container-highest": "#333347",
+                        "on-error-container": "#ffdad6",
+                        "surface": "#111224",
+                        "inverse-primary": "#be003d",
+                        "surface-tint": "#ffb2b8",
+                        "error": "#ffb4ab",
+                        "primary-fixed": "#ffdadb",
+                        "on-surface": "#e2e0fa",
+                        "on-tertiary-fixed-variant": "#464554",
+                        "surface-container-high": "#28283c",
+                        "surface-container-low": "#1a1a2c",
+                        "on-secondary-fixed-variant": "#900036",
+                        "secondary": "#ffb2bd",
+                        "on-primary-container": "#fff7f7",
+                        "primary-container": "#de1c4e",
+                        "on-primary-fixed": "#40000f",
+                        "primary": "#ffb2b8",
+                        "background": "#111224",
+                        "secondary-fixed": "#ffd9dd"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "sidebar-width-right": "320px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "content-max-width": "800px",
+                        "sidebar-width-left": "240px"
+                    },
+                    "fontFamily": {
+                        "character-name": ["Be Vietnam Pro"],
+                        "headline-xl": ["Be Vietnam Pro"],
+                        "chapter-nav": ["Be Vietnam Pro"],
+                        "label-sm": ["Be Vietnam Pro"],
+                        "body-dialogue": ["Be Vietnam Pro"],
+                        "headline-lg": ["Be Vietnam Pro"]
+                    },
+                    "fontSize": {
+                        "character-name": ["18px", { "lineHeight": "1.2", "fontWeight": "700" }],
+                        "headline-xl": ["36px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "chapter-nav": ["14px", { "lineHeight": "1.5", "letterSpacing": "0.1em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-dialogue": ["17px", { "lineHeight": "1.8", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-[#0b0c1c] text-on-background min-h-screen pb-20 lg:pb-0 relative">
+<!-- Background ambient glow -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-0 left-1/4 w-96 h-96 bg-[#FF3B72]/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-1/4 right-0 w-80 h-80 bg-primary/5 rounded-full blur-[80px]"></div>
+</div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-[#020211]/70 backdrop-blur-xl border-b border-[#FF3B72]/20 shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+<button aria-label="Menu" class="text-[#FF3B72] hover:text-white transition-colors p-2 drop-shadow-[0_0_8px_rgba(255,59,114,0.4)]">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-['Be_Vietnam_Pro'] text-lg font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FF3B72] to-[#FF8EAB] uppercase tracking-[0.2em] drop-shadow-[0_0_10px_rgba(255,59,114,0.3)]">
+            MyGO!!!!! Archive
+        </h1>
+<button aria-label="Search" class="text-[#FF3B72] hover:text-white transition-colors p-2 drop-shadow-[0_0_8px_rgba(255,59,114,0.4)]">
+<span class="material-symbols-outlined">search</span>
+</button>
+</header>
+<div class="pt-16 flex lg:hidden relative w-full h-56 bg-surface-container-high overflow-hidden border-b border-[#FF3B72]/30 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+<img alt="Cover Image" class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-luminosity scale-105" data-alt="Dark, moody atmospheric stage lighting with deep magenta and indigo hues, subtle smoke effect, soft focus background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmcuLub6M7KXGfzpehiAvBQDkwNQL3lCnC9FRl6eaE-gZfF8c0BEHpu8c4vILpP1F4PAGd-U1LN26Yf2_Kq1rfFFNDMbP05z87cY94Sk0ZlP0wSzhxLXa517QDSvhlvHJfZJ8nX0tUrMBIMv23BchNEde9s6ZNs-IkeIXt8LhzbukoXI49Hzi4Nj4uqA74LlVJPw5IDr4BaqvCMm7QjkBmMRcm6SDrP4rC0buccj2-aAGwdkzdS3sJePRfOBPk4CSqnowGeJNmsFw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0b0c1c] via-[#0b0c1c]/50 to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#FF3B72]/10 to-transparent mix-blend-overlay"></div>
+<div class="relative z-10 flex flex-col justify-end p-8 w-full">
+<h2 class="font-headline-xl text-[40px] text-white font-black drop-shadow-[0_0_15px_rgba(255,178,184,0.4)] leading-tight">It's MyGO!!!!!</h2>
+<p class="font-label-sm text-sm text-primary uppercase tracking-[0.3em] mt-3 font-semibold drop-shadow-[0_0_8px_rgba(255,178,184,0.5)]">Band Story • Episode 1</p>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="relative z-10 w-full px-5 py-stack-lg flex flex-col gap-10 max-w-content-max-width mx-auto">
+<div class="bg-gradient-to-br from-surface-container-low/80 to-[#111224]/60 backdrop-blur-md border border-white/5 border-l-[3px] border-l-[#FF3B72] p-7 rounded-2xl rounded-bl-sm relative overflow-hidden shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_32px_rgba(0,0,0,0.3)]">
+<div class="absolute right-0 top-0 w-40 h-40 bg-[#FF3B72]/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+<p class="font-body-dialogue text-[18px] text-on-surface-variant relative z-10 italic leading-relaxed tracking-wide font-light drop-shadow-sm">
+                "Even if we are lost, we have to keep moving forward. That's the only way we can find our true voices."
+            </p>
+</div>
+<!-- Dialogue Section -->
+<div class="flex flex-col gap-10">
+<!-- Tomori Dialogue -->
+<div class="flex flex-col gap-2 w-full">
+<div class="flex items-center gap-3 mb-1 px-1">
+<div class="w-10 h-10 rounded-full bg-surface-bright border border-primary/40 flex items-center justify-center overflow-hidden shrink-0 shadow-[0_0_15px_rgba(255,178,184,0.2)]">
+<img alt="Tomori" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-500" data-alt="Anime style portrait of a shy girl with short dark hair, melancholic expression, deep shadows, subtle magenta rim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeX-wpJnaGAgIkZn8fTdRSQr878o9sZaEgavsXdu2goZ1DhWldHKrUcbCKEr3cGhEnsfo5irR-XDK4iboga5Bjq8DShQmP1vdw9K0YPJ1P_E3vKwus_Zg3K3QNuehEo7rz0L81U0PVd2rJabS6WXUQkVzdEhLoGxho9yPDQOKvb70tffyHWvdqrPK-ziO9IULuijiErY3X7Uzncjf1gubSVh8S-wzh9VAP41BvZYhNbC0oZKSFcuDABvZeiaSc1DO429zZ0o793g4"/>
+</div>
+<span class="font-character-name text-[15px] tracking-wider text-primary drop-shadow-[0_0_5px_rgba(255,178,184,0.3)]">Tomori</span>
+</div>
+<div class="bg-gradient-to-br from-[#1e1e31]/80 to-[#111224]/80 backdrop-blur-xl border border-white/5 border-l-[3px] border-l-primary/80 p-5 md:p-6 rounded-3xl rounded-tl-sm relative group shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_24px_rgba(0,0,0,0.2)]">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNERTFDNEUiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-3xl rounded-tl-sm"></div>
+<p class="font-body-dialogue text-[17px] text-white/95 relative z-10 leading-relaxed font-light tracking-wide">
+                        I... I want to sing. Even if it's just a small voice, I want someone to hear it.
+                    </p>
+</div>
+</div>
+<!-- Soyo Dialogue -->
+<div class="flex flex-col gap-2 w-full items-end">
+<div class="flex items-center gap-3 mb-1 px-1 flex-row-reverse">
+<div class="w-10 h-10 rounded-full bg-surface-bright border border-secondary/40 flex items-center justify-center overflow-hidden shrink-0 shadow-[0_0_15px_rgba(255,178,189,0.2)]">
+<img alt="Soyo" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-500" data-alt="Anime style portrait of a composed girl with long dark hair, gentle but guarded expression, soft studio lighting, muted colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-TpFJzOvKTWbpm_4sbwNcW24DmaJqrF7713rgkvMKn5F_kF2ZMByOODKc0CQFhRL5EbRN5KemavtRev1xv-8ztbxrEXGZONRwYvQmF0NT4RX4jdtSDXisD5f7gFINddHyskIWTHnsqSALffhaWjIrXci_j0fJzgAL1a2CDX9qyZSoHd1HpPp2UuNfUrxxZOsJh9LWoZmqOQUv7B7iyjITZv1LK-IsvywHdYswFZOHNjJupCK9V4oE8wRUtCGYeTOnb2JzFQY06vE"/>
+</div>
+<span class="font-character-name text-[15px] tracking-wider text-secondary drop-shadow-[0_0_5px_rgba(255,178,189,0.3)]">Soyo</span>
+</div>
+<div class="bg-gradient-to-bl from-[#251e2a]/80 to-[#111224]/80 backdrop-blur-xl border border-white/5 border-r-[3px] border-r-secondary/80 p-5 md:p-6 rounded-3xl rounded-tr-sm text-right relative shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_24px_rgba(0,0,0,0.2)]">
+<p class="font-body-dialogue text-[17px] text-white/95 relative z-10 leading-relaxed font-light tracking-wide">
+                        If that's what you want, Tomori-chan... I'll support you. But we need to do this properly.
+                    </p>
+</div>
+</div>
+<!-- Mutsumi Dialogue -->
+<div class="flex flex-col gap-2 w-full">
+<div class="flex items-center gap-3 mb-1 px-1">
+<div class="w-10 h-10 rounded-full bg-surface-bright border border-tertiary/40 flex items-center justify-center overflow-hidden shrink-0 shadow-[0_0_15px_rgba(199,197,214,0.2)]">
+<img alt="Mutsumi" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-500" data-alt="Anime style portrait of a quiet girl with short light hair, stoic expression, cool blue and green ambient lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBj4IRkeS1DiWOI9jrEbsge_qB4MvvU-r3QD3bPvUc94mDROfzUc3WSw_YIZjD9UWq3-0MapNLv-OsxgEV4OU-SCb23R8nUVRC3y-mGDPnhH7Vh-rLxO3VvDaWWJP20XPOrzi3U-tbXKI504JpApbEbj156mjzMxiI8O7ybJ0kuq7E1OJoYXf93Qbw6hPOcLGwJNrh0khw-kaQyv1jJOR__CWMVaLY_8RacBrBzcF8sOv_BdY3YblrqMCcXV_KNuIGzWNehlTd_gnQ"/>
+</div>
+<span class="font-character-name text-[15px] tracking-wider text-tertiary drop-shadow-[0_0_5px_rgba(199,197,214,0.3)]">Mutsumi</span>
+</div>
+<div class="bg-gradient-to-br from-[#1b1c2e]/80 to-[#111224]/80 backdrop-blur-xl border border-white/5 border-l-[3px] border-l-tertiary/80 p-5 md:p-6 rounded-3xl rounded-tl-sm shadow-[inset_0_1px_1px_rgba(255,255,255,0.05),0_8px_24px_rgba(0,0,0,0.2)]">
+<p class="font-body-dialogue text-[17px] text-white/95 leading-relaxed font-light tracking-wide">
+                        ...I see.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 bg-[#020211]/80 backdrop-blur-xl rounded-t-3xl border-t border-[#FF3B72]/20 shadow-[0_-10px_30px_rgba(255,59,114,0.1)] lg:hidden px-2">
+<a class="flex flex-col items-center justify-center text-[#FF3B72] drop-shadow-[0_0_12px_rgba(255,59,114,0.6)] duration-300 transform hover:-translate-y-1" href="#">
+<div class="relative">
+<div class="absolute inset-0 bg-[#FF3B72]/20 blur-md rounded-full"></div>
+<span class="material-symbols-outlined relative z-10 text-[28px]" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<span class="font-['Be_Vietnam_Pro'] text-[11px] font-bold mt-1 tracking-wider uppercase">Story</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#FF3B72] transition-all duration-300 hover:-translate-y-1" href="#">
+<span class="material-symbols-outlined text-[26px]">list</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold mt-1 tracking-wider uppercase">Chapters</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#FF3B72] transition-all duration-300 hover:-translate-y-1" href="#">
+<span class="material-symbols-outlined text-[26px]">forum</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold mt-1 tracking-wider uppercase">Community</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 hover:text-[#FF3B72] transition-all duration-300 hover:-translate-y-1" href="#">
+<span class="material-symbols-outlined text-[26px]">settings_accessibility</span>
+<span class="font-['Be_Vietnam_Pro'] text-[10px] font-semibold mt-1 tracking-wider uppercase">Settings</span>
+</a>
+</nav>
+</body></html>

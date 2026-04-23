@@ -1,24 +1,21 @@
 {
-  "name": "mygobti",
+  "name": "mygobti-workspace",
   "private": true,
   "version": "0.1.0",
-  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview",
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "html-to-image": "^1.11.13",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  },
-  "devDependencies": {
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react": "^5.0.0",
-    "typescript": "^5.9.2",
-    "vite": "^7.3.1"
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "npm run dev --workspace apps/web",
+    "dev:api": "npm run dev --workspace apps/api",
+    "build": "npm run build:web && npm run typecheck:api && npm run typecheck:core",
+    "build:web": "npm run build --workspace apps/web",
+    "preview:web": "npm run preview --workspace apps/web",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "typecheck:web": "npm run typecheck --workspace apps/web",
+    "typecheck:api": "npm run typecheck --workspace apps/api",
+    "typecheck:core": "npm run typecheck --workspace @mygobti/quiz-core"
   }
 }

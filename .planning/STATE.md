@@ -4,17 +4,17 @@ milestone: v1.0
 milestone_name: milestone
 current_phase: 02.3
 current_phase_name: template-driven-frontend-rebuild-and-gradual-migration
-current_plan: 2
+current_plan: 4
 status: executing
-stopped_at: Completed 02.3-01-PLAN.md
-last_updated: "2026-04-22T08:31:40.387Z"
+stopped_at: Completed 02.3-03-PLAN.md
+last_updated: "2026-04-22T10:51:12Z"
 last_activity: 2026-04-22
 progress:
   total_phases: 6
   completed_phases: 4
   total_plans: 14
-  completed_plans: 10
-  percent: 71
+  completed_plans: 12
+  percent: 86
 ---
 
 # Project State
@@ -29,18 +29,18 @@ See: `.planning/PROJECT.md`
 ## Current Position
 
 Phase: 02.3 (template-driven-frontend-rebuild-and-gradual-migration) — EXECUTING
-Plan: 2 of 5
+Plan: 4 of 5
 **Milestone:** v1 bootstrap milestone
 **Current Phase:** 02.3
 **Current Phase Name:** template-driven-frontend-rebuild-and-gradual-migration
 **Completed Phases:** 4
 **Total Phases:** 6
-**Current Plan:** 2
+**Current Plan:** 4
 **Total Plans in Phase:** 5
-**Status:** `02.3-01` 已完成；下一步是执行 `02.3-02`，把聊天消息原子和角色素材 contract 接到当前壳层上
+**Status:** `02.3-02` 和 `02.3-03` 已完成；下一步是执行 `02.3-04`，把结果页迁进模板语言并接上 8 角色素材槽位
 **Last Activity:** 2026-04-22
-**Last Activity Description:** Phase 02.3 execution started
-**Progress:** [███████░░░] 71%
+**Last Activity Description:** Phase 02.3 chat quiz flow migrated and browser-accepted
+**Progress:** [█████████░] 86%
 
 ## Accumulated Context
 
@@ -58,6 +58,8 @@ Plan: 2 of 5
 - Keep quiz scoring logic shared and primarily client-side for now; the backend owns canonical content truth and serialization.
 - Use Fastify + TypeScript for the API layer, and use Vite `server.proxy` plus `VITE_` env vars for local web/api integration.
 - Keep root onboarding docs and `.planning` core files aligned to the actual workspace layout; remove empty root leftovers instead of preserving confusing placeholders.
+- Let the chat UI own send-animation timing and question advancement, while `App.tsx` keeps answer persistence and `MatchComputation` semantics unchanged.
+- Preserve incomplete-submit recovery in the new chat flow via an explicit "直接看结果" action, because sequential auto-advance otherwise hides that path from browser QA and users.
 
 ### Roadmap Evolution
 
@@ -68,8 +70,8 @@ Plan: 2 of 5
 
 ### Pending Todos
 
-- Execute Phase `02.3-02` next: extract reusable chat message primitives and character asset contracts on top of the new shell.
 - Keep `npm run dev:api` and `npm run dev:web` resident during Phase `02.3` execution instead of restarting them per task.
+- Execute Phase `02.3-04` next: migrate the result page into modular template-era sections and wire the asset resolver into hero / relationship / share surfaces.
 - Clear the stale/non-responsive listener currently occupying port `3001` before relying on the canonical API QA loop again.
 - Resume Phase 3 fan-content polishing only after Phase `02.3` completes and the new frontend flow is accepted in-browser.
 
@@ -82,5 +84,5 @@ Plan: 2 of 5
 
 ## Session Continuity
 
-**Stopped At:** Completed 02.3-01-PLAN.md
+**Stopped At:** Completed 02.3-03-PLAN.md
 **Resume file:** None

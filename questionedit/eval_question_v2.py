@@ -390,6 +390,7 @@ def run_monte_carlo(dataset: dict[str, Any], sample_count: int, rng: random.Rand
     sayosaki_trigger_count = 0
     sayosaki_improvements = []
     margin_records = []
+    tie_threshold = float(dataset["meta"]["tieBreakerRule"]["enabledWhenTop2DiffBelow"])
 
     for _ in range(sample_count):
         answers = {
@@ -402,7 +403,7 @@ def run_monte_carlo(dataset: dict[str, Any], sample_count: int, rng: random.Rand
         final_counts[final_winner] += 1
         base_counts[base_winner] += 1
         base_gap = evaluation.base_ranking[0][1] - evaluation.base_ranking[1][1]
-        if base_gap < float(dataset["meta"]["tieBreakerRule"]["enabledWhenTop2DiffBelow"]):
+        if base_gap < tie_threshold:
             top2_close += 1
         if evaluation.tie_break_triggered:
             tie_break_count += 1
@@ -428,7 +429,7 @@ def run_monte_carlo(dataset: dict[str, Any], sample_count: int, rng: random.Rand
             }
         )
 
-    top2_near_final = sum(1 for row in margin_records if row["gap"] < 0.08)
+    top2_near_final = sum(1 for row in margin_records if row["gap"] < tie_threshold)
     final_distribution = {
         role: round(final_counts[role] / sample_count, 6)
         for role in sorted(dataset["characters"])
@@ -452,8 +453,9 @@ def run_monte_carlo(dataset: dict[str, Any], sample_count: int, rng: random.Rand
         "sampleCount": sample_count,
         "baseDistribution": base_distribution,
         "finalDistribution": final_distribution,
-        "top2DiffBelow008RateBase": round(top2_close / sample_count, 6),
-        "top2DiffBelow008RateFinal": round(top2_near_final / sample_count, 6),
+        "tieBreakerThreshold": tie_threshold,
+        "top2DiffBelowTieThresholdRateBase": round(top2_close / sample_count, 6),
+        "top2DiffBelowTieThresholdRateFinal": round(top2_near_final / sample_count, 6),
         "tieBreakerTriggerRate": round(tie_break_count / sample_count, 6),
         "tieBreakerFlipRateOverall": round(flipped_count / sample_count, 6),
         "tieBreakerFlipRateWithinTriggered": (
@@ -711,7 +713,7 @@ def build_verdict(
 
     patch_suggestions = []
     if "长崎爽世 vs 丰川祥子" in risky_pairs:
-        patch_suggestions.append("优先微调 `lambda` 到 0.13~0.14，并保留 `top2 diff < 0.08`。")
+        patch_suggestions.append("优先微调 `priorityPair lambda` 或单题 latent 档位，并保留当前 tie-breaker 阈值。")
         patch_suggestions.append("优先检查 `Q17-Q19` 的档位对称性，避免 `+0.8/-0.8` 之外的中档过弱。")
     if any(name in risky_pairs for name in ["若叶睦 vs 高松灯", "千早爱音 vs 高松灯"]):
         patch_suggestions.append("补一题轻量的内敛但是否主动承受关系压力题，避免灯/睦/爱音都落在负向角落。")
@@ -1026,7 +1028,11 @@ def render_report(
     lines.append("")
     lines.append("### `爽世 vs 祥子` 理论分离改善")
     lines.append("")
-    lines.append("| latentScore | 爽世相对优势 (`λ=0.12`) | 爽世相对优势 (`λ=0.08`) |")
+    priority_lambda = static_analysis["tieBreakerRule"]["lambda"]["priorityPair"]
+    default_lambda = static_analysis["tieBreakerRule"]["lambda"]["default"]
+    lines.append(
+        f"| latentScore | 爽世相对优势 (`λ={priority_lambda:.2f}`) | 爽世相对优势 (`λ={default_lambda:.2f}`) |"
+    )
     lines.append("| ---: | ---: | ---: |")
     for row in static_analysis["latentSayosaki"]["samples"]:
         lines.append(
@@ -1054,11 +1060,12 @@ def render_report(
     lines.append("")
     lines.append("| 指标 | 比例 |")
     lines.append("| --- | ---: |")
+    tie_threshold = monte_carlo["tieBreakerThreshold"]
     lines.append(
-        f"| `top2 diff < 0.08`（base） | {monte_carlo['top2DiffBelow008RateBase']:.4%} |"
+        f"| `top2 diff < {tie_threshold:.2f}`（base） | {monte_carlo['top2DiffBelowTieThresholdRateBase']:.4%} |"
     )
     lines.append(
-        f"| `top2 diff < 0.08`（final） | {monte_carlo['top2DiffBelow008RateFinal']:.4%} |"
+        f"| `top2 diff < {tie_threshold:.2f}`（final） | {monte_carlo['top2DiffBelowTieThresholdRateFinal']:.4%} |"
     )
     lines.append(
         f"| tie-breaker 触发率 | {monte_carlo['tieBreakerTriggerRate']:.4%} |"

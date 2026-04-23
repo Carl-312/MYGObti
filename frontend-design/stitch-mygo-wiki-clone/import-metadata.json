@@ -1,0 +1,41 @@
+{
+  "projectTitle": "MyGO!!!!! Wiki Clone",
+  "projectId": "2766585214578534183",
+  "screenTitle": "MyGO!!!!! - Refined Soft Glow",
+  "screenId": "36a8e9a199e4469da78740121102d699",
+  "deviceType": "MOBILE",
+  "width": 780,
+  "height": 2276,
+  "downloads": {
+    "html": {
+      "sourceUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzZjYThhNzc5ZGQ5MDRhYzA5MGYzMjM3NDRiMTFlY2NlEgsSBxD48b7msQYYAZIBIwoKcHJvamVjdF9pZBIVQhMyNzY2NTg1MjE0NTc4NTM0MTgz&filename=&opi=89354086",
+      "savedAs": "mygo-wiki-clone-refined-soft-glow.html"
+    },
+    "screenshot": {
+      "sourceUrl": "https://lh3.googleusercontent.com/aida/ADBb0ug6j8nT8UPSzPGZcH54UmfvcySlmeBgy-xS9I64fmqTh-xTYcmDVOu00iRO8dnvcVAuA4R_kPnEoRSZhynomCMmjzuQw-5V1cTpULoHfSrb0GZMD6JAP75kQZHisYDO3TMxtyNYoK-Cl-JOD7zlnkx7jcHSP3bp1iS0Dkd1EjFbMO7yD05soZ8njRnDfmwQQjHpBR3-DHB3eSlyk-pmJtmDlR5lOQO-ZLiYwKViB5NRsC0hVuFZxGO1aA",
+      "savedAs": "assets/mygo-wiki-clone-refined-soft-glow.png"
+    },
+    "embeddedImages": [
+      {
+        "name": "cover",
+        "sourceUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuCmcuLub6M7KXGfzpehiAvBQDkwNQL3lCnC9FRl6eaE-gZfF8c0BEHpu8c4vILpP1F4PAGd-U1LN26Yf2_Kq1rfFFNDMbP05z87cY94Sk0ZlP0wSzhxLXa517QDSvhlvHJfZJ8nX0tUrMBIMv23BchNEde9s6ZNs-IkeIXt8LhzbukoXI49Hzi4Nj4uqA74LlVJPw5IDr4BaqvCMm7QjkBmMRcm6SDrP4rC0buccj2-aAGwdkzdS3sJePRfOBPk4CSqnowGeJNmsFw",
+        "savedAs": "assets/cover.png"
+      },
+      {
+        "name": "tomori",
+        "sourceUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuAeX-wpJnaGAgIkZn8fTdRSQr878o9sZaEgavsXdu2goZ1DhWldHKrUcbCKEr3cGhEnsfo5irR-XDK4iboga5Bjq8DShQmP1vdw9K0YPJ1P_E3vKwus_Zg3K3QNuehEo7rz0L81U0PVd2rJabS6WXUQkVzdEhLoGxho9yPDQOKvb70tffyHWvdqrPK-ziO9IULuijiErY3X7Uzncjf1gubSVh8S-wzh9VAP41BvZYhNbC0oZKSFcuDABvZeiaSc1DO429zZ0o793g4",
+        "savedAs": "assets/tomori.png"
+      },
+      {
+        "name": "soyo",
+        "sourceUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuC-TpFJzOvKTWbpm_4sbwNcW24DmaJqrF7713rgkvMKn5F_kF2ZMByOODKc0CQFhRL5EbRN5KemavtRev1xv-8ztbxrEXGZONRwYvQmF0NT4RX4jdtSDXisD5f7gFINddHyskIWTHnsqSALffhaWjIrXci_j0fJzgAL1a2CDX9qyZSoHd1HpPp2UuNfUrxxZOsJh9LWoZmqOQUv7B7iyjITZv1LK-IsvywHdYswFZOHNjJupCK9V4oE8wRUtCGYeTOnb2JzFQY06vE",
+        "savedAs": "assets/soyo.png"
+      },
+      {
+        "name": "mutsumi",
+        "sourceUrl": "https://lh3.googleusercontent.com/aida-public/AB6AXuBj4IRkeS1DiWOI9jrEbsge_qB4MvvU-r3QD3bPvUc94mDROfzUc3WSw_YIZjD9UWq3-0MapNLv-OsxgEV4OU-SCb23R8nUVRC3y-mGDPnhH7Vh-rLxO3VvDaWWJP20XPOrzi3U-tbXKI504JpApbEbj156mjzMxiI8O7ybJ0kuq7E1OJoYXf93Qbw6hPOcLGwJNrh0khw-kaQyv1jJOR__CWMVaLY_8RacBrBzcF8sOv_BdY3YblrqMCcXV_KNuIGzWNehlTd_gnQ",
+        "savedAs": "assets/mutsumi.png"
+      }
+    ]
+  }
+}

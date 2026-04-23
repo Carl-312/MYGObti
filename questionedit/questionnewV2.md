@@ -1,3 +1,15 @@
+## V2.1D 修改说明
+
+- 当前前端运行时 canonical 真源：`/home/carl/MYGObti/questionedit/questionnewV2.md`
+- 当前代码由 `src/entities/quiz/model/canonicalQuiz.ts` 直接读取此文件，不再维护平行题库副本
+
+- 相对基线改动：
+  - 继承 V2.1C 全部内容（lambda 0.14、Q18 latent 补丁、Q14 主轴补丁）
+  - 仅把 `tieBreakerRule.enabledWhenTop2DiffBelow` 从 `0.08` 放宽到 `0.10`
+- 修改目的：
+  - 让已被证明有效的 latent tie-breaker 机制覆盖更多近平局场景
+  - 爽世/祥子 3D 余弦相似度高，部分案例落在 0.08~0.10 的 borderline 带，当前阈值未能命中
+
 ##
 
 以下 8 个角色继续使用三维主模型进行匹配，并新增 1 条只在接近平局时介入的 latent trait。
@@ -24,7 +36,7 @@
 
 {
 "meta": {
-"version": "V2",
+"version": "V2.1D",
 "note": "Q1-Q16 为 3D 主计分题；Q17-Q19 为 latent 题，只累计 controlServiceOrientation；Q20 为额外计分的反向校验题。主轴覆盖统计按 Q1-Q16 计算。",
 "axes": {
 "emotionExpression": "内敛压抑(-1) ↔ 外放表达(+1)",
@@ -48,14 +60,14 @@
 }
 },
 "tieBreakerRule": {
-"enabledWhenTop2DiffBelow": 0.08,
+"enabledWhenTop2DiffBelow": 0.10,
 "onlyWhenTop2IncludesAnyOf": ["长崎爽世", "丰川祥子"],
 "primaryTrait": "controlServiceOrientation",
 "latentScoreAggregation": "mean(Q17,Q18,Q19)",
 "latentScoreRange": [-1, 1],
 "lambda": {
 "default": 0.08,
-"priorityPair": 0.12
+"priorityPair": 0.14
 },
 "priorityPairs": [["长崎爽世", "丰川祥子"]],
 "formula": "finalTieScore = baseCosine + lambda * (1 - abs(latentScore - characterLatentAnchor))"
@@ -232,13 +244,13 @@
 {
 "id": "Q14",
 "type": "scored",
-"scene": "有人认真看完你的作品后，真诚地说“我很想更了解你在想什么。”你会如何回应这份靠近？",
+"scene": "有人认真看完你的作品后，真诚地说“如果你愿意，我想慢慢了解你。”你会如何回应这份靠近？",
 "primaryAxis": "emotionExpression",
 "options": [
 { "id": "A", "text": "很快把想法摊开，希望对方真正听懂自己", "delta": [0.7, 0.0, -0.1] },
-{ "id": "B", "text": "会分享一点，但只挑自己比较能承受的部分", "delta": [-0.3, -0.1, 0.0] },
-{ "id": "C", "text": "先把话收住，只点头表示自己听见了", "delta": [-0.7, 0.0, 0.1] },
-{ "id": "D", "text": "愿意具体说出感受，也会说明自己的顾虑", "delta": [0.3, 0.1, 0.0] }
+{ "id": "B", "text": "会先给出一点真实想法，但分寸仍握在自己手里", "delta": [-0.2, 0.0, 0.0] },
+{ "id": "C", "text": "会先把话轻轻收回去，礼貌接住好意，但不让对方再靠近一步", "delta": [-0.7, 0.0, 0.1] },
+{ "id": "D", "text": "愿意具体说出一段感受，也会坦白自己还有顾虑", "delta": [0.4, 0.1, 0.0] }
 ]
 },
 {
@@ -305,33 +317,33 @@
 {
 "id": "Q18",
 "type": "latent",
-"scene": "当一段关系或合作快要失衡时，你更容易为什么站出来？",
+"scene": "当一段关系或合作快要失衡时，你更容易以哪种方式站出来？",
 "primaryAxis": null,
 "latentTrait": "controlServiceOrientation",
 "options": [
 {
 "id": "A",
-"text": "因为总得有人把话讲明、把局面收回来，不然只会更乱",
+"text": "我会直接把该说的话和该定的事接过去，先把局面重新收住",
 "delta": [0.0, 0.0, 0.0],
-"latentDelta": 0.8
+"latentDelta": 0.9
 },
 {
 "id": "B",
-"text": "我会先把重点捋顺，让事情不要继续失控，再慢慢谈感受",
+"text": "我会先把关键环节握住，至少别让事情继续往下散",
 "delta": [0.0, 0.0, 0.0],
-"latentDelta": 0.3
+"latentDelta": 0.4
 },
 {
 "id": "C",
-"text": "我不想让谁更难堪，能先接住的部分就先接住",
+"text": "我更想先把最容易出问题的部分补上，让场面别再更难看",
 "delta": [0.0, 0.0, 0.0],
-"latentDelta": -0.3
+"latentDelta": -0.5
 },
 {
 "id": "D",
-"text": "如果必须有人多承担一点，我通常会先把自己的感受往后放",
+"text": "如果一定得有人多承担一点，我通常会先把自己的感受往后放",
 "delta": [0.0, 0.0, 0.0],
-"latentDelta": -0.8
+"latentDelta": -0.9
 }
 ],
 "internalNotes": {

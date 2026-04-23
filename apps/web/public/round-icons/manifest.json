@@ -1,0 +1,90 @@
+[
+  {
+    "id": "anon",
+    "name": "千早爱音",
+    "alias": null,
+    "fandomPage": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+    "sourceFileTitle": "File:Anon (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Anon_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217&format=original",
+    "localPng": "round-icons/png/anon.png",
+    "localSvg": "round-icons/svg/anon.svg"
+  },
+  {
+    "id": "tomori",
+    "name": "高松灯",
+    "alias": null,
+    "fandomPage": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+    "sourceFileTitle": "File:Tomori (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Tomori_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123&format=original",
+    "localPng": "round-icons/png/tomori.png",
+    "localSvg": "round-icons/svg/tomori.svg"
+  },
+  {
+    "id": "raana",
+    "name": "要乐奈",
+    "alias": null,
+    "fandomPage": "https://bandori.fandom.com/wiki/Kaname_Raana",
+    "sourceFileTitle": "File:Raana (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Raana_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/9/99/Raana_%28icon%29.png/revision/latest?cb=20230822095227&format=original",
+    "localPng": "round-icons/png/raana.png",
+    "localSvg": "round-icons/svg/raana.svg"
+  },
+  {
+    "id": "soyo",
+    "name": "长崎爽世",
+    "alias": null,
+    "fandomPage": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+    "sourceFileTitle": "File:Soyo (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Soyo_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238&format=original",
+    "localPng": "round-icons/png/soyo.png",
+    "localSvg": "round-icons/svg/soyo.svg"
+  },
+  {
+    "id": "taki",
+    "name": "椎名立希",
+    "alias": null,
+    "fandomPage": "https://bandori.fandom.com/wiki/Shiina_Taki",
+    "sourceFileTitle": "File:Taki (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Taki_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247&format=original",
+    "localPng": "round-icons/png/taki.png",
+    "localSvg": "round-icons/svg/taki.svg"
+  },
+  {
+    "id": "uika",
+    "name": "三角初华",
+    "alias": "Doloris",
+    "fandomPage": "https://bandori.fandom.com/wiki/Misumi_Uika",
+    "sourceFileTitle": "File:Doloris (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Doloris_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/f/fe/Doloris_%28icon%29.png/revision/latest?cb=20231013074659&format=original",
+    "localPng": "round-icons/png/uika.png",
+    "localSvg": "round-icons/svg/uika.svg"
+  },
+  {
+    "id": "mutsumi",
+    "name": "若叶睦",
+    "alias": "Mortis",
+    "fandomPage": "https://bandori.fandom.com/wiki/Wakaba_Mutsumi",
+    "sourceFileTitle": "File:Mortis (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Mortis_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/8/89/Mortis_%28icon%29.png/revision/latest?cb=20231013074659&format=original",
+    "localPng": "round-icons/png/mutsumi.png",
+    "localSvg": "round-icons/svg/mutsumi.svg"
+  },
+  {
+    "id": "sakiko",
+    "name": "丰川祥子",
+    "alias": "Oblivionis",
+    "fandomPage": "https://bandori.fandom.com/wiki/Togawa_Sakiko",
+    "sourceFileTitle": "File:Oblivionis (icon).png",
+    "sourceFilePage": "https://bandori.fandom.com/wiki/File:Oblivionis_(icon).png",
+    "sourceImageOriginal": "https://static.wikia.nocookie.net/bandori/images/4/4f/Oblivionis_%28icon%29.png/revision/latest?cb=20231013074700&format=original",
+    "localPng": "round-icons/png/sakiko.png",
+    "localSvg": "round-icons/svg/sakiko.svg"
+  }
+]

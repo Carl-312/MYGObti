@@ -1,5 +1,8 @@
 ## V2.1D 修改说明
 
+- 当前正确基线快照：`/home/carl/MYGObti/questionedit/candidates/questionnewV2_1D.md`
+- 当前主程序根文件：`/home/carl/MYGObti/questionedit/questionnewV2.md`
+
 - 相对基线改动：
   - 继承 V2.1C 全部内容（lambda 0.14、Q18 latent 补丁、Q14 主轴补丁）
   - 仅把 `tieBreakerRule.enabledWhenTop2DiffBelow` 从 `0.08` 放宽到 `0.10`
@@ -33,7 +36,7 @@
 
 {
 "meta": {
-"version": "V2",
+"version": "V2.1D",
 "note": "Q1-Q16 为 3D 主计分题；Q17-Q19 为 latent 题，只累计 controlServiceOrientation；Q20 为额外计分的反向校验题。主轴覆盖统计按 Q1-Q16 计算。",
 "axes": {
 "emotionExpression": "内敛压抑(-1) ↔ 外放表达(+1)",

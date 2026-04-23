@@ -48,7 +48,7 @@ FOCUS_ROLES = ["长崎爽世", "丰川祥子"]
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Compare frozen C against two Q14 mid-tier micro-iterations."
+        description="Compare historical C-stage Q14 micro-iterations without treating them as the current D mainline."
     )
     parser.add_argument("--seed", type=int, default=20260415)
     parser.add_argument("--monte-carlo", type=int, default=100_000)
@@ -198,6 +198,9 @@ def build_comparison(evaluations: dict[str, dict], args: argparse.Namespace) -> 
             "monteCarlo": args.monte_carlo,
             "noiseTrials": args.noise_trials,
             "pairTrials": args.pair_trials,
+            "reportMode": "historical_c_stage_comparison",
+            "currentMainline": "D",
+            "doNotUseAsCurrentMainlineDecision": True,
         },
         "versions": versions,
         "candidateScores": scores,
@@ -219,11 +222,16 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
     versions = comparison["versions"]
     recommended = comparison["recommendedVersion"]
     lines = []
-    lines.append("# V2.1C Q14 中间档位微调对比")
+    lines.append("# V2.1C 历史 Q14 中间档位微调对比")
     lines.append("")
-    lines.append("## 结论")
+    lines.append("## 使用边界")
     lines.append("")
-    lines.append(f"- 推荐继续跟进：**{recommended}**。{comparison['recommendationReason']}")
+    lines.append("- 本报告只用于复盘 `C / C1 / C2` 的历史试验，不代表当前主线应回退到 `C`。")
+    lines.append("- 当前主线仍是 `D`，这里的输出只说明 `C` 阶段内部谁更优。")
+    lines.append("")
+    lines.append("## 历史对比结论")
+    lines.append("")
+    lines.append(f"- 在 `C` 阶段历史比较里，最优候选是 **{recommended}**。{comparison['recommendationReason']}")
     lines.append(
         f"- 评估配置：固定随机种子 `{args.seed}`，Monte Carlo `{args.monte_carlo:,}`，轻噪声 `{args.noise_trials}` 次/角色，pair-focused `{args.pair_trials}` 次/角色。"
     )
@@ -270,6 +278,7 @@ def render_markdown(comparison: dict, args: argparse.Namespace) -> str:
     lines.append("")
     lines.append("- 单版本详细报告同步输出到 `V2_1C1-EVAL-*`、`V2_1C2-EVAL-*`。")
     lines.append("- 本报告由 `batch_compare_v2_q14_mid_iterations.py` 自动生成。")
+    lines.append("- 它只用于历史复盘，不应作为当前 `D` 主线的继续实验指令。")
     lines.append("")
     return "\n".join(lines)
 

@@ -1,0 +1,2844 @@
+{
+  "sourceFile": "/home/carl/MYGObti/frontend-design/fronted1.html",
+  "title": "MyGO!!!!!/Band Story",
+  "subtitle": "It's MyGO!!!!!",
+  "intro": "Anon transfers into Haneoka at the end of spring, where she meets the mysterious girl, Tomori. A brand new story, of being lost and hurt, begins to unfold...",
+  "relatedPages": [
+    {
+      "label": "MyGO!!!!!",
+      "href": "https://bandori.fandom.com/wiki/MyGO!!!!!",
+      "active": false
+    },
+    {
+      "label": "Band Story",
+      "href": null,
+      "active": true
+    },
+    {
+      "label": "Discography",
+      "href": "https://bandori.fandom.com/wiki/MyGO!!!!!/Discography",
+      "active": false
+    },
+    {
+      "label": "Events",
+      "href": "https://bandori.fandom.com/wiki/MyGO!!!!!/Events",
+      "active": false
+    }
+  ],
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "label": "Chapter 01",
+      "title": "Returns - Cold Rain",
+      "summary": "A rainy studio, five girls, and memories from 1 year ago. Along with their lost hearts, a new story begins to unfold...",
+      "sceneMarkers": [
+        "Haneoka Girls' Academy Courtyard"
+      ],
+      "scenes": [
+        {
+          "id": "chapter-01-scene-01",
+          "title": "Opening Sequence",
+          "sceneType": "flashback",
+          "marker": "",
+          "lineCount": 30,
+          "dialogueGroupIds": [
+            "chapter-01-scene-01-group-01"
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard",
+          "sceneType": "scene",
+          "marker": "Haneoka Girls' Academy Courtyard",
+          "lineCount": 20,
+          "dialogueGroupIds": [
+            "chapter-01-scene-02-group-01",
+            "chapter-01-scene-02-group-02",
+            "chapter-01-scene-02-group-03",
+            "chapter-01-scene-02-group-04",
+            "chapter-01-scene-02-group-05",
+            "chapter-01-scene-02-group-06",
+            "chapter-01-scene-02-group-07",
+            "chapter-01-scene-02-group-08",
+            "chapter-01-scene-02-group-09"
+          ]
+        }
+      ],
+      "dialogueGroups": [
+        {
+          "id": "chapter-01-scene-01-group-01",
+          "sceneId": "chapter-01-scene-01",
+          "title": "Cold open",
+          "kind": "flashback",
+          "lineCount": 30,
+          "speakers": [
+            "Tomori",
+            "Soyo",
+            "Mutsumi & Taki",
+            "Sakiko",
+            "Mutsumi",
+            "Taki",
+            "Taki & Sakiko"
+          ],
+          "lines": [
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "Ah...",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "Saki-chan! I'm glad - you're here!",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Mutsumi & Taki",
+              "speakerKey": "mutsumi-taki",
+              "text": "...",
+              "avatarLabel": "MU",
+              "isThought": false,
+              "character": {
+                "key": "mutsumi-taki",
+                "label": "Mutsumi & Taki",
+                "avatarLabel": "MU",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "We've been worried about you for a long time, okay? You've been absent from school and you haven't responded at all, so--",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "I came here today because I have something to say.",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "I'm going to quit... CRYCHIC.",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "W-wait a minute... Why? What's wrong...?",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Mutsumi",
+              "speakerKey": "mutsumi",
+              "text": "...",
+              "avatarLabel": "MU",
+              "isThought": false,
+              "character": {
+                "key": "mutsumi",
+                "label": "Mutsumi",
+                "avatarLabel": "MU",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "... You can't tell us? Or is it because of us? If something's wrong, we'll fix it...",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "No... because it's my problem alone.",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "... Why? You had a great time at the live show the other night. You said you wanted to do it again, right?",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "... I didn't say that.",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "Oh, really..? But you started CRYCHIC, didn't you? If you quit...",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "... You're really going to quit?",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "...",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Taki",
+              "speakerKey": "taki",
+              "text": "... Tomori asked you a question. Why aren't you answering?",
+              "avatarLabel": "TA",
+              "isThought": false,
+              "character": {
+                "key": "taki",
+                "label": "Taki",
+                "avatarLabel": "TA",
+                "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+                "imageAlt": "Taki (icon)",
+                "imageName": "Taki (icon).png",
+                "imageKey": "Taki_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "Taki-chan, don't--",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Taki",
+              "speakerKey": "taki",
+              "text": "I mean, isn't that irresponsible? You've stood up so many times for practice, and then you'll quit without any explanation...",
+              "avatarLabel": "TA",
+              "isThought": false,
+              "character": {
+                "key": "taki",
+                "label": "Taki",
+                "avatarLabel": "TA",
+                "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+                "imageAlt": "Taki (icon)",
+                "imageName": "Taki (icon).png",
+                "imageKey": "Taki_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+              }
+            },
+            {
+              "speaker": "Taki",
+              "speakerKey": "taki",
+              "text": "If you're going to quit, can you quit without causing us trouble? Even today, we were waiting for you--",
+              "avatarLabel": "TA",
+              "isThought": false,
+              "character": {
+                "key": "taki",
+                "label": "Taki",
+                "avatarLabel": "TA",
+                "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+                "imageAlt": "Taki (icon)",
+                "imageName": "Taki (icon).png",
+                "imageKey": "Taki_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "Taki-chan!",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "... You could have practiced without me, couldn't you?",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "There's no rule that says you can't do it unless everyone's here. Don't pin the blame on me.",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "But without Saki-chan--",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            },
+            {
+              "speaker": "Sakiko",
+              "speakerKey": "sakiko",
+              "text": "Don't be so naive, you're the one who especially needs to practice, Tomori, what have you been doing all this time?",
+              "avatarLabel": "SA",
+              "isThought": false,
+              "character": {
+                "key": "sakiko",
+                "label": "Sakiko",
+                "avatarLabel": "SA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Taki",
+              "speakerKey": "taki",
+              "text": "Tomori has been waiting for you!",
+              "avatarLabel": "TA",
+              "isThought": false,
+              "character": {
+                "key": "taki",
+                "label": "Taki",
+                "avatarLabel": "TA",
+                "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+                "imageAlt": "Taki (icon)",
+                "imageName": "Taki (icon).png",
+                "imageKey": "Taki_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+              }
+            },
+            {
+              "speaker": "Taki & Sakiko",
+              "speakerKey": "taki-sakiko",
+              "text": "...!",
+              "avatarLabel": "TA",
+              "isThought": false,
+              "character": {
+                "key": "taki-sakiko",
+                "label": "Taki & Sakiko",
+                "avatarLabel": "TA",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Soyo",
+              "speakerKey": "soyo",
+              "text": "Wait...! Let's talk it out, okay? We've been having so much fun... You think so too, don't you, Mutsumi-chan?",
+              "avatarLabel": "SO",
+              "isThought": false,
+              "character": {
+                "key": "soyo",
+                "label": "Soyo",
+                "avatarLabel": "SO",
+                "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+                "imageAlt": "Soyo (icon)",
+                "imageName": "Soyo (icon).png",
+                "imageKey": "Soyo_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+              }
+            },
+            {
+              "speaker": "Mutsumi",
+              "speakerKey": "mutsumi",
+              "text": "...",
+              "avatarLabel": "MU",
+              "isThought": false,
+              "character": {
+                "key": "mutsumi",
+                "label": "Mutsumi",
+                "avatarLabel": "MU",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Mutsumi",
+              "speakerKey": "mutsumi",
+              "text": "I've... never once had fun with the band.",
+              "avatarLabel": "MU",
+              "isThought": false,
+              "character": {
+                "key": "mutsumi",
+                "label": "Mutsumi",
+                "avatarLabel": "MU",
+                "characterHref": "",
+                "imageAlt": "",
+                "imageName": "",
+                "imageKey": "",
+                "imageHref": ""
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "...",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            }
+          ],
+          "emphasis": "italic"
+        },
+        {
+          "id": "chapter-01-scene-02-group-01",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard beat 01",
+          "kind": "scene-dialogue",
+          "lineCount": 1,
+          "speakers": [
+            "Anon"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "Hmmm...! The interview's over!",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-02",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard inner voice",
+          "kind": "inner-monologue",
+          "lineCount": 3,
+          "speakers": [
+            "Anon"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "(I was president of the student council in junior high school, and my unofficial report isn't too bad either.)",
+              "avatarLabel": "AN",
+              "isThought": true,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            },
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "(It's a strange time to transfer, but I'm sure I'll be able to get in without any problems.)",
+              "avatarLabel": "AN",
+              "isThought": true,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            },
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "(Private Haneoka Girls' Academy, Senior High School...)",
+              "avatarLabel": "AN",
+              "isThought": true,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-03",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard beat 03",
+          "kind": "scene-dialogue",
+          "lineCount": 2,
+          "speakers": [
+            "Anon"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "... I'm going to start afresh here.",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            },
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "... Hmm?",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-04",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard inner voice",
+          "kind": "inner-monologue",
+          "lineCount": 1,
+          "speakers": [
+            "Anon"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "(What's wrong with that girl...? Crouching down over there...)",
+              "avatarLabel": "AN",
+              "isThought": true,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-05",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard beat 05",
+          "kind": "scene-dialogue",
+          "lineCount": 3,
+          "speakers": [
+            "Anon",
+            "Tomori"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "... Hey, did you drop something? Why don't we look for it together?",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "...",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            },
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "... Hey? Didn't you hear me?",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-06",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard inner voice",
+          "kind": "inner-monologue",
+          "lineCount": 1,
+          "speakers": [
+            "Anon"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "(What is she looking for...? Picking up a rock?)",
+              "avatarLabel": "AN",
+              "isThought": true,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-07",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard beat 07",
+          "kind": "scene-dialogue",
+          "lineCount": 2,
+          "speakers": [
+            "Tomori"
+          ],
+          "lines": [
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "A stone in the shape of a dog... This one might be... a cat.",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "Oh, this one... has a pattern. It's a marble stone.",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-08",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard inner voice",
+          "kind": "inner-monologue",
+          "lineCount": 1,
+          "speakers": [
+            "Anon"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "(She's putting the stones in her pocket...)",
+              "avatarLabel": "AN",
+              "isThought": true,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        },
+        {
+          "id": "chapter-01-scene-02-group-09",
+          "sceneId": "chapter-01-scene-02",
+          "title": "Haneoka Girls' Academy Courtyard beat 09",
+          "kind": "scene-dialogue",
+          "lineCount": 6,
+          "speakers": [
+            "Anon",
+            "Tomori"
+          ],
+          "lines": [
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "Uhm... are you going to take those stones home with you?",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "...?",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "...! Um, well, you know, that...",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            },
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "You finally noticed me. I've been talking to you for a long time...",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            },
+            {
+              "speaker": "Tomori",
+              "speakerKey": "tomori",
+              "text": "Um, good-bye...!",
+              "avatarLabel": "TO",
+              "isThought": false,
+              "character": {
+                "key": "tomori",
+                "label": "Tomori",
+                "avatarLabel": "TO",
+                "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+                "imageAlt": "Tomori (icon)",
+                "imageName": "Tomori (icon).png",
+                "imageKey": "Tomori_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+              }
+            },
+            {
+              "speaker": "Anon",
+              "speakerKey": "anon",
+              "text": "... What? Huh...",
+              "avatarLabel": "AN",
+              "isThought": false,
+              "character": {
+                "key": "anon",
+                "label": "Anon",
+                "avatarLabel": "AN",
+                "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+                "imageAlt": "Anon (icon)",
+                "imageName": "Anon (icon).png",
+                "imageKey": "Anon_%28icon%29.png",
+                "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+              }
+            }
+          ]
+        }
+      ],
+      "dialogues": [
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "Ah...",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "Saki-chan! I'm glad - you're here!",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Mutsumi & Taki",
+          "speakerKey": "mutsumi-taki",
+          "text": "...",
+          "avatarLabel": "MU",
+          "isThought": false,
+          "character": {
+            "key": "mutsumi-taki",
+            "label": "Mutsumi & Taki",
+            "avatarLabel": "MU",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "We've been worried about you for a long time, okay? You've been absent from school and you haven't responded at all, so--",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "I came here today because I have something to say.",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "I'm going to quit... CRYCHIC.",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "W-wait a minute... Why? What's wrong...?",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Mutsumi",
+          "speakerKey": "mutsumi",
+          "text": "...",
+          "avatarLabel": "MU",
+          "isThought": false,
+          "character": {
+            "key": "mutsumi",
+            "label": "Mutsumi",
+            "avatarLabel": "MU",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "... You can't tell us? Or is it because of us? If something's wrong, we'll fix it...",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "No... because it's my problem alone.",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "... Why? You had a great time at the live show the other night. You said you wanted to do it again, right?",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "... I didn't say that.",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "Oh, really..? But you started CRYCHIC, didn't you? If you quit...",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "... You're really going to quit?",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "...",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Taki",
+          "speakerKey": "taki",
+          "text": "... Tomori asked you a question. Why aren't you answering?",
+          "avatarLabel": "TA",
+          "isThought": false,
+          "character": {
+            "key": "taki",
+            "label": "Taki",
+            "avatarLabel": "TA",
+            "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+            "imageAlt": "Taki (icon)",
+            "imageName": "Taki (icon).png",
+            "imageKey": "Taki_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "Taki-chan, don't--",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Taki",
+          "speakerKey": "taki",
+          "text": "I mean, isn't that irresponsible? You've stood up so many times for practice, and then you'll quit without any explanation...",
+          "avatarLabel": "TA",
+          "isThought": false,
+          "character": {
+            "key": "taki",
+            "label": "Taki",
+            "avatarLabel": "TA",
+            "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+            "imageAlt": "Taki (icon)",
+            "imageName": "Taki (icon).png",
+            "imageKey": "Taki_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+          }
+        },
+        {
+          "speaker": "Taki",
+          "speakerKey": "taki",
+          "text": "If you're going to quit, can you quit without causing us trouble? Even today, we were waiting for you--",
+          "avatarLabel": "TA",
+          "isThought": false,
+          "character": {
+            "key": "taki",
+            "label": "Taki",
+            "avatarLabel": "TA",
+            "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+            "imageAlt": "Taki (icon)",
+            "imageName": "Taki (icon).png",
+            "imageKey": "Taki_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "Taki-chan!",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "... You could have practiced without me, couldn't you?",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "There's no rule that says you can't do it unless everyone's here. Don't pin the blame on me.",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "But without Saki-chan--",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Sakiko",
+          "speakerKey": "sakiko",
+          "text": "Don't be so naive, you're the one who especially needs to practice, Tomori, what have you been doing all this time?",
+          "avatarLabel": "SA",
+          "isThought": false,
+          "character": {
+            "key": "sakiko",
+            "label": "Sakiko",
+            "avatarLabel": "SA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Taki",
+          "speakerKey": "taki",
+          "text": "Tomori has been waiting for you!",
+          "avatarLabel": "TA",
+          "isThought": false,
+          "character": {
+            "key": "taki",
+            "label": "Taki",
+            "avatarLabel": "TA",
+            "characterHref": "https://bandori.fandom.com/wiki/Shiina_Taki",
+            "imageAlt": "Taki (icon)",
+            "imageName": "Taki (icon).png",
+            "imageKey": "Taki_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e3/Taki_%28icon%29.png/revision/latest?cb=20230822095247"
+          }
+        },
+        {
+          "speaker": "Taki & Sakiko",
+          "speakerKey": "taki-sakiko",
+          "text": "...!",
+          "avatarLabel": "TA",
+          "isThought": false,
+          "character": {
+            "key": "taki-sakiko",
+            "label": "Taki & Sakiko",
+            "avatarLabel": "TA",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Soyo",
+          "speakerKey": "soyo",
+          "text": "Wait...! Let's talk it out, okay? We've been having so much fun... You think so too, don't you, Mutsumi-chan?",
+          "avatarLabel": "SO",
+          "isThought": false,
+          "character": {
+            "key": "soyo",
+            "label": "Soyo",
+            "avatarLabel": "SO",
+            "characterHref": "https://bandori.fandom.com/wiki/Nagasaki_Soyo",
+            "imageAlt": "Soyo (icon)",
+            "imageName": "Soyo (icon).png",
+            "imageKey": "Soyo_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/e/e9/Soyo_%28icon%29.png/revision/latest?cb=20230822095238"
+          }
+        },
+        {
+          "speaker": "Mutsumi",
+          "speakerKey": "mutsumi",
+          "text": "...",
+          "avatarLabel": "MU",
+          "isThought": false,
+          "character": {
+            "key": "mutsumi",
+            "label": "Mutsumi",
+            "avatarLabel": "MU",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Mutsumi",
+          "speakerKey": "mutsumi",
+          "text": "I've... never once had fun with the band.",
+          "avatarLabel": "MU",
+          "isThought": false,
+          "character": {
+            "key": "mutsumi",
+            "label": "Mutsumi",
+            "avatarLabel": "MU",
+            "characterHref": "",
+            "imageAlt": "",
+            "imageName": "",
+            "imageKey": "",
+            "imageHref": ""
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "...",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "Hmmm...! The interview's over!",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "(I was president of the student council in junior high school, and my unofficial report isn't too bad either.)",
+          "avatarLabel": "AN",
+          "isThought": true,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "(It's a strange time to transfer, but I'm sure I'll be able to get in without any problems.)",
+          "avatarLabel": "AN",
+          "isThought": true,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "(Private Haneoka Girls' Academy, Senior High School...)",
+          "avatarLabel": "AN",
+          "isThought": true,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "... I'm going to start afresh here.",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "... Hmm?",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "(What's wrong with that girl...? Crouching down over there...)",
+          "avatarLabel": "AN",
+          "isThought": true,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "... Hey, did you drop something? Why don't we look for it together?",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "...",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "... Hey? Didn't you hear me?",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "(What is she looking for...? Picking up a rock?)",
+          "avatarLabel": "AN",
+          "isThought": true,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "A stone in the shape of a dog... This one might be... a cat.",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "Oh, this one... has a pattern. It's a marble stone.",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "(She's putting the stones in her pocket...)",
+          "avatarLabel": "AN",
+          "isThought": true,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "Uhm... are you going to take those stones home with you?",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "...?",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "...! Um, well, you know, that...",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "You finally noticed me. I've been talking to you for a long time...",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        },
+        {
+          "speaker": "Tomori",
+          "speakerKey": "tomori",
+          "text": "Um, good-bye...!",
+          "avatarLabel": "TO",
+          "isThought": false,
+          "character": {
+            "key": "tomori",
+            "label": "Tomori",
+            "avatarLabel": "TO",
+            "characterHref": "https://bandori.fandom.com/wiki/Takamatsu_Tomori",
+            "imageAlt": "Tomori (icon)",
+            "imageName": "Tomori (icon).png",
+            "imageKey": "Tomori_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/2/2f/Tomori_%28icon%29.png/revision/latest?cb=20230822095123"
+          }
+        },
+        {
+          "speaker": "Anon",
+          "speakerKey": "anon",
+          "text": "... What? Huh...",
+          "avatarLabel": "AN",
+          "isThought": false,
+          "character": {
+            "key": "anon",
+            "label": "Anon",
+            "avatarLabel": "AN",
+            "characterHref": "https://bandori.fandom.com/wiki/Chihaya_Anon",
+            "imageAlt": "Anon (icon)",
+            "imageName": "Anon (icon).png",
+            "imageKey": "Anon_%28icon%29.png",
+            "imageHref": "https://static.wikia.nocookie.net/bandori/images/5/51/Anon_%28icon%29.png/revision/latest?cb=20230822095217"
+          }
+        }
+      ],
+      "meta": {
+        "chapterNumber": 1,
+        "contentStatus": "full",
+        "previewImageAlt": "It's MyGO!!!!! Event Story Chapter 1",
+        "previewImageName": "It's MyGO!!!!! Event Story Chapter 1.png",
+        "previewImageKey": "It%27s_MyGO%21%21%21%21%21_Event_Story_Chapter_1.png",
+        "previewImageHref": "https://static.wikia.nocookie.net/bandori/images/b/bb/It%27s_MyGO%21%21%21%21%21_Event_Story_Chapter_1.png/revision/latest?cb=20240918073731",
+        "lineCount": 50,
+        "sceneCount": 2,
+        "dialogueGroupCount": 10,
+        "speakerCount": 8,
+        "speakers": [
+          "Tomori",
+          "Soyo",
+          "Mutsumi & Taki",
+          "Sakiko",
+          "Mutsumi",
+          "Taki",
+          "Taki & Sakiko",
+          "Anon"
+        ]
+      }
+    },
+    {
+      "id": "chapter-02",
+      "label": "Chapter 02",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 2,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-03",
+      "label": "Chapter 03",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 3,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-04",
+      "label": "Chapter 04",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 4,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-05",
+      "label": "Chapter 05",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 5,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-06",
+      "label": "Chapter 06",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 6,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-07",
+      "label": "Chapter 07",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 7,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-08",
+      "label": "Chapter 08",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 8,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-09",
+      "label": "Chapter 09",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 9,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-10",
+      "label": "Chapter 10",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 10,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-11",
+      "label": "Chapter 11",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 11,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-12",
+      "label": "Chapter 12",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 12,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-13",
+      "label": "Chapter 13",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 13,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-14",
+      "label": "Chapter 14",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 14,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-15",
+      "label": "Chapter 15",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 15,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-16",
+      "label": "Chapter 16",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 16,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-17",
+      "label": "Chapter 17",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 17,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-18",
+      "label": "Chapter 18",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 18,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-19",
+      "label": "Chapter 19",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 19,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-20",
+      "label": "Chapter 20",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 20,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-21",
+      "label": "Chapter 21",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 21,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-22",
+      "label": "Chapter 22",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 22,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-23",
+      "label": "Chapter 23",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 23,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-24",
+      "label": "Chapter 24",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 24,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-25",
+      "label": "Chapter 25",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 25,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-26",
+      "label": "Chapter 26",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 26,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-27",
+      "label": "Chapter 27",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 27,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-28",
+      "label": "Chapter 28",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 28,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-29",
+      "label": "Chapter 29",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 29,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-30",
+      "label": "Chapter 30",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 30,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-31",
+      "label": "Chapter 31",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 31,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-32",
+      "label": "Chapter 32",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 32,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-33",
+      "label": "Chapter 33",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 33,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-34",
+      "label": "Chapter 34",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 34,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-35",
+      "label": "Chapter 35",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 35,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-36",
+      "label": "Chapter 36",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 36,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-37",
+      "label": "Chapter 37",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 37,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-38",
+      "label": "Chapter 38",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 38,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-39",
+      "label": "Chapter 39",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 39,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-40",
+      "label": "Chapter 40",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 40,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    },
+    {
+      "id": "chapter-41",
+      "label": "Chapter 41",
+      "title": "",
+      "summary": "",
+      "sceneMarkers": [],
+      "scenes": [],
+      "dialogueGroups": [],
+      "dialogues": [],
+      "meta": {
+        "chapterNumber": 41,
+        "contentStatus": "meta-only",
+        "previewImageAlt": "",
+        "previewImageName": "",
+        "previewImageKey": "",
+        "previewImageHref": "",
+        "lineCount": 0,
+        "sceneCount": 0,
+        "dialogueGroupCount": 0,
+        "speakerCount": 0,
+        "speakers": []
+      }
+    }
+  ]
+}

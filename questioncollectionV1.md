@@ -1,8 +1,10 @@
 # Question Collection V1
 
+> 注：这是早期 15 题收集草稿，当前前端运行时题库已切到 `questionedit/questionnewV2.md` 的 `V2.1D` 主线。这里保留作历史写题参考，不应直接当成现行题库。
+
 ## 目标
 
-为 Phase 1 的本地题库准备可直接落成代码的数据草稿，先追求风格统一与可识别度，再逐步补满 15 题。
+为早期 Phase 1 的本地题库准备数据草稿，先追求风格统一与可识别度，再逐步补满当时设想的 15 题。
 
 ## 写题原则
 
@@ -34,6 +36,7 @@
 
 ## 当前状态
 
-- 已有 3 道代码级示例题，位于 `src/entities/question/model/questions.ts`
-- 下一步补齐到 15 题，并做覆盖轴线检查
-
+- 这是历史状态记录，不再反映当前运行时实现
+- 当前真实题库位于 `questionedit/questionnewV2.md`
+- 当前前端运行时已不再直接手写维护 `src/entities/question/model/questions.ts` 的旧示例题库
+- 如果只是要继续当前主线，请停止沿本文补题，改读 `questionedit/questionnewV2.md`

@@ -1,4 +1,13 @@
-# MyGObti 题库 V2 修改计划
+# MyGObti 题库 V2 历史修改计划草稿
+
+> 当前用途：历史复盘。
+>
+> 下面内容主要记录 `baseline / A / B / C / D` 演化过程中的设计推演，因此会出现旧 `0.08 / 0.12` 参数讨论。
+>
+> 当前有效事实请以 `questionnewV2.md` 与 `candidates/questionnewV2_1D.md` 为准：
+> `V2.1D`、`20` 题、主模型仍是 `3D`、保留 `latent tie-breaker`、不开 `4D`、`enabledWhenTop2DiffBelow = 0.10`、`priorityPair lambda = 0.14`。
+>
+> 不要把本文件当作当前配置入口、当前推荐路线或当前默认执行说明。
 
 ## 1. 结论先行
 
@@ -404,4 +413,3 @@ V2 最应该做的，不是把模型从 `3D` 强行扩成 `4D`，而是：
 一句话总结：
 
 > V2 的方向应当是 `3D 主模型 + 控制/服务 latent tie-breaker`，而不是 `3D + 规则感`。
-

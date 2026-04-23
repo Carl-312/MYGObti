@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { startTransition, useEffect, useState } from "react";
 import {
   evaluateQuizResult,
   type MatchComputation,
@@ -12,21 +12,18 @@ import {
   Navigate,
   Route,
   Routes,
+  useNavigate,
   useLocation,
 } from "react-router-dom";
 import { BandStoryPage } from "../features/band-story";
 import {
-  QuizContentApiError,
-  fetchQuizContent,
-  fetchQuizMeta,
   getQuizApiBaseUrl,
 } from "../entities/quiz/api/quizContent";
-import {
-  createRuntimeQuizContent,
-  type RuntimeQuizContent,
-} from "../entities/quiz/model/runtimeQuiz";
+import { useRuntimeQuizContent } from "../entities/quiz/model/useRuntimeQuizContent";
 import { PageShell } from "./shell";
 import { HomePage } from "../pages/home/HomePage";
+import { ChatAtomsPreviewPage } from "../pages/preview/ChatAtomsPreviewPage";
+import { ResultPreviewPage } from "../pages/preview/ResultPreviewPage";
 
 type QuizStage = "idle" | "answering" | "completed";
 
@@ -56,6 +53,8 @@ export function App() {
       <Route element={<TemplateRuntimeLayout />}>
         <Route element={<QuizHomeRoute />} path="/" />
         <Route element={<BandStoryPage />} path="/band-story/*" />
+        <Route element={<ChatAtomsPreviewPage />} path="/preview/chat-atoms" />
+        <Route element={<ResultPreviewPage />} path="/preview/results" />
       </Route>
       <Route element={<Navigate replace to="/" />} path="*" />
     </Routes>
@@ -69,20 +68,26 @@ function TemplateRuntimeLayout() {
 function ShellTopbar() {
   const location = useLocation();
   const isBandStory = location.pathname.startsWith("/band-story");
+  const isPreview = location.pathname.startsWith("/preview");
+  const isHome = location.pathname === "/";
+  const currentSurface = isBandStory
+    ? "附加阅读"
+    : isPreview
+      ? "开发预览"
+      : "人格测试";
+  const homeEntryLabel = isHome ? "测试首页" : "返回测试首页";
+  const homeEntryTarget = isHome ? "/" : "/";
 
   return (
     <header className="page-topbar">
       <div className="page-topbar__brand">
-        <span className="page-topbar__eyebrow">Template Shell Active</span>
-        <strong>MyGObti Runtime</strong>
+        <span className="page-topbar__eyebrow">MyGO 恶搞人格测试</span>
+        <strong>MyGObti</strong>
       </div>
       <div className="page-topbar__meta">
-        <span className="page-topbar__chip">
-          {isBandStory ? "Band Story Route" : "Legacy Quiz Flow Mounted"}
-        </span>
+        <span className="page-topbar__chip">{currentSurface}</span>
         <nav className="page-topbar__nav" aria-label="primary">
-          <Link to="/">Quiz</Link>
-          <Link to="/band-story">Band Story</Link>
+          <Link to={homeEntryTarget}>{homeEntryLabel}</Link>
         </nav>
       </div>
     </header>
@@ -93,96 +98,60 @@ function ShellFooter() {
   return (
     <div className="page-footer">
       <div>
-        <span className="page-footer__eyebrow">QA Loop</span>
-        <strong>Keep `npm run dev:api` and `npm run dev:web` resident</strong>
+        <span className="page-footer__eyebrow">测试提示</span>
+        <strong>主线：开始测试 → 答题 → 看结果 → 分享结果</strong>
       </div>
       <p>
-        新壳层已经接入，但答题主链路仍挂载在 legacy boundary 里。每做完一个
-        `02.3` plan 先在浏览器验收，再继续删旧实现。
+        正式体验只保留测试入口、结果页和分享动作；附加阅读与开发预览不再占据一级导航。
       </p>
     </div>
   );
 }
 
 function QuizHomeRoute() {
-  const [runtimeContent, setRuntimeContent] = useState<RuntimeQuizContent | null>(
-    null,
-  );
-  const [meta, setMeta] = useState<QuizMetaResponse | null>(null);
-  const [loadState, setLoadState] = useState<"loading" | "ready" | "error">(
-    "loading",
-  );
-  const [loadMessage, setLoadMessage] = useState(
-    "正在从内容服务同步题库版本和运行时快照。",
-  );
-  const [loadError, setLoadError] = useState<string | null>(null);
-  const [loadAttempt, setLoadAttempt] = useState(0);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { runtimeContent, meta, loadState, loadMessage, loadError, reload } =
+    useRuntimeQuizContent();
   const [stage, setStage] = useState<QuizStage>("idle");
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Array<QuizAnswerRecord | null>>([]);
   const [result, setResult] = useState<MatchComputation | null>(null);
   const [submitMessage, setSubmitMessage] = useState<string | null>(null);
 
-  useEffect(() => {
-    const abortController = new AbortController();
-    let active = true;
-
-    async function loadQuizRuntimeContent() {
-      setLoadState("loading");
-      setLoadError(null);
-      setLoadMessage("正在读取 `/api/quiz/meta`，确认这轮题库版本。");
-      setRuntimeContent(null);
-
-      let resolvedMeta: QuizMetaResponse | null = null;
-
-      try {
-        resolvedMeta = await fetchQuizMeta(abortController.signal);
-        if (!active) {
-          return;
-        }
-
-        setMeta(resolvedMeta);
-        setLoadMessage(
-          `已连接到 ${resolvedMeta.version} 内容服务，继续读取完整题库快照。`,
-        );
-
-        const content = await fetchQuizContent(abortController.signal);
-        if (!active) {
-          return;
-        }
-
-        const nextRuntimeContent = createRuntimeQuizContent(resolvedMeta, content);
-        setRuntimeContent(nextRuntimeContent);
-        setLoadState("ready");
-      } catch (error) {
-        if (!active || abortController.signal.aborted) {
-          return;
-        }
-
-        setLoadState("error");
-        setLoadError(getLoadErrorMessage(error, resolvedMeta));
-      }
-    }
-
-    void loadQuizRuntimeContent();
-
-    return () => {
-      active = false;
-      abortController.abort();
-    };
-  }, [loadAttempt]);
+  function resetQuizState(
+    nextStage: QuizStage,
+    nextQuestions: Question[],
+  ) {
+    setStage(nextStage);
+    setCurrentQuestionIndex(0);
+    setAnswers(createEmptyAnswers(nextQuestions));
+    setResult(null);
+    setSubmitMessage(null);
+  }
 
   useEffect(() => {
     if (!runtimeContent) {
       return;
     }
 
-    setStage("idle");
-    setCurrentQuestionIndex(0);
-    setAnswers(createEmptyAnswers(runtimeContent.questions));
-    setResult(null);
-    setSubmitMessage(null);
+    resetQuizState("idle", runtimeContent.questions);
   }, [runtimeContent]);
+
+  useEffect(() => {
+    if (!runtimeContent) {
+      return;
+    }
+
+    const searchParams = new URLSearchParams(location.search);
+
+    if (searchParams.get("start") !== "1") {
+      return;
+    }
+
+    resetQuizState("answering", runtimeContent.questions);
+    navigate("/", { replace: true });
+  }, [location.search, navigate, runtimeContent]);
 
   if (loadState !== "ready" || !runtimeContent) {
     return (
@@ -229,7 +198,7 @@ function QuizHomeRoute() {
                   <div className="hero-copy__actions">
                     <button
                       className="primary-button"
-                      onClick={() => setLoadAttempt((current) => current + 1)}
+                      onClick={reload}
                       type="button"
                     >
                       重试读取内容
@@ -255,15 +224,10 @@ function QuizHomeRoute() {
     );
   }
 
-  const { characters, meta: runtimeMeta, publicCharacters, questions, quizMeta } =
-    runtimeContent;
+  const { characters, publicCharacters, questions, quizMeta } = runtimeContent;
 
   function resetQuiz(nextStage: QuizStage) {
-    setStage(nextStage);
-    setCurrentQuestionIndex(0);
-    setAnswers(createEmptyAnswers(questions));
-    setResult(null);
-    setSubmitMessage(null);
+    resetQuizState(nextStage, questions);
   }
 
   function handleStart() {
@@ -281,10 +245,6 @@ function QuizHomeRoute() {
       return nextAnswers;
     });
     setSubmitMessage(null);
-
-    if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    }
   }
 
   function handlePrevious() {
@@ -296,6 +256,13 @@ function QuizHomeRoute() {
     setSubmitMessage(null);
     setCurrentQuestionIndex((currentIndex) =>
       Math.min(questions.length - 1, currentIndex + 1),
+    );
+  }
+
+  function handleJumpToQuestion(questionIndex: number) {
+    setSubmitMessage(null);
+    setCurrentQuestionIndex(
+      Math.min(Math.max(questionIndex, 0), questions.length - 1),
     );
   }
 
@@ -316,15 +283,17 @@ function QuizHomeRoute() {
       (answer): answer is QuizAnswerRecord => answer !== null,
     );
 
-    setResult(
-      evaluateQuizResult({
-        profiles: characters,
-        tieBreakerRule: quizMeta.tieBreakerRule,
-        answers: completedAnswers,
-      }),
-    );
-    setSubmitMessage(null);
-    setStage("completed");
+    startTransition(() => {
+      setResult(
+        evaluateQuizResult({
+          profiles: characters,
+          tieBreakerRule: quizMeta.tieBreakerRule,
+          answers: completedAnswers,
+        }),
+      );
+      setSubmitMessage(null);
+      setStage("completed");
+    });
   }
 
   return (
@@ -332,12 +301,11 @@ function QuizHomeRoute() {
       stage={stage}
       questions={questions}
       publicCharacters={publicCharacters}
-      contentVersion={runtimeMeta.version}
-      contentSourcePath={runtimeMeta.sourcePath}
       currentQuestionIndex={currentQuestionIndex}
       answers={answers}
       result={result}
       submitMessage={submitMessage}
+      onJumpToQuestion={handleJumpToQuestion}
       onStart={handleStart}
       onRestart={handleRestart}
       onSelectOption={handleSelectOption}
@@ -346,23 +314,4 @@ function QuizHomeRoute() {
       onSubmit={handleSubmit}
     />
   );
-}
-
-function getLoadErrorMessage(
-  error: unknown,
-  meta: QuizMetaResponse | null,
-): string {
-  if (error instanceof QuizContentApiError) {
-    if (meta && error.endpoint.includes("/quiz/content")) {
-      return `已经拿到 ${meta.version} 的元信息，但完整题库快照还没拉下来。请检查内容服务日志后重试。`;
-    }
-
-    return error.message;
-  }
-
-  if (error instanceof Error && error.message) {
-    return error.message;
-  }
-
-  return "题库初始化失败了，但页面没有崩掉。先确认内容服务可达，再点一次重试。";
 }

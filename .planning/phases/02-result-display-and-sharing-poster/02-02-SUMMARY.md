@@ -92,7 +92,7 @@ None - no external service configuration required.
 ## Next Phase Readiness
 
 - Phase 2 now meets its roadmap goal: the result experience is complete enough to export and share as a lightweight H5 poster flow.
-- The next meaningful step is Phase 3 content calibration and fan-specific copy refinement, not more transport or backend work.
+- Current roadmap note: after later planning alignment, the next meaningful step is now Phase `02.1` frontend/backend separation and content service refactor, then Phase 3 fan-content calibration.
 
 ---
 *Phase: 02-result-display-and-sharing-poster*

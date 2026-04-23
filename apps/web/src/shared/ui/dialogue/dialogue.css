@@ -1,0 +1,255 @@
+.dialogue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-height: min(74vh, 38rem);
+  overflow-y: auto;
+  padding: 0.85rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(180deg, rgba(17, 21, 30, 0.92), rgba(12, 16, 24, 0.94)),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 40%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 28px 60px rgba(0, 0, 0, 0.22);
+}
+
+.dialogue-list__inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogue-list__row-wrapper {
+  width: 100%;
+}
+
+.dialogue-list__bottom-anchor {
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.dialogue-row {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.dialogue-row--left {
+  align-items: flex-start;
+}
+
+.dialogue-row--right {
+  align-items: flex-end;
+  transition: opacity 220ms ease;
+}
+
+.dialogue-row--muted {
+  opacity: 0.34;
+  pointer-events: none;
+}
+
+.dialogue-row__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  width: min(100%, 40rem);
+}
+
+.dialogue-row__stack--left {
+  align-items: flex-start;
+}
+
+.dialogue-row__stack--right {
+  align-items: flex-end;
+}
+
+.dialogue-row__name {
+  margin: 0 0 0 3.15rem;
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dialogue-row__body {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.7rem;
+  width: 100%;
+}
+
+.dialogue-row__body--right {
+  justify-content: flex-end;
+}
+
+.dialogue-row__body--left {
+  justify-content: flex-start;
+}
+
+.dialogue-row__timestamp-row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 3.15rem;
+  color: rgba(241, 238, 255, 0.54);
+}
+
+.dialogue-row__timestamp-row--right {
+  justify-content: flex-end;
+  margin-left: 0;
+  margin-right: 3.15rem;
+}
+
+.dialogue-row__seen {
+  color: #ff8d86;
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+.dialogue-bubble {
+  position: relative;
+  max-width: min(100%, 32rem);
+  border-radius: 1.1rem;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  line-height: 1.58;
+}
+
+.dialogue-bubble--left {
+  border-radius: 0.7rem 1.2rem 1.2rem 1.2rem;
+  background: rgba(33, 38, 63, 0.88);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+  color: #f3f4ff;
+}
+
+.dialogue-bubble--left::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65rem;
+  bottom: 0.65rem;
+  width: 2px;
+  border-radius: 999px;
+  background: var(--dialogue-theme-color, rgba(155, 93, 229, 0.42));
+  opacity: 0.6;
+}
+
+.dialogue-bubble--right {
+  border-radius: 1.2rem 0.7rem 1.2rem 1.2rem;
+  color: #f0dcff;
+}
+
+.dialogue-bubble--choice {
+  display: block;
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.035);
+  border-color: rgba(218, 185, 255, 0.18);
+  cursor: pointer;
+  text-align: left;
+}
+
+.dialogue-bubble--choice:focus-visible {
+  outline: 2px solid #ff8d86;
+  outline-offset: 3px;
+}
+
+.dialogue-bubble--sent {
+  background: linear-gradient(135deg, #9b5de5, #f15bb5);
+  border-color: transparent;
+  box-shadow:
+    0 8px 18px rgba(155, 93, 229, 0.18),
+    0 1px 4px rgba(0, 0, 0, 0.18);
+  color: #fff;
+}
+
+.dialogue-bubble__content {
+  font-size: 0.94rem;
+}
+
+.dialogue-bubble__content strong {
+  font-weight: 700;
+}
+
+.dialogue-timestamp {
+  margin: 0;
+  font-family: "Space Mono", "IBM Plex Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 720px) {
+  .dialogue-list {
+    padding: 0.85rem;
+    max-height: min(70vh, 29rem);
+  }
+
+  .dialogue-row__stack {
+    width: min(100%, 100%);
+  }
+
+  .dialogue-bubble {
+    max-width: min(100%, 24rem);
+    padding: 0.78rem 0.92rem;
+  }
+}
+
+.dialogue-list {
+  border-color: rgba(218, 185, 255, 0.14);
+  background:
+    linear-gradient(180deg, rgba(18, 22, 34, 0.92), rgba(10, 14, 24, 0.96)),
+    radial-gradient(circle at top left, rgba(218, 185, 255, 0.1), transparent 42%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 28px 60px rgba(0, 0, 0, 0.3);
+}
+
+.dialogue-row__name,
+.dialogue-timestamp {
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+}
+
+.dialogue-row__timestamp-row {
+  color: rgba(214, 220, 255, 0.54);
+}
+
+.dialogue-row__seen {
+  color: var(--accent-cyan);
+}
+
+.dialogue-bubble {
+  border-color: rgba(218, 185, 255, 0.12);
+}
+
+.dialogue-bubble--left {
+  background:
+    linear-gradient(180deg, rgba(24, 29, 45, 0.94), rgba(13, 16, 27, 0.96)),
+    radial-gradient(circle at top left, rgba(124, 232, 255, 0.08), transparent 40%);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.24);
+  color: var(--text-main);
+}
+
+.dialogue-bubble--left::before {
+  background: var(--dialogue-theme-color, rgba(218, 185, 255, 0.52));
+}
+
+.dialogue-bubble--choice {
+  background:
+    linear-gradient(180deg, rgba(24, 29, 45, 0.88), rgba(13, 16, 27, 0.92)),
+    radial-gradient(circle at top left, rgba(218, 185, 255, 0.08), transparent 40%);
+}
+
+.dialogue-bubble--choice:focus-visible {
+  outline-color: var(--accent-cyan);
+}
+
+.dialogue-bubble--sent {
+  background: linear-gradient(135deg, #dab9ff, #ffafd7 64%, #7ce8ff);
+  box-shadow:
+    0 12px 28px rgba(218, 185, 255, 0.18),
+    0 0 20px rgba(255, 175, 215, 0.12);
+  color: #0b0f19;
+}

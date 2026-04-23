@@ -87,8 +87,8 @@ None - no external service configuration required.
 
 ## Next Phase Readiness
 
-- The result information structure is now stable enough for `02-02` poster export and share-state work.
-- Wave 1 is complete, but the phase is not complete yet because `02-02` remains unfinished.
+- Historical note: at the end of `02-01`, the next step was `02-02` poster export and share-state work.
+- Current roadmap note: Phase 2 is now complete, and the downstream next step has since been updated to Phase `02.1` architecture separation before Phase 3 content deepening.
 
 ---
 *Phase: 02-result-display-and-sharing-poster*
