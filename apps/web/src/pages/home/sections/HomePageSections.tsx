@@ -106,26 +106,6 @@ export function HomeHeroSection({
               {`这是一个 MyGO 恶搞人格测试。答完 ${questionsCount} 道情境单选题，你会拿到角色匹配、三轴倾向和可分享结果海报。`}
             </p>
           </div>
-          <div className="masthead__archive">
-            <div className="announcement-banner">
-              <SparkleSticker className="announcement-banner__icon" />
-              <div>
-                <strong>主线只剩四步</strong>
-                <p>开始测试、完成答题、查看结果、分享结果，不再让旁支入口插进首屏。</p>
-              </div>
-            </div>
-            <div className="masthead__badge">
-              <EpisodeSeal className="masthead__seal" label={`${questionsCount}Q`} />
-              <div>
-                <span>开始后会发生什么</span>
-                <strong>{`约 ${estimatedMinutes} 分钟答完，结果即时生成。`}</strong>
-              </div>
-            </div>
-            <div className="masthead__archive-meta">
-              <span>单页完成</span>
-              <span>结果可分享</span>
-            </div>
-          </div>
         </header>
 
         <section className="hero-grid">
@@ -139,24 +119,6 @@ export function HomeHeroSection({
             <p className="hero-copy__lede">
               别找标准答案，选更像你第一反应会做的事。首页只负责让你开始测试，结果页再把结论和分享入口给出来。
             </p>
-            <div className="hero-copy__fact-grid" aria-label="test summary">
-              <div className="hero-copy__fact-card">
-                <span>这是什么</span>
-                <strong>情境人格测试</strong>
-              </div>
-              <div className="hero-copy__fact-card">
-                <span>多少题</span>
-                <strong>{`${questionsCount} 道情境单选`}</strong>
-              </div>
-              <div className="hero-copy__fact-card">
-                <span>会得到什么</span>
-                <strong>角色结果 + 三轴 + 海报</strong>
-              </div>
-              <div className="hero-copy__fact-card">
-                <span>什么时候出结果</span>
-                <strong>答完立即生成</strong>
-              </div>
-            </div>
             <div className="hero-copy__actions">
               <button className="primary-button" onClick={primaryAction} type="button">
                 <StoryBadgeIcon kind="bubble" />
@@ -211,32 +173,6 @@ export function HomeHeroSection({
               <div className="chat-bubble chat-bubble--answer">
                 <span>{stage === "idle" ? "完成后" : "当前状态"}</span>
                 <p>{stageSummary}</p>
-              </div>
-            </div>
-            <div className="hero-preview__metrics">
-              <div>
-                <span>题目数量</span>
-                <strong>{questionsCount}</strong>
-              </div>
-              <div>
-                <span>预计时长</span>
-                <strong>{`${estimatedMinutes} 分钟`}</strong>
-              </div>
-              <div>
-                <span>结果内容</span>
-                <strong>角色 + 三轴</strong>
-              </div>
-            </div>
-            <div className="hero-preview__footer">
-              <div className="hero-preview__footer-note">
-                <MusicNoteSticker className="hero-preview__footer-note-icon" />
-                <p>
-                  {stage === "idle"
-                    ? "首页现在只保留开始测试的主任务。"
-                    : stage === "answering"
-                      ? `当前进度 ${progressPercent}% ，继续答完剩余题目就会进入结果页。`
-                      : "结果已经出来了，往下直接看结论并分享海报。"}
-                </p>
               </div>
             </div>
           </aside>

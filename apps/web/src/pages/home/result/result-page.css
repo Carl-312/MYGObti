@@ -111,8 +111,8 @@
 .result-report__relation-card,
 .result-report__share-copy {
   border-radius: 1.15rem;
-  border: 1px solid rgba(17, 20, 29, 0.08);
-  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--card-border-light);
+  background: var(--card-bg-light);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.54);
 }
 
@@ -519,7 +519,7 @@
   flex-wrap: wrap;
 }
 
-@media (max-width: 1120px) {
+@media (max-width: 980px) {
   .result-report__hero,
   .result-report__readout,
   .result-report__share-layout,
@@ -573,5 +573,69 @@
   .result-report__chip-row,
   .result-report__signal-tags {
     gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .result-report__hero,
+  .result-report__section,
+  .result-report__footer {
+    padding: 0.85rem;
+    border-radius: 0.95rem;
+  }
+
+  .result-report__hero h2 {
+    font-size: clamp(1.8rem, 10vw, 2.6rem);
+  }
+
+  .result-report__headline-meta {
+    gap: 0.5rem;
+  }
+
+  .result-report__readout {
+    gap: 0.6rem;
+  }
+
+  .result-report__hero-live2d {
+    min-height: 11rem;
+  }
+
+  .result-report__hero-live2d .character-live2d-slot__image {
+    max-width: 100%;
+  }
+
+  .result-report__section-heading h3 {
+    font-size: clamp(1.2rem, 6vw, 1.55rem);
+  }
+
+  .result-report__share-layout {
+    grid-template-columns: 1fr;
+  }
+
+  /* chart/radar 容器宽度全屏 */
+  .result-report__section canvas,
+  .result-report__section svg {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .result-report__axis-row {
+    padding: 0.7rem 0.75rem;
+  }
+
+  .result-report__footer {
+    gap: 0.65rem;
+  }
+
+  .result-report__footer-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .result-report__footer-actions .primary-button,
+  .result-report__footer-actions .ghost-button {
+    width: 100%;
+    justify-content: center;
   }
 }
