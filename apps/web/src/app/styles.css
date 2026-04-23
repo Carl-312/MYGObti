@@ -84,11 +84,41 @@ button {
 
 button:disabled {
   cursor: not-allowed;
-  opacity: 0.45;
+  opacity: 0.38;
 }
 
 a {
   color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+.primary-button:focus-visible,
+.ghost-button:focus-visible,
+.option-tile:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.primary-button:disabled,
+.ghost-button:disabled,
+.option-tile:disabled {
+  opacity: 0.38;
+  pointer-events: none;
+}
+
+.result-room__score strong,
+.progress-summary strong,
+.ranking-list em,
+.result-poster__scoreband strong,
+.result-report__headline-meta strong,
+.result-report__ranking-meta em {
+  font-variant-numeric: tabular-nums;
 }
 
 #root {

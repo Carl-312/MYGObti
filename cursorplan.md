@@ -417,6 +417,7 @@
 }
 
 button:focus-visible,
+a:focus-visible,
 .primary-button:focus-visible,
 .ghost-button:focus-visible,
 .option-tile:focus-visible {
@@ -453,6 +454,14 @@ button:focus-visible,
   font-variant-numeric: tabular-nums;
 }
 ```
+
+**R3 实施记录（2026-04-23）**
+
+| 目标 | 状态 | 实际改动 |
+|---|---|---|
+| E2 全局焦点环 | ✅ 完成 | 增加 `:focus-visible`，并覆盖 button / a / `.primary-button` / `.ghost-button` / `.option-tile` |
+| E3 disabled 统一 | ✅ 完成 | `button:disabled` 透明度从 `0.45` 调整为 `0.38`；primary / ghost / option disabled 统一 `opacity: 0.38` 与 `pointer-events: none` |
+| C3 tabular-nums | ✅ 完成 | 分数、进度、排行、海报 scoreband、结果报告 meta 数字使用 `font-variant-numeric: tabular-nums` |
 
 ---
 
@@ -540,6 +549,6 @@ R5（进阶收尾）  ← 依赖 R1-R4 全部完成
 |---|---|---|
 | R1（按钮微交互） | ✅ 完成 | primary edge glow, ghost hover, :active 状态；补入 filter 过渡与 disabled 防护 |
 | R2（卡片层次） | ✅ 完成 | hover 浮起, inset 高光增强, glow 色修正；hover 限定在精细指针设备 |
-| R3（可访问性） | ⏳ 待执行 | :focus-visible, disabled 0.38, tabular-nums |
+| R3（可访问性） | ✅ 完成 | :focus-visible, disabled 0.38, tabular-nums |
 | R4（文字精修） | ⏳ 待执行 | text-shadow 增强, kicker 0.7rem, 竖条 |
 | R5（进阶收尾） | ⏳ 待执行 | @property 进度条, 计数占位, SVG currentColor |
