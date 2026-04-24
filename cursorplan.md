@@ -600,3 +600,405 @@ R5（进阶收尾）  ← 依赖 R1-R4 全部完成
 - `apps/web/src/pages/home/sections/HomePageSections.tsx`
 - `apps/web/src/pages/test/TestPage.tsx`
 - `apps/web/src/test/setup.ts`
+
+---
+
+## 第七阶段：Design DNA v1.0 对齐
+
+### 〇、架构决策：CSS Variables 路线 vs Tailwind 路线
+
+DNA 规范以 Tailwind 语法描述 token（`from-mygo-neon-purple`、`rounded-2xl`、`backdrop-blur-md`），但当前项目 **未使用 Tailwind**，全部样式基于 `:root` CSS 变量 + BEM 类。
+
+**结论：保持 CSS 变量 + BEM 路线，不引入 Tailwind。**
+
+理由：
+1. 项目已有 2200+ 行成熟的 CSS 系统，迁移到 Tailwind 工作量极大且回报有限
+2. 移动端 H5 不需要 Tailwind 的原子化优势
+3. DNA 的 token 名（`mygo-*`）可直接映射为 `--mygo-*` CSS 变量
+
+DNA 中的 Tailwind 约定将按以下方式映射：
+
+| DNA (Tailwind) | 实施 (CSS Variables) |
+|---|---|
+| `mygo-bg` | `--mygo-bg: linear-gradient(180deg, #121414 0%, #1a1c2e 100%)` |
+| `mygo-surface` | `--mygo-surface: rgba(26, 33, 62, 0.6)` + `backdrop-filter: blur(12px)` |
+| `mygo-neon-purple` | `--mygo-neon-purple: #dab9ff` / `--mygo-neon-purple-sat: #9b5de5` |
+| `rounded-2xl` | `--mygo-radius: 1rem` / `--mygo-radius-sm: 0.75rem` |
+| `space-y-8` | gap / margin token `--mygo-space-section: 2rem` |
+| `backdrop-blur-md` | `backdrop-filter: blur(12px)` |
+
+---
+
+### 一、DNA Compliance Audit — 偏差清单
+
+对照 DNA v1.0 逐条审计现有代码库，标注合规 / 偏差 / 缺失。
+
+#### 1. Color Tokens
+
+| DNA Token | DNA 值 | 现有对应变量 | 偏差 |
+|---|---|---|---|
+| `mygo-bg` | `linear-gradient(180deg, #121414, #1a1c2e)` | `--bg-0: #090b14` / body 渐变 `#090b14→#101522→#171b2b` | ⚠️ 色相偏蓝偏深，DNA 要求中性深灰绿 |
+| `mygo-surface` | `#1a213e/60 + backdrop-blur-md` | `--surface: rgba(17,21,35,0.74)` | ⚠️ 透明度偏高（0.74 vs 0.60），组件层未统一使用 backdrop-blur |
+| `mygo-neon-purple` | `#dab9ff` (light) / `#9b5de5` (sat) | `--accent: #dab9ff` | ✅ 浅色一致；⚠️ 饱和版 `#9b5de5` 无对应变量 |
+| `mygo-neon-pink` | `#ffafd7` (light) / `#f15bb5` (sat) | `--accent-deep: #ffafd7` | ✅ 浅色一致；⚠️ 饱和版 `#f15bb5` 无对应变量 |
+| `mygo-neon-green` | `#00dfc1` | `--accent-warm: #00dfc1` | ✅ 一致 |
+| `mygo-text` | `#e2e2e2` | `--text-main: #eef0ff` | ⚠️ 偏蓝偏亮，DNA 要求中性灰白 |
+| `mygo-text-muted` | `#8888aa` | `--text-faint: rgba(170,176,214,0.64)` | ⚠️ 用 rgba 带透明度，且偏蓝 |
+| `mygo-glow-purple` | `rgba(155,93,229,0.6)` | 无专用变量 | ❌ 缺失 |
+| `mygo-glow-pink` | `rgba(255,175,215,0.4)` | 无专用变量 | ❌ 缺失 |
+| `border-white/10` | `rgba(255,255,255,0.1)` | 分散使用 0.06~0.14 不等 | ⚠️ 未统一 |
+
+**硬编码 hex 统计：** `styles.css` 32处 / `dialogue.css` 8处 / `result-page.css` 9处 / `character-assets.css` + TSX 若干
+
+#### 2. Typography
+
+| DNA 规则 | 现状 | 偏差 |
+|---|---|---|
+| 中文正文 16px，行高 1.6 | `:root { line-height: 1.5 }` | ⚠️ 行高 1.5 vs DNA 1.6 |
+| ZCOOL KuaiLe 时 `letter-spacing: 0.05em` | 暗色标题 `letter-spacing: -0.04em` | ❌ 负间距，与 DNA 相反 |
+| 禁止引入规范外字体 | `--font-sans` 含 `Source Han Sans SC` / `PingFang SC` 等回退 | ✅ 回退栈合理 |
+| 英文/数字用 Space Mono | 已统一 `var(--font-mono)` | ✅ |
+
+#### 3. Surfaces & Cards
+
+| DNA 规则 | 现状 | 偏差 |
+|---|---|---|
+| `mygo-surface + backdrop-blur-md + rounded-2xl + border-white/10` | 暗色卡片用多层线性+径向渐变，部分无 blur | ⚠️ 背景过复杂；blur 不统一 |
+| hover: border → neon-purple + glow box-shadow | 已有 hover 浮起，但 border-color 用 `rgba(218,185,255,0.24)` | ⚠️ hover border 应该更亮 |
+| 圆角统一 `rounded-2xl (1rem)` | `--radius-lg: 28px`、`--radius-md: 20px` 等 | ❌ DNA 是 1rem，现有最小 12px |
+| 小元素 `rounded-xl (0.75rem)` | 混用 | ⚠️ 需收敛 |
+
+#### 4. Buttons
+
+| DNA 规则 | 现状 | 偏差 |
+|---|---|---|
+| primary: `from-neon-purple to-neon-pink` + 呼吸灯 2.5s | 渐变含三色（purple → pink → cyan）；pulse-glow 存在 | ⚠️ DNA 只要紫→粉，不含 cyan；脉冲参数需核对 |
+| ghost: `bg-transparent + border-neon-purple + hover:bg-neon-purple/20` | `background: rgba(255,255,255,0.04)` + `backdrop-filter` | ⚠️ 非全透明，DNA 要求 transparent |
+| active: `scale(0.95) 0.1s` | `scale(0.97)` + `80ms` | ⚠️ 幅度和时间微偏 |
+| focus-visible: `ring-2 ring-neon-purple ring-offset-2 ring-offset-mygo-bg` | `outline: 2px solid var(--accent)` + `offset 2px` | ⚠️ DNA 要求 ring-offset 带背景色，当前无 offset 色 |
+
+#### 5. Motion
+
+| DNA 规则 | 现状 | 偏差 |
+|---|---|---|
+| 页面进入 opacity 0→1, y 20→0, 0.4s easeOut | `PageTransition.tsx` 用 framer-motion | ✅ 需核对参数 |
+| 列表 stagger: 0.08s | `DialogueList` 有 stagger | ✅ 需核对具体值 |
+| CTA 呼吸灯 box-shadow 2.5s | `@keyframes pulse-glow` 存在 | ⚠️ 用 CSS @keyframes，DNA 要求用 framer-motion |
+| 单动画 ≤ 0.5s | `pulse-glow` 周期远超 0.5s | ⚠️ 呼吸灯例外？需明确 |
+| 禁止 bounce/elastic | 无 bounce/elastic | ✅ |
+| 禁止 CSS @keyframes 做交互动画 | `pulse-glow`（按钮交互）、`bubble-rise`（装饰） | ⚠️ pulse-glow 违规；bubble-rise 可归为装饰豁免 |
+| 禁止 transition-all | 无 `transition: all` | ✅ |
+
+#### 6. Texture Overlay
+
+| DNA 规则 | 现状 | 偏差 |
+|---|---|---|
+| 噪点: 256x256 tiled PNG, opacity 0.05 | CSS radial-gradient 模拟噪点, opacity 0.14 | ❌ 非真实噪点图；透明度是 DNA 的 2.8 倍 |
+| 扫描线: opacity 0.03 | opacity 0.1 | ❌ 透明度是 DNA 的 3.3 倍 |
+
+#### 7. Layout
+
+| DNA 规则 | 现状 | 偏差 |
+|---|---|---|
+| `max-w-md mx-auto px-4 py-6` | 无统一 max-width 约束 | ⚠️ 首页全宽铺开 |
+| 区块间 `space-y-8` (2rem) | 间距不统一 | ⚠️ |
+| 卡片内 `p-5` (1.25rem) | 12px~28px 混用 | ⚠️ |
+| 元素间 `gap-3` (0.75rem) | 各处 gap 值不一 | ⚠️ |
+
+#### 8. Chat Bubble (DialogueRow)
+
+| DNA 规则 | 现状 | 偏差 |
+|---|---|---|
+| 左气泡: `bg-mygo-surface + rounded-2xl rounded-tl-sm` | `rgba(24,29,45,0.94)` + `0.7rem 1.2rem 1.2rem 1.2rem` | ⚠️ 背景非 surface token；圆角接近但数值不同 |
+| 右气泡: `from-neon-purple to-neon-pink + rounded-tr-sm + 白色文字` | `linear-gradient(135deg, #dab9ff, #ffafd7 64%, #7ce8ff)` + `color: #0b0f19` | ❌ 多了 cyan；文字色是暗色不是白色 |
+| 选中动画: `translateX ±20px + fade-in 0.3s` | framer-motion 存在 | ✅ 需核对参数 |
+
+#### 9. 严重违规汇总
+
+| 违规等级 | 条目 | 数量 |
+|---|---|---|
+| ❌ 缺失/严重偏差 | glow token 缺失、letter-spacing 反向、圆角体系、噪点非 PNG、扫描线过亮、右气泡色/文字色 | 7 |
+| ⚠️ 可调偏差 | 背景色相、surface 透明度、行高、hover border 亮度、按钮渐变三色→双色、active scale、focus ring、间距体系、backdrop-blur 缺失 | 12 |
+| ✅ 合规 | neon-green、Space Mono、无 bounce、无 transition-all、framer-motion 已接入 | 5 |
+
+---
+
+### 二、逐轮改动规划
+
+#### DNA-R1 — Token 重铸：`:root` 变量对齐 DNA（P0 基础层）
+
+**目标**：建立 `--mygo-*` 变量体系，所有后续改动基于此。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 1.1 | `styles.css` `:root` | 新增 DNA token 变量块，与旧变量并存（渐进过渡） |
+| 1.2 | `styles.css` `:root` | 修正行高 `1.5 → 1.6` |
+| 1.3 | `styles.css` `:root` | 新增圆角 token `--mygo-radius: 1rem` / `--mygo-radius-sm: 0.75rem` |
+| 1.4 | `styles.css` `:root` | 新增间距 token `--mygo-space-section: 2rem` / `--mygo-space-card: 1.25rem` / `--mygo-space-element: 0.75rem` |
+
+**新增变量清单**：
+
+```css
+/* === MyGObti Design DNA v1.0 Token Layer === */
+--mygo-bg:              linear-gradient(180deg, #121414 0%, #1a1c2e 100%);
+--mygo-surface:         rgba(26, 33, 62, 0.6);
+--mygo-neon-purple:     #dab9ff;
+--mygo-neon-purple-sat: #9b5de5;
+--mygo-neon-pink:       #ffafd7;
+--mygo-neon-pink-sat:   #f15bb5;
+--mygo-neon-green:      #00dfc1;
+--mygo-text:            #e2e2e2;
+--mygo-text-muted:      #8888aa;
+--mygo-glow-purple:     rgba(155, 93, 229, 0.6);
+--mygo-glow-pink:       rgba(255, 175, 215, 0.4);
+--mygo-border:          rgba(255, 255, 255, 0.1);
+--mygo-radius:          1rem;
+--mygo-radius-sm:       0.75rem;
+--mygo-space-section:   2rem;
+--mygo-space-card:      1.25rem;
+--mygo-space-element:   0.75rem;
+```
+
+**旧变量迁移映射**（一对一别名，后续逐步替换引用）：
+
+| 旧变量 | 新变量 | 是否可直接 alias |
+|---|---|---|
+| `--accent` | `--mygo-neon-purple` | ✅ 值一致 |
+| `--accent-deep` | `--mygo-neon-pink` | ✅ 值一致 |
+| `--accent-warm` / `--accent-mint` / `--accent-green` | `--mygo-neon-green` | ✅ 值一致 |
+| `--text-main` | `--mygo-text` | ❌ 值变化 `#eef0ff → #e2e2e2` |
+| `--text-faint` | `--mygo-text-muted` | ❌ rgba → hex |
+| `--surface` | `--mygo-surface` | ❌ 透明度和色相变化 |
+| `--bg-0` ~ `--bg-2` | `--mygo-bg` | ❌ 渐变结构变化 |
+
+**预计改动文件**：`styles.css`（1 文件）
+
+---
+
+#### DNA-R2 — 背景层重构：暗色统一 + 噪点/扫描线合规
+
+**目标**：背景渐变对齐 DNA；噪点换真实 PNG；扫描线透明度降至 0.03。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 2.1 | `public/` | 生成或放入 256×256 噪点 PNG（noise-256.png） |
+| 2.2 | `styles.css` `.page-shell__background` | 渐变改为 `--mygo-bg`（`#121414 → #1a1c2e`） |
+| 2.3 | `styles.css` `.page-shell__noise` | 从 CSS radial-gradient 改为 `background-image: url(/noise-256.png)` + `background-repeat: repeat` + `background-size: 256px 256px` + `opacity: 0.05` + `position: fixed` |
+| 2.4 | `styles.css` `.page-shell__scanlines` | `opacity: 0.1 → 0.03` |
+| 2.5 | `NoiseOverlay.tsx` | 如需调整组件结构（应该无需，仅 CSS 层改动） |
+| 2.6 | shell glow 色斑 | 保留 violet/rose 色斑但调色对齐 `--mygo-glow-purple` / `--mygo-glow-pink` |
+
+**预计改动文件**：`styles.css`、`public/noise-256.png`（2 文件）
+
+---
+
+#### DNA-R3 — Surface & Card 体系对齐
+
+**目标**：所有暗色卡片统一为 `mygo-surface + backdrop-blur-md + rounded-2xl + border-white/10`。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 3.1 | `styles.css` 全局卡片声明 | 统一 `.masthead__mini-badge`、`.hero-preview__chat`、`.option-tile`、`.signal-card` 等暗色卡片的背景为 `var(--mygo-surface)` + `backdrop-filter: blur(12px)` |
+| 3.2 | `styles.css` | 圆角统一使用 `var(--mygo-radius)` = 1rem（取代 18px/20px/24px/28px）；小元素用 `var(--mygo-radius-sm)` = 0.75rem |
+| 3.3 | `styles.css` | 所有暗色卡片 border 统一为 `1px solid var(--mygo-border)`（= `rgba(255,255,255,0.1)`） |
+| 3.4 | `styles.css` hover 态 | hover border-color 改为 `var(--mygo-neon-purple)` + `box-shadow: 0 0 20px var(--mygo-glow-purple)` |
+| 3.5 | `chat-quiz.css` | `.chat-quiz__panel` / `.chat-quiz__sidebar-card` / `.chat-quiz__status-card` 对齐到 surface token |
+| 3.6 | `dialogue.css` | `.dialogue-list` 和 `.dialogue-bubble--left` 对齐到 surface token |
+| 3.7 | 间距对齐 | 卡片内 padding 统一 `var(--mygo-space-card)` = 1.25rem；元素间 gap 统一 `var(--mygo-space-element)` = 0.75rem |
+
+**预计改动文件**：`styles.css`、`chat-quiz.css`、`dialogue.css`（3 文件）
+
+---
+
+#### DNA-R4 — Typography 精修
+
+**目标**：对齐 DNA 字体规则。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 4.1 | `styles.css` 暗色标题选择器 | `letter-spacing: -0.04em → 0.05em`（ZCOOL KuaiLe 应使用正间距） |
+| 4.2 | `styles.css` `:root` | `line-height: 1.5 → 1.6` |
+| 4.3 | `styles.css` | 确认正文 `font-size: 16px`（当前由浏览器默认保证，但需确认无覆盖） |
+| 4.4 | `styles.css` | `--text-main` 值从 `#eef0ff` 切换为 `--mygo-text`（`#e2e2e2`） |
+| 4.5 | `styles.css` | `--text-faint` 从 `rgba(170,176,214,0.64)` 切换为 `--mygo-text-muted`（`#8888aa`） |
+| 4.6 | `result-page.css` | 标题/正文色从 `#11151d` 等亮色系暗文切换（见 DNA-R6 结果页暗化） |
+
+**预计改动文件**：`styles.css`、`result-page.css`（2 文件）
+
+---
+
+#### DNA-R5 — 按钮系统重构
+
+**目标**：primary / ghost / icon 三种按钮完全对齐 DNA 规范。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 5.1 | `styles.css` `.primary-button` | 渐变从三色（purple→pink→cyan）改为双色 `linear-gradient(to right, var(--mygo-neon-purple), var(--mygo-neon-pink))` |
+| 5.2 | `styles.css` `.primary-button` | 呼吸灯改为 framer-motion 驱动（需配合 TSX），或保留 CSS @keyframes 但限定仅用于此非交互装饰效果。DNA 原文"CTA 呼吸灯"归为装饰类动画，可在 CSS 保留但标注例外 |
+| 5.3 | `styles.css` `.ghost-button` | `background: rgba(255,255,255,0.04)` → `background: transparent`；`border-color` 使用 `var(--mygo-neon-purple)`；hover 态 `background: rgba(var(--mygo-neon-purple-rgb), 0.2)` |
+| 5.4 | `styles.css` `.primary-button:active` / `.ghost-button:active` | `scale(0.97) → scale(0.95)`；`80ms → 100ms` |
+| 5.5 | `styles.css` focus-visible | 改为 `outline: 2px solid var(--mygo-neon-purple); outline-offset: 2px;`（并添加模拟 ring-offset 的 box-shadow 背景色隔离） |
+| 5.6 | 新增 icon button | `.icon-button { border-radius: 9999px; }` + 同 ghost 逻辑 |
+
+**预计改动文件**：`styles.css`（1 文件，可能涉及 TSX 组件添加 icon-button class）
+
+---
+
+#### DNA-R6 — 结果页暗化（最大工程量）
+
+**目标**：`result-page.css` 从亮色主题全面转为暗色主题。DNA 明确 "禁止亮色/白色背景"。
+
+这是整个 DNA 对齐中 **工作量最大** 的改动——结果页当前为完全独立的亮色设计系统。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 6.1 | `result-page.css` 全局色 | `.result-report__hero/section/footer` 背景从 `rgba(255,255,255,0.96)` → `var(--mygo-surface)` + `backdrop-filter: blur(12px)` |
+| 6.2 | `result-page.css` 边框 | 所有 `color-mix(...)` 白底边框 → `var(--mygo-border)` |
+| 6.3 | `result-page.css` 文字色 | `color: #11151d` → `var(--mygo-text)`；`rgba(33,37,49,0.7)` → `var(--mygo-text-muted)` |
+| 6.4 | `result-page.css` 内嵌卡片 | `.result-report__headline-meta div` 等白底子卡片 → 深色变体 `var(--mygo-surface)` |
+| 6.5 | `result-page.css` | `.result-report__axis-track` 轨道背景暗化 |
+| 6.6 | `result-page.css` | `.result-report__axis-marker--user` 从 `#11151d` → `var(--mygo-neon-purple)` 或其他 accent |
+| 6.7 | `result-page.css` | `.result-report__chip` 已是深色 `rgba(17,20,29,0.92)` → 保持，调整文字色 |
+| 6.8 | `result-page.css` | hover 效果从亮色阴影改为 neon glow |
+| 6.9 | `result-page.css` | `.result-report__hero-card` 内嵌深色卡已合规，保持 |
+| 6.10 | `result-page.css` | status 状态色（success/warning/error）从浅色底改为暗色 + accent 边框 |
+| 6.11 | `ResultStageSection.tsx` | `--result-accent` 注入逻辑保持，但 `color-mix` 引用都需改为暗色体系 |
+
+**accent 机制保留**：结果页的 `--result-accent` 动态色系统是好的设计，暗化时保留此机制，将 `color-mix` 的 base 从白色换为深色。
+
+**预计改动文件**：`result-page.css`、`ResultStageSection.tsx`（2 文件）
+
+---
+
+#### DNA-R7 — Chat Bubble 对齐
+
+**目标**：`DialogueRow` 气泡样式完全对齐 DNA。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 7.1 | `dialogue.css` `.dialogue-bubble--left` | 背景 → `var(--mygo-surface)` + `backdrop-filter: blur(12px)` |
+| 7.2 | `dialogue.css` `.dialogue-bubble--left` | 圆角 → `1rem 1rem 1rem 0.25rem`（rounded-2xl + rounded-tl-sm） |
+| 7.3 | `dialogue.css` `.dialogue-bubble--sent` | 渐变从三色 → 双色 `linear-gradient(to right, var(--mygo-neon-purple), var(--mygo-neon-pink))` |
+| 7.4 | `dialogue.css` `.dialogue-bubble--sent` | 文字色从 `#0b0f19`（暗色）→ `#ffffff`（白色），DNA 明确要求右气泡白色文字 |
+| 7.5 | `dialogue.css` `.dialogue-bubble--right` | 圆角 → `1rem 0.25rem 1rem 1rem`（rounded-2xl + rounded-tr-sm） |
+| 7.6 | `dialogue.css` | 硬编码 hex 清理（`#f3f4ff`、`#ff8d86`、`#0b0f19` 等）→ token 变量 |
+| 7.7 | `dialogue.css` `.dialogue-bubble--choice` | 选中后动画核对：`translateX(±20px) + fade-in 0.3s` |
+
+**预计改动文件**：`dialogue.css`、可能微调 `DialogueBubble.tsx`（1-2 文件）
+
+---
+
+#### DNA-R8 — Motion 合规审计
+
+**目标**：确保所有动画符合 DNA 运动规范。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 8.1 | `styles.css` | `@keyframes bubble-rise`：装饰性动画，归入豁免类（噪点/扫描线同类），保留 |
+| 8.2 | `styles.css` | `@keyframes pulse-glow`：CTA 呼吸灯。DNA 说交互动画用 framer-motion，但此为装饰循环。**决策**：保留 CSS @keyframes，但注释标注 DNA 豁免理由 |
+| 8.3 | `styles.css` | `@keyframes rail-shift`：进度条装饰动画，保留 |
+| 8.4 | `PageTransition.tsx` | 核对进入动画参数：opacity 0→1, y 20→0, duration 0.4s, ease easeOut |
+| 8.5 | `DialogueList.tsx` | 核对 stagger 值：`staggerChildren: 0.08` |
+| 8.6 | `styles.css` 全局按钮 hover | `box-shadow transition` 核对为 `0.3s`（DNA 要求 0.3s） |
+| 8.7 | `styles.css` 全局按钮 active | `transition-duration` 核对为 `0.1s`（DNA 要求 0.1s） |
+| 8.8 | `styles.css` pulse-glow | 核对周期为 `2.5s ease-in-out infinite`（DNA 明确值） |
+
+**预计改动文件**：`styles.css`、可能微调 `PageTransition.tsx` / `DialogueList.tsx`（1-3 文件）
+
+---
+
+#### DNA-R9 — Layout 间距节奏 + 移动端验证
+
+**目标**：全局间距对齐 DNA 节奏；验证 375px 断点。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 9.1 | `styles.css` | 内容区添加 `max-width: 28rem`（md = 448px ≈ max-w-md）+ `margin: 0 auto` + `padding: 1rem 1.5rem`（移动端 `px-4 py-6` ≈ 1rem 1.5rem） |
+| 9.2 | `styles.css` | 区块间距 → `gap` 或 margin 使用 `var(--mygo-space-section)` = 2rem |
+| 9.3 | `chat-quiz.css` | 答题页内间距对齐 |
+| 9.4 | `result-page.css` | 结果页间距对齐 |
+| 9.5 | 全文件 | 验证 375px / 390px / 428px 三个关键宽度下的布局，确保无溢出 |
+
+**预计改动文件**：`styles.css`、`chat-quiz.css`、`result-page.css`（3 文件）
+
+---
+
+#### DNA-R10 — 硬编码 Hex 清零 + `filter:drop-shadow` 消除
+
+**目标**：全项目零硬编码颜色值；glow 全部走 box-shadow。
+
+| 步骤 | 改动范围 | 内容 |
+|---|---|---|
+| 10.1 | `styles.css` | 逐一替换 32 处硬编码 hex → `var(--mygo-*)` |
+| 10.2 | `dialogue.css` | 替换 8 处 |
+| 10.3 | `result-page.css` | 替换 9 处（部分在 R6 已处理） |
+| 10.4 | `character-assets.css` L89 | `filter: drop-shadow(...)` → `box-shadow: ...`（注意 drop-shadow 对 PNG 轮廓有效而 box-shadow 对盒模型有效，可能需要包一层容器） |
+| 10.5 | TSX 内联色 | `characterAssets.ts` 的 `CHARACTER_ACCENTS` 为角色动态色，保留硬编码但注释标注为 "动态色例外" |
+| 10.6 | 全局 Grep 验证 | 确认 CSS 中无 `#` hex 值残留（`:root` 定义块的例外） |
+
+**预计改动文件**：`styles.css`、`dialogue.css`、`result-page.css`、`character-assets.css`（4 文件）
+
+---
+
+### 三、依赖关系与执行顺序
+
+```
+DNA-R1 (Token 重铸) ← 无依赖，最先执行，所有后续改动的基础
+DNA-R2 (背景层)     ← 依赖 R1
+DNA-R3 (Surface)    ← 依赖 R1
+DNA-R4 (Typography) ← 依赖 R1
+DNA-R5 (按钮)       ← 依赖 R1
+                       ↓ R1 完成后 R2~R5 可并行
+DNA-R6 (结果页暗化) ← 依赖 R1 + R3（surface 体系确定后再改结果页）
+DNA-R7 (Chat Bubble) ← 依赖 R1 + R3
+DNA-R8 (Motion)     ← 依赖 R5（按钮参数确定后核对动画）
+DNA-R9 (Layout)     ← 依赖 R3 + R6（卡片和结果页结构定型后调间距）
+DNA-R10 (Hex 清零)  ← 依赖 R1~R9 全部完成（最后扫尾）
+```
+
+**建议执行波次**：
+
+| 波次 | 轮次 | 预计复杂度 |
+|---|---|---|
+| Wave 1 | R1 (Token) | 低 — 仅添加变量 |
+| Wave 2 | R2 (背景) + R4 (字体) + R5 (按钮) | 中 — 三路并行 |
+| Wave 3 | R3 (Surface) | 中 — 大范围选择器修改 |
+| Wave 4 | R6 (结果页暗化) | **高** — 最大工程量 |
+| Wave 5 | R7 (Chat) + R8 (Motion) | 中 — 两路并行 |
+| Wave 6 | R9 (Layout) + R10 (Hex 清零) | 中 — 收尾扫描 |
+
+---
+
+### 四、Do / Don't 检查清单（每轮验收用）
+
+```
+[  ] 所有新增/修改颜色走 --mygo-* token
+[  ] 卡片用 var(--mygo-surface) + backdrop-filter: blur(12px)
+[  ] 发光只用 box-shadow，无 filter:drop-shadow
+[  ] 交互动画用 framer-motion（装饰循环动画 @keyframes 需注释豁免理由）
+[  ] 每个组件在 375px 视口无溢出
+[  ] 无亮色/白色背景
+[  ] 无 transition-all
+[  ] 无 bounce/elastic 缓动
+[  ] 无硬编码 hex（:root 定义区例外）
+[  ] 无规范外字体
+[  ] 单个交互动画 ≤ 0.5s
+[  ] ZCOOL KuaiLe 字体使用 letter-spacing: 0.05em
+```
+
+---
+
+### 五、当前进度
+
+| 轮次 | 状态 | 核心改动 |
+|---|---|---|
+| DNA-R1（Token 重铸） | ⏳ 待执行 | `:root` 新增 `--mygo-*` 变量体系 + 行高修正 |
+| DNA-R2（背景层） | ⏳ 待执行 | 渐变对齐 + 噪点 PNG + 扫描线降透明度 |
+| DNA-R3（Surface） | ⏳ 待执行 | 卡片统一 surface + blur + radius + border |
+| DNA-R4（Typography） | ⏳ 待执行 | letter-spacing 修正 + 文字色切换 |
+| DNA-R5（按钮） | ⏳ 待执行 | 渐变双色 + ghost 全透明 + active 0.95 |
+| DNA-R6（结果页暗化） | ⏳ 待执行 | 整页从亮色→暗色主题 |
+| DNA-R7（Chat Bubble） | ⏳ 待执行 | 气泡圆角/色/文字对齐 DNA |
+| DNA-R8（Motion） | ⏳ 待执行 | 动画参数核对 + pulse-glow 周期修正 |
+| DNA-R9（Layout） | ⏳ 待执行 | max-w-md 居中 + 间距节奏统一 |
+| DNA-R10（Hex 清零） | ⏳ 待执行 | 全项目硬编码颜色消除 |
