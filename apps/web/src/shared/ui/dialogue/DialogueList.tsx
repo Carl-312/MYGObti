@@ -14,7 +14,7 @@ interface DialogueListProps {
 const listVariants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.2 },
   },
 };
 

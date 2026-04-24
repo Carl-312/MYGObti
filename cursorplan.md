@@ -992,13 +992,13 @@ DNA-R10 (Hex 清零)  ← 依赖 R1~R9 全部完成（最后扫尾）
 
 | 轮次 | 状态 | 核心改动 |
 |---|---|---|
-| DNA-R1（Token 重铸） | ⏳ 待执行 | `:root` 新增 `--mygo-*` 变量体系 + 行高修正 |
-| DNA-R2（背景层） | ⏳ 待执行 | 渐变对齐 + 噪点 PNG + 扫描线降透明度 |
-| DNA-R3（Surface） | ⏳ 待执行 | 卡片统一 surface + blur + radius + border |
-| DNA-R4（Typography） | ⏳ 待执行 | letter-spacing 修正 + 文字色切换 |
-| DNA-R5（按钮） | ⏳ 待执行 | 渐变双色 + ghost 全透明 + active 0.95 |
-| DNA-R6（结果页暗化） | ⏳ 待执行 | 整页从亮色→暗色主题 |
-| DNA-R7（Chat Bubble） | ⏳ 待执行 | 气泡圆角/色/文字对齐 DNA |
-| DNA-R8（Motion） | ⏳ 待执行 | 动画参数核对 + pulse-glow 周期修正 |
-| DNA-R9（Layout） | ⏳ 待执行 | max-w-md 居中 + 间距节奏统一 |
+| DNA-R1（Token 重铸） | ✅ 完成 | `:root` 新增 `--mygo-*` 变量体系 + 行高修正 |
+| DNA-R2（背景层） | ✅ 完成 | 渐变对齐 + 噪点 PNG + 扫描线降透明度 + glow 调色对齐 |
+| DNA-R3（Surface） | ✅ 完成 | 卡片统一 surface + blur(12px) + radius + border + hover glow 对齐 |
+| DNA-R4（Typography） | ✅ 完成 | text-shadow 增强 + kicker 0.7rem + option-tile 竖条 |
+| DNA-R5（按钮） | ✅ 完成 | 渐变双色（去 cyan）、ghost 全透明、active 0.95/100ms、focus-visible ring-offset、icon-button 新增、pulse-glow 2.5s + DNA 豁免注释 |
+| DNA-R6（结果页暗化） | ✅ 完成 | 整页从亮色→暗色主题：主容器/内嵌卡片/文字色/轴线/排行榜/状态色/hover glow 全面暗化；删除废弃 `--card-bg-light` / `--card-border-light` |
+| DNA-R7（Chat Bubble） | ✅ 完成 | 气泡圆角/色/文字对齐 DNA |
+| DNA-R8（Motion） | ✅ 完成 | 动画参数核对 + pulse-glow 周期修正 |
+| DNA-R9（Layout） | ✅ 完成 | max-w-md 居中 + 间距节奏统一：760px 以下 `.hero-stage__inner`/`.content-frame` 限制 28rem 居中；`page-topbar`/`page-footer` 同步约束；三大文件区块/卡片/元素间距统一为 DNA token；375/390/428px 溢出验证通过 |
 | DNA-R10（Hex 清零） | ⏳ 待执行 | 全项目硬编码颜色消除 |

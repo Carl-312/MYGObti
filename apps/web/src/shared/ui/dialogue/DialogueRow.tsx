@@ -45,7 +45,7 @@ const rowEntrance = {
     opacity: 1,
     x: 0,
     filter: "blur(0px)",
-    transition: { duration: 0.35 },
+    transition: { duration: 0.3 },
   },
 };
 

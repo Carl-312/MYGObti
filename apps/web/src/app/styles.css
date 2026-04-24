@@ -33,9 +33,6 @@
   --accent-cyan: #7ce8ff;
   --accent-green: #00dfc1;
   --shadow-glow: 0 24px 60px rgba(0, 0, 0, 0.38);
-  /* Shared card token bridge — dark shell + light result page */
-  --card-bg-light: rgba(255, 255, 255, 0.7);
-  --card-border-light: rgba(17, 20, 29, 0.08);
   --card-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
   --card-shadow-sm: 0 10px 24px rgba(0, 0, 0, 0.14);
   --card-radius: 1.5rem;
@@ -45,11 +42,32 @@
   --radius-lg: 28px;
   --radius-md: 20px;
   --radius-sm: 12px;
+
+  /* === MyGObti Design DNA v1.0 Token Layer === */
+  --mygo-bg:              linear-gradient(180deg, #121414 0%, #1a1c2e 100%);
+  --mygo-surface:         rgba(26, 33, 62, 0.6);
+  --mygo-neon-purple:     #dab9ff;
+  --mygo-neon-purple-rgb: 218, 185, 255;
+  --mygo-neon-purple-sat: #9b5de5;
+  --mygo-neon-pink:       #ffafd7;
+  --mygo-neon-pink-sat:   #f15bb5;
+  --mygo-neon-green:      #00dfc1;
+  --mygo-text:            #e2e2e2;
+  --mygo-text-muted:      #8888aa;
+  --mygo-glow-purple:     rgba(155, 93, 229, 0.6);
+  --mygo-glow-pink:       rgba(255, 175, 215, 0.4);
+  --mygo-border:          rgba(255, 255, 255, 0.1);
+  --mygo-radius:          1rem;
+  --mygo-radius-sm:       0.75rem;
+  --mygo-space-section:   2rem;
+  --mygo-space-card:      1.25rem;
+  --mygo-space-element:   0.75rem;
+
   color-scheme: dark;
   color: var(--text-main);
   font-family: var(--font-sans);
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 @property --rail-hue {
@@ -98,7 +116,7 @@ a {
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--mygo-neon-purple);
   outline-offset: 2px;
 }
 
@@ -106,9 +124,11 @@ button:focus-visible,
 a:focus-visible,
 .primary-button:focus-visible,
 .ghost-button:focus-visible,
-.option-tile:focus-visible {
-  outline: 2px solid var(--accent);
+.option-tile:focus-visible,
+.icon-button:focus-visible {
+  outline: 2px solid var(--mygo-neon-purple);
   outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--bg-0); /* DNA: 模拟 ring-offset 背景色隔离 */
 }
 
 .primary-button:disabled,
@@ -150,7 +170,7 @@ a:focus-visible,
     radial-gradient(circle at 12% 10%, rgba(218, 185, 255, 0.2), transparent 32%),
     radial-gradient(circle at 86% 18%, rgba(255, 175, 215, 0.18), transparent 28%),
     radial-gradient(circle at 76% 72%, rgba(0, 223, 193, 0.12), transparent 22%),
-    linear-gradient(180deg, #090b14 0%, #101522 46%, #171b2b 100%);
+    var(--mygo-bg);
   z-index: 0;
 }
 
@@ -166,7 +186,7 @@ a:focus-visible,
   left: -4rem;
   width: 22rem;
   height: 22rem;
-  background: rgba(218, 185, 255, 0.28);
+  background: var(--mygo-glow-purple);
 }
 
 .page-shell__glow--rose {
@@ -174,7 +194,7 @@ a:focus-visible,
   bottom: 14rem;
   width: 24rem;
   height: 24rem;
-  background: rgba(255, 175, 215, 0.22);
+  background: var(--mygo-glow-pink);
 }
 
 .page-shell__grid {
@@ -189,18 +209,16 @@ a:focus-visible,
 
 .page-shell__noise {
   z-index: 1;
-  opacity: 0.14;
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3) 0 0.8px, transparent 0.8px),
-    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.24) 0 0.7px, transparent 0.7px),
-    radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.18) 0 0.8px, transparent 0.8px);
-  background-size: 16px 16px, 18px 18px, 22px 22px;
+  opacity: 0.05;
+  background-image: url(/noise-256.png);
+  background-repeat: repeat;
+  background-size: 256px 256px;
   mix-blend-mode: soft-light;
 }
 
 .page-shell__scanlines {
   z-index: 2;
-  opacity: 0.1;
+  opacity: 0.03;
   background: repeating-linear-gradient(
     180deg,
     transparent 0,
@@ -335,9 +353,9 @@ a:focus-visible,
 
 .migration-boundary {
   display: grid;
-  gap: 16px;
-  margin: 0 0 28px;
-  padding: 20px;
+  gap: var(--mygo-space-card);
+  margin: 0 0 var(--mygo-space-section);
+  padding: var(--mygo-space-card);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 28px;
   background: linear-gradient(180deg, rgba(18, 23, 34, 0.78), rgba(14, 18, 27, 0.88));
@@ -396,7 +414,7 @@ a:focus-visible,
   position: relative;
   overflow: clip;
   min-height: 100svh;
-  padding: 20px 0 32px;
+  padding: var(--mygo-space-card) 0 var(--mygo-space-section);
 }
 
 .hero-stage--boot {
@@ -543,7 +561,7 @@ a:focus-visible,
   position: relative;
   z-index: 1;
   display: grid;
-  gap: 18px;
+  gap: var(--mygo-space-card);
   justify-items: center;
   text-align: center;
   padding: 52px 0 44px;
@@ -595,15 +613,15 @@ a:focus-visible,
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 20px;
+  gap: var(--mygo-space-card);
 }
 
 /* ── Hero Steps: 流程步骤卡片 ── */
 .hero-steps {
   display: grid;
-  gap: 10px;
+  gap: var(--mygo-space-element);
   align-content: start;
-  padding: 20px;
+  padding: var(--mygo-space-card);
   border-radius: 28px;
   border: 1px solid var(--line);
   background:
@@ -629,14 +647,14 @@ a:focus-visible,
 
 .masthead__mini-badge {
   display: inline-flex;
-  gap: 8px;
+  gap: var(--mygo-space-element);
   align-items: center;
   min-height: 32px;
   padding: 0 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 154, 135, 0.26);
-  color: #4b3437;
+  background: var(--mygo-surface);
+  border: 1px solid var(--mygo-border);
+  color: var(--text-main);
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -669,7 +687,7 @@ a:focus-visible,
 .result-room__footer {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: var(--mygo-space-element);
   align-items: center;
 }
 
@@ -688,7 +706,7 @@ a:focus-visible,
     transform 180ms ease,
     background-color 180ms ease,
     border-color 180ms ease,
-    box-shadow 180ms ease,
+    box-shadow 300ms ease,
     filter 180ms ease;
 }
 
@@ -696,13 +714,13 @@ a:focus-visible,
   color: #342729;
   background: linear-gradient(135deg, #ffe98f 0%, #ff9c87 56%, #82c6ff 100%);
   box-shadow: 0 14px 34px rgba(255, 141, 134, 0.24);
-  animation: pulse-glow 2.8s ease-in-out infinite;
+  animation: pulse-glow 2.5s ease-in-out infinite;
 }
 
 .ghost-button {
   color: var(--text-main);
-  border-color: rgba(111, 168, 255, 0.26);
-  background: rgba(255, 255, 255, 0.68);
+  border-color: var(--mygo-neon-purple);
+  background: transparent;
 }
 
 .hero-copy__action-note {
@@ -728,27 +746,62 @@ a:focus-visible,
 }
 
 .primary-button:active:not(:disabled) {
-  transform: scale(0.97);
+  transform: scale(0.95);
   box-shadow:
     0 8px 18px rgba(218, 185, 255, 0.14),
     0 0 16px rgba(255, 175, 215, 0.08);
   filter: brightness(0.96);
-  transition-duration: 80ms;
+  transition-duration: 100ms;
 }
 
 .ghost-button:hover:not(:disabled) {
   transform: translateY(-2px);
-  border-color: rgba(218, 185, 255, 0.36);
-  background: rgba(218, 185, 255, 0.08);
+  background: rgba(var(--mygo-neon-purple-rgb), 0.2);
   box-shadow:
-    0 0 20px rgba(218, 185, 255, 0.12),
+    0 0 20px var(--mygo-glow-purple),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .ghost-button:active:not(:disabled) {
-  transform: scale(0.97);
+  transform: scale(0.95);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
-  transition-duration: 80ms;
+  transition-duration: 100ms;
+}
+
+/* ---- Icon Button (同 ghost 逻辑，圆形) ---- */
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 9999px;
+  border: 1px solid var(--mygo-neon-purple);
+  background: transparent;
+  color: var(--shell-text);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 300ms ease,
+    filter 180ms ease;
+}
+
+.icon-button:hover:not(:disabled) {
+  background: rgba(var(--mygo-neon-purple-rgb), 0.2);
+  box-shadow: 0 0 20px var(--mygo-glow-purple);
+}
+
+.icon-button:active:not(:disabled) {
+  transform: scale(0.95);
+  transition-duration: 100ms;
+}
+
+.icon-button:disabled {
+  opacity: 0.38;
+  pointer-events: none;
 }
 
 .option-tile:hover {
@@ -757,16 +810,16 @@ a:focus-visible,
 
 .hero-copy__timeline {
   display: grid;
-  gap: 10px;
-  margin: 20px 0 0;
+  gap: var(--mygo-space-element);
+  margin: var(--mygo-space-card) 0 0;
 }
 
 .hero-copy__timeline-item {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
-  gap: 10px;
+  gap: var(--mygo-space-element);
   align-items: start;
-  padding-top: 10px;
+  padding-top: var(--mygo-space-element);
   border-top: 1px dashed rgba(255, 154, 135, 0.2);
 }
 
@@ -790,15 +843,15 @@ a:focus-visible,
 
 .hero-preview {
   display: grid;
-  gap: 12px;
-  padding: 20px;
+  gap: var(--mygo-space-element);
+  padding: var(--mygo-space-card);
   border-radius: 28px;
   align-self: end;
 }
 
 .hero-preview__badges {
   display: flex;
-  gap: 10px;
+  gap: var(--mygo-space-element);
   flex-wrap: wrap;
 }
 
@@ -829,10 +882,11 @@ a:focus-visible,
 }
 
 .hero-preview__chat {
-  padding: 14px;
-  border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 154, 135, 0.16);
+  padding: var(--mygo-space-card);
+  border-radius: var(--mygo-radius-sm);
+  background: var(--mygo-surface);
+  border: 1px solid var(--mygo-border);
+  backdrop-filter: blur(12px);
 }
 
 .hero-preview__title {
@@ -841,7 +895,7 @@ a:focus-visible,
 
 .chat-bubble {
   max-width: 88%;
-  padding: 12px 14px;
+  padding: var(--mygo-space-element);
   border-radius: 20px;
   border: 1px solid rgba(255, 154, 135, 0.12);
   animation: bubble-rise 420ms ease both;
@@ -888,8 +942,8 @@ a:focus-visible,
 }
 
 .disclaimer-banner {
-  margin-top: 14px;
-  padding: 14px 16px;
+  margin-top: var(--mygo-space-element);
+  padding: var(--mygo-space-card);
   border: 1px dashed rgba(255, 154, 135, 0.42);
   border-radius: 20px;
   color: #734d53;
@@ -897,7 +951,7 @@ a:focus-visible,
 }
 
 .content-frame {
-  padding: 0 0 40px;
+  padding: 0 0 var(--mygo-space-section);
 }
 
 #quiz-flow {
@@ -907,11 +961,11 @@ a:focus-visible,
 .intro-room,
 .quiz-room,
 .result-room {
-  margin-top: 20px;
-  padding: 20px;
+  margin-top: var(--mygo-space-card);
+  padding: var(--mygo-space-card);
   border-radius: 28px;
   display: grid;
-  gap: 16px;
+  gap: var(--mygo-space-card);
 }
 
 .intro-room__header,
@@ -969,7 +1023,7 @@ a:focus-visible,
 .cast-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: var(--mygo-space-element);
 }
 
 .cast-list__item {
@@ -990,7 +1044,7 @@ a:focus-visible,
   display: grid;
   gap: 5px;
   text-align: right;
-  padding: 12px 14px;
+  padding: var(--mygo-space-element);
   border: 1px solid var(--line);
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.7);
@@ -1026,12 +1080,12 @@ a:focus-visible,
 .quiz-room__body {
   display: grid;
   grid-template-columns: minmax(280px, 0.86fr) minmax(0, 1.14fr);
-  gap: 18px;
+  gap: var(--mygo-space-card);
   align-items: start;
 }
 
 .question-frame {
-  padding: 20px;
+  padding: var(--mygo-space-card);
   border-radius: var(--radius-md);
 }
 
@@ -1073,22 +1127,23 @@ a:focus-visible,
 
 .option-list {
   display: grid;
-  gap: 10px;
-  margin-top: 18px;
+  gap: var(--mygo-space-element);
+  margin-top: var(--mygo-space-card);
 }
 
 .option-tile {
   display: grid;
   grid-template-columns: 40px minmax(0, 1fr);
-  gap: 12px;
+  gap: var(--mygo-space-element);
   align-items: flex-start;
   width: 100%;
-  padding: 14px;
+  padding: var(--mygo-space-card);
   text-align: left;
   color: inherit;
-  border: 1px solid rgba(255, 154, 135, 0.14);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid var(--mygo-border);
+  border-radius: var(--mygo-radius);
+  background: var(--mygo-surface);
+  backdrop-filter: blur(12px);
   transition:
     transform 180ms ease,
     border-color 180ms ease,
@@ -1097,8 +1152,8 @@ a:focus-visible,
 }
 
 .option-tile--active {
-  border-color: rgba(255, 141, 134, 0.54);
-  background: linear-gradient(135deg, rgba(255, 156, 135, 0.22), rgba(255, 255, 255, 0.82));
+  border-color: var(--mygo-neon-purple);
+  box-shadow: 0 0 16px var(--mygo-glow-purple);
 }
 
 .option-tile__id {
@@ -1140,9 +1195,9 @@ a:focus-visible,
 .question-frame__footer {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
+  gap: var(--mygo-space-element);
   align-items: center;
-  margin-top: 14px;
+  margin-top: var(--mygo-space-element);
 }
 
 .question-frame__hint {
@@ -1158,7 +1213,7 @@ a:focus-visible,
 .result-room__hero-copy,
 .result-room__hero-side {
   display: grid;
-  gap: 14px;
+  gap: var(--mygo-space-element);
 }
 
 .result-room__hero-copy {
@@ -1190,7 +1245,7 @@ a:focus-visible,
 
 .result-room__score {
   min-width: 170px;
-  padding: 16px;
+  padding: var(--mygo-space-card);
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 154, 135, 0.2);
   background: linear-gradient(135deg, rgba(255, 233, 143, 0.42), rgba(255, 255, 255, 0.84));
@@ -1221,7 +1276,7 @@ a:focus-visible,
 
 .result-room__pairings {
   display: grid;
-  gap: 10px;
+  gap: var(--mygo-space-element);
 }
 
 .result-room__pairings div {
@@ -1240,7 +1295,7 @@ a:focus-visible,
 .result-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: var(--mygo-space-element);
 }
 
 .result-panel--poster {
@@ -1253,14 +1308,14 @@ a:focus-visible,
 }
 
 .result-panel {
-  padding: 20px;
+  padding: var(--mygo-space-card);
   border-radius: var(--radius-md);
 }
 
 .result-panel__header {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
+  gap: var(--mygo-space-element);
   align-items: flex-start;
 }
 
@@ -1303,15 +1358,16 @@ a:focus-visible,
 
 .signal-stack {
   display: grid;
-  gap: 12px;
-  margin-top: 14px;
+  gap: var(--mygo-space-element);
+  margin-top: var(--mygo-space-element);
 }
 
 .signal-card {
-  padding: 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 154, 135, 0.14);
-  background: rgba(255, 255, 255, 0.68);
+  padding: var(--mygo-space-card);
+  border-radius: var(--mygo-radius);
+  border: 1px solid var(--mygo-border);
+  background: var(--mygo-surface);
+  backdrop-filter: blur(12px);
 }
 
 .signal-card__label {
@@ -1341,15 +1397,15 @@ a:focus-visible,
 .result-share-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
-  gap: 14px;
+  gap: var(--mygo-space-element);
   align-items: start;
 }
 
 .result-share-actions {
   display: grid;
-  gap: 10px;
+  gap: var(--mygo-space-element);
   align-content: start;
-  padding: 16px;
+  padding: var(--mygo-space-card);
   border: 1px solid rgba(255, 154, 135, 0.14);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.7);
@@ -1385,9 +1441,9 @@ a:focus-visible,
   position: relative;
   overflow: hidden;
   display: grid;
-  gap: 16px;
+  gap: var(--mygo-space-card);
   min-height: 100%;
-  padding: 20px;
+  padding: var(--mygo-space-card);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(229, 191, 120, 0.12);
   background:
@@ -1508,14 +1564,14 @@ a:focus-visible,
 .result-poster__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
+  gap: var(--mygo-space-element);
 }
 
 .result-poster__panel,
 .result-poster__signal {
   position: relative;
   z-index: 1;
-  padding: 18px;
+  padding: var(--mygo-space-card);
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.04);
@@ -1524,8 +1580,8 @@ a:focus-visible,
 .result-poster__axis-list,
 .result-poster__ranking {
   display: grid;
-  gap: 12px;
-  margin: 14px 0 0;
+  gap: var(--mygo-space-element);
+  margin: var(--mygo-space-element) 0 0;
   padding: 0;
   list-style: none;
 }
@@ -1557,7 +1613,7 @@ a:focus-visible,
 
 .axis-list {
   display: grid;
-  gap: 14px;
+  gap: var(--mygo-space-element);
 }
 
 .axis-row__header {
@@ -1619,7 +1675,7 @@ a:focus-visible,
 .ranking-list li {
   display: flex;
   justify-content: space-between;
-  gap: 14px;
+  gap: var(--mygo-space-element);
   align-items: center;
   padding: 10px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -1668,6 +1724,7 @@ a:focus-visible,
   line-height: 1.4;
 }
 
+/* DNA 豁免：bubble-rise 为装饰性气泡入场动画，非交互动画 */
 @keyframes bubble-rise {
   from {
     opacity: 0;
@@ -1705,17 +1762,25 @@ a:focus-visible,
 
 @media (max-width: 760px) {
   .page-shell__main {
-    padding-top: 100px;
-    padding-bottom: 120px;
+    padding: 100px 1rem 120px;
+  }
+
+  .hero-stage__inner,
+  .content-frame {
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
   }
 
   .page-topbar,
   .page-footer {
-    width: calc(100% - 20px);
+    width: calc(100% - 2rem);
+    max-width: 28rem;
   }
 
   .page-topbar {
     align-items: flex-start;
+    flex-wrap: wrap;
   }
 
   .page-topbar__nav {
@@ -1744,10 +1809,6 @@ a:focus-visible,
     grid-template-columns: 1fr;
   }
 
-  .hero-stage__inner,
-  .content-frame {
-    width: min(100%, calc(100% - 20px));
-  }
 
   .intro-room__header,
   .quiz-room__header,
@@ -1914,11 +1975,10 @@ a:focus-visible,
 .result-panel,
 .boot-card,
 .migration-boundary {
-  border-color: rgba(218, 185, 255, 0.16);
-  background:
-    linear-gradient(180deg, rgba(20, 24, 38, 0.82), rgba(10, 13, 23, 0.94)),
-    radial-gradient(circle at top left, rgba(218, 185, 255, 0.12), transparent 38%);
-  backdrop-filter: blur(18px) saturate(138%);
+  border: 1px solid var(--mygo-border);
+  border-radius: var(--mygo-radius);
+  background: var(--mygo-surface);
+  backdrop-filter: blur(12px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     var(--shadow-glow);
@@ -1940,11 +2000,11 @@ a:focus-visible,
   .result-panel:hover,
   .signal-card:hover {
     transform: translateY(-3px);
-    border-color: rgba(218, 185, 255, 0.24);
+    border-color: var(--mygo-neon-purple);
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.1),
       0 32px 72px rgba(0, 0, 0, 0.32),
-      0 0 24px rgba(218, 185, 255, 0.08);
+      0 0 20px var(--mygo-glow-purple);
   }
 }
 
@@ -2045,17 +2105,17 @@ a:focus-visible,
 
 .primary-button {
   color: #0b0f19;
-  background: linear-gradient(135deg, #dab9ff 0%, #ffafd7 52%, #7ce8ff 100%);
+  background: linear-gradient(to right, var(--mygo-neon-purple), var(--mygo-neon-pink));
   box-shadow:
     0 18px 40px rgba(218, 185, 255, 0.22),
     0 0 28px rgba(255, 175, 215, 0.14);
+  animation: pulse-glow 2.5s ease-in-out infinite;
 }
 
 .ghost-button {
   color: var(--shell-text);
-  border-color: rgba(218, 185, 255, 0.18);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(18px);
+  border-color: var(--mygo-neon-purple);
+  background: transparent;
 }
 
 .progress-rail {
@@ -2189,6 +2249,7 @@ a:focus-visible,
   font-family: var(--font-mono);
 }
 
+/* DNA 豁免：CTA 呼吸灯为装饰性循环动画，非交互动画 */
 @keyframes pulse-glow {
   0%,
   100% {
@@ -2204,6 +2265,7 @@ a:focus-visible,
   }
 }
 
+/* DNA 豁免：rail-shift 为进度条装饰性色相微移动画，非交互动画 */
 @keyframes rail-shift {
   to {
     --rail-hue: 12deg;
