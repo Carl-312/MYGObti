@@ -1,5 +1,6 @@
 .character-round-avatar {
   --avatar-size: 2.75rem;
+  /* 动态注入色，由 JS 根据角色设置默认回退 */
   --avatar-accent: #ff8d86;
   position: relative;
   display: inline-flex;
@@ -47,10 +48,11 @@
   letter-spacing: 0.08em;
   background:
     radial-gradient(circle at 32% 20%, rgba(255, 255, 255, 0.22), transparent 42%),
-    linear-gradient(145deg, color-mix(in srgb, var(--avatar-accent) 88%, #111 12%), rgba(17, 20, 29, 0.95));
+    linear-gradient(145deg, color-mix(in srgb, var(--avatar-accent) 88%, var(--shell-bg) 12%), rgba(17, 20, 29, 0.95));
 }
 
 .character-live2d-slot {
+  /* 动态注入色，由 JS 根据角色设置默认回退 */
   --slot-accent: #ff8d86;
   position: relative;
   display: flex;
@@ -86,7 +88,7 @@
   display: block;
   position: relative;
   z-index: 1;
-  filter: drop-shadow(0 20px 22px rgba(0, 0, 0, 0.28));
+  box-shadow: 0 20px 22px rgba(0, 0, 0, 0.28);
 }
 
 .character-live2d-slot__placeholder {

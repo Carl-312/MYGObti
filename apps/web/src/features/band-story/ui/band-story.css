@@ -416,7 +416,7 @@
   height: 44px;
   border-radius: 50%;
   background: linear-gradient(135deg, rgba(255, 141, 134, 0.84), rgba(111, 168, 255, 0.72));
-  color: #fff;
+  color: var(--shell-text);
   font-size: 0.8rem;
   font-weight: 700;
 }

@@ -1,4 +1,5 @@
 .result-report {
+  /* 动态注入色，由 JS 根据角色设置默认回退 */
   --result-accent: #ff8d86;
   display: grid;
   gap: 1.25rem;

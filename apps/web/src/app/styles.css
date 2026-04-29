@@ -62,6 +62,8 @@
   --mygo-space-section:   2rem;
   --mygo-space-card:      1.25rem;
   --mygo-space-element:   0.75rem;
+  --mygo-chart-gold:      #efc777;
+  --mygo-chart-slate:     #8ca6c5;
 
   color-scheme: dark;
   color: var(--text-main);
@@ -710,13 +712,6 @@ a:focus-visible,
     filter 180ms ease;
 }
 
-.primary-button {
-  color: #342729;
-  background: linear-gradient(135deg, #ffe98f 0%, #ff9c87 56%, #82c6ff 100%);
-  box-shadow: 0 14px 34px rgba(255, 141, 134, 0.24);
-  animation: pulse-glow 2.5s ease-in-out infinite;
-}
-
 .ghost-button {
   color: var(--text-main);
   border-color: var(--mygo-neon-purple);
@@ -944,10 +939,8 @@ a:focus-visible,
 .disclaimer-banner {
   margin-top: var(--mygo-space-element);
   padding: var(--mygo-space-card);
-  border: 1px dashed rgba(255, 154, 135, 0.42);
   border-radius: 20px;
-  color: #734d53;
-  background: rgba(255, 249, 229, 0.78);
+  color: var(--mygo-text-muted);
 }
 
 .content-frame {
@@ -1068,15 +1061,6 @@ a:focus-visible,
   );
 }
 
-.progress-rail__fill {
-  --rail-hue: 0deg;
-  height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(calc(90deg + var(--rail-hue)), #ffe98f 0%, #ff9c87 55%, #82c6ff 100%);
-  transition: width 220ms ease;
-  animation: rail-shift 3s ease-in-out infinite alternate;
-}
-
 .quiz-room__body {
   display: grid;
   grid-template-columns: minmax(280px, 0.86fr) minmax(0, 1.14fr);
@@ -1162,9 +1146,6 @@ a:focus-visible,
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  color: #342729;
-  border: 1px solid rgba(255, 203, 91, 0.4);
-  background: linear-gradient(135deg, #ffe98f 0%, #ff9c87 100%);
   font-weight: 700;
 }
 
@@ -1643,18 +1624,18 @@ a:focus-visible,
   width: 14px;
   height: 14px;
   border-radius: 999px;
-  border: 2px solid #11131b;
+  border: 2px solid var(--shell-bg);
   transform: translate(-50%, -50%);
 }
 
 .axis-row__marker--user {
-  background: #efc777;
+  background: var(--mygo-chart-gold);
 }
 
 .axis-row__marker--anchor {
   width: 12px;
   height: 12px;
-  background: #8ca6c5;
+  background: var(--mygo-chart-slate);
 }
 
 .axis-row__values {
@@ -1882,7 +1863,7 @@ a:focus-visible,
 
 ::selection {
   background: rgba(218, 185, 255, 0.28);
-  color: #f7f8ff;
+  color: var(--shell-text);
 }
 
 * {
@@ -2104,7 +2085,7 @@ a:focus-visible,
 }
 
 .primary-button {
-  color: #0b0f19;
+  color: var(--shell-bg);
   background: linear-gradient(to right, var(--mygo-neon-purple), var(--mygo-neon-pink));
   box-shadow:
     0 18px 40px rgba(218, 185, 255, 0.22),
@@ -2128,7 +2109,7 @@ a:focus-visible,
 }
 
 .progress-rail__fill {
-  background: linear-gradient(calc(90deg + var(--rail-hue)), #dab9ff 0%, #ffafd7 50%, #00dfc1 100%);
+  background: linear-gradient(calc(90deg + var(--rail-hue)), var(--mygo-neon-purple) 0%, var(--mygo-neon-pink) 50%, var(--mygo-neon-green) 100%);
   box-shadow: 0 0 20px rgba(218, 185, 255, 0.22);
 }
 
@@ -2152,9 +2133,9 @@ a:focus-visible,
 }
 
 .option-tile__id {
-  color: #091019;
+  color: var(--shell-bg);
   border-color: rgba(255, 255, 255, 0.18);
-  background: linear-gradient(135deg, #dab9ff 0%, #7ce8ff 100%);
+  background: linear-gradient(135deg, var(--mygo-neon-purple) 0%, var(--accent-cool) 100%);
   font-family: var(--font-mono);
 }
 

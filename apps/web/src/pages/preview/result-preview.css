@@ -32,7 +32,7 @@
 .result-preview__hero h1,
 .result-preview__selector h2 {
   margin: 0.3rem 0 0;
-  color: #11151d;
+  color: var(--shell-bg);
   line-height: 1.04;
 }
 
@@ -63,7 +63,7 @@
 .result-preview__selector-button strong {
   display: block;
   margin-top: 0.45rem;
-  color: #11151d;
+  color: var(--shell-bg);
 }
 
 .result-preview__selector-head {

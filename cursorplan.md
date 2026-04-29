@@ -1001,4 +1001,4 @@ DNA-R10 (Hex 清零)  ← 依赖 R1~R9 全部完成（最后扫尾）
 | DNA-R7（Chat Bubble） | ✅ 完成 | 气泡圆角/色/文字对齐 DNA |
 | DNA-R8（Motion） | ✅ 完成 | 动画参数核对 + pulse-glow 周期修正 |
 | DNA-R9（Layout） | ✅ 完成 | max-w-md 居中 + 间距节奏统一：760px 以下 `.hero-stage__inner`/`.content-frame` 限制 28rem 居中；`page-topbar`/`page-footer` 同步约束；三大文件区块/卡片/元素间距统一为 DNA token；375/390/428px 溢出验证通过 |
-| DNA-R10（Hex 清零） | ⏳ 待执行 | 全项目硬编码颜色消除 |
+| DNA-R10（Hex 清零） | ✅ 完成 | 全项目硬编码颜色消除：删除 styles.css 中被覆盖的旧亮色规则块；替换 styles.css / dialogue.css / result-page.css / character-assets.css / preview.css / result-preview.css / band-story.css / story-design.css 中全部非 :root 硬编码 hex 为 CSS 变量；filter:drop-shadow → box-shadow；动态色默认值加注释标注 |

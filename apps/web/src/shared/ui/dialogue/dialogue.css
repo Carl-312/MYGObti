@@ -164,7 +164,7 @@
   box-shadow:
     0 12px 28px rgba(218, 185, 255, 0.18),
     0 0 20px rgba(255, 175, 215, 0.12);
-  color: #ffffff;
+  color: var(--shell-text);
 }
 
 .dialogue-bubble__content {
