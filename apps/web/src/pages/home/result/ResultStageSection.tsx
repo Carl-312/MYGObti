@@ -81,19 +81,14 @@ export function ResultStageSection({
               公开榜首 {toPercent(leadResult.score)}
             </span>
           </div>
-          <h2>{`你测出来是 ${leadResult.name}`}</h2>
+          <h2>
+            你测出来是{" "}
+            <span className="result-hero__name-value">{leadResult.name}</span>
+          </h2>
           <p className="result-report__title">{leadResult.title}</p>
           <p className="result-report__summary">{leadResult.result.description}</p>
 
           <div className="result-report__headline-meta" aria-label="result summary">
-            <div>
-              <span>结果状态</span>
-              <strong>已生成</strong>
-            </div>
-            <div>
-              <span>结果结构</span>
-              <strong>角色结果 + 三轴</strong>
-            </div>
             <div>
               <span>下一步</span>
               <strong>保存或分享结果</strong>
