@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { getCharacterAccent } from "../../../entities/character/model/characterAssets";
 import { DialogueAvatar } from "./DialogueAvatar";
 import { DialogueBubble } from "./DialogueBubble";
-import { DialogueTimestamp } from "./DialogueTimestamp";
 import "./dialogue.css";
 import type { DialogueMessage } from "./types";
 
@@ -79,7 +78,6 @@ export function DialogueRow({
     status,
     text,
     themeColor,
-    timestamp,
   } = message;
   const resolvedThemeColor =
     themeColor ?? (characterId ? getCharacterAccent(characterId) : "#8888aa");
@@ -89,16 +87,50 @@ export function DialogueRow({
     !isSelected &&
     status !== "sent" &&
     status !== "seen";
-  const rowClassName = [
-    "dialogue-row",
-    side === "left" ? "dialogue-row--left" : "dialogue-row--right",
-    isMuted ? "dialogue-row--muted" : "",
-    className,
-  ]
-    .filter(Boolean)
-    .join(" ");
 
+  /* ── Choice option: no avatar, full-width stacked button ── */
+  if (isSelected !== undefined) {
+    return (
+      <motion.div
+        animate="visible"
+        className={[
+          "dialogue-row",
+          "dialogue-row--choice-option",
+          isMuted ? "dialogue-row--muted" : "",
+          className,
+        ]
+          .filter(Boolean)
+          .join(" ")}
+        custom="right"
+        initial="hidden"
+        role="listitem"
+        variants={rowEntrance}
+      >
+        <motion.div
+          animate={playSendAnimation && isSelected ? "animate" : "initial"}
+          className="dialogue-row__choice-wrap"
+          initial="initial"
+          variants={sendAnimation}
+        >
+          <DialogueBubble
+            isSelected={isSelected}
+            onClick={() => onClick?.(id)}
+            side="right"
+            themeColor={resolvedThemeColor}
+          >
+            {renderFormattedText(text)}
+          </DialogueBubble>
+        </motion.div>
+      </motion.div>
+    );
+  }
+
+  /* ── Left side: scene / question messages ── */
   if (side === "left") {
+    const rowClassName = ["dialogue-row", "dialogue-row--left", className]
+      .filter(Boolean)
+      .join(" ");
+
     return (
       <motion.div
         animate="visible"
@@ -110,8 +142,8 @@ export function DialogueRow({
       >
         <div className="dialogue-row__stack dialogue-row__stack--left">
           {showName && characterName ? (
-            <div className="dialogue-row__name" style={{ color: resolvedThemeColor }}>
-              {characterName}
+            <div className="dialogue-row__divider">
+              <span>{characterName}</span>
             </div>
           ) : null}
           <div className="dialogue-row__body dialogue-row__body--left">
@@ -126,13 +158,20 @@ export function DialogueRow({
               {renderFormattedText(text)}
             </DialogueBubble>
           </div>
-          <div className="dialogue-row__timestamp-row">
-            <DialogueTimestamp>{timestamp}</DialogueTimestamp>
-          </div>
         </div>
       </motion.div>
     );
   }
+
+  /* ── Right side: recorded sent/seen answer ── */
+  const rowClassName = [
+    "dialogue-row",
+    "dialogue-row--right",
+    isMuted ? "dialogue-row--muted" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
     <motion.div
@@ -166,10 +205,9 @@ export function DialogueRow({
             visible={showAvatar}
           />
         </div>
-        {timestamp || status ? (
+        {status === "seen" ? (
           <div className="dialogue-row__timestamp-row dialogue-row__timestamp-row--right">
-            <DialogueTimestamp>{timestamp}</DialogueTimestamp>
-            {status === "seen" ? <span className="dialogue-row__seen">✓✓</span> : null}
+            <span className="dialogue-row__seen">✓✓</span>
           </div>
         ) : null}
       </motion.div>

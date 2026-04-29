@@ -1,5 +1,4 @@
 import type { Question, QuestionOption, QuizAnswerRecord } from "@mygobti/quiz-core";
-import { Link } from "react-router-dom";
 import { ChatQuizFlow } from "../../../features/quiz-chat";
 import {
   StoryFactGrid,
@@ -59,10 +58,8 @@ interface AnsweringStageSectionProps {
 }
 
 export function HomeHeroSection({
-  currentQuestionOrder,
   disclaimerText,
   estimatedMinutes,
-  progressPercent,
   questionsCount,
   stage,
   stageCopy,
@@ -79,13 +76,6 @@ export function HomeHeroSection({
         : "查看结果";
   const primaryAction =
     stage === "idle" ? onStart : stage === "answering" ? onContinue : onViewResult;
-  const stageSummary =
-    stage === "idle"
-      ? "点开始测试，马上进入第 1 题。"
-      : stage === "answering"
-        ? `当前做到第 ${currentQuestionOrder} 题，继续作答就会推进整套测试。`
-        : "结果已经生成，往下直接看结论并分享海报。";
-
   return (
     <section className="hero-stage">
       <div className="hero-stage__glow hero-stage__glow--left" />
@@ -96,33 +86,22 @@ export function HomeHeroSection({
 
         {/* ── 主行动区：居中，开始按钮最优先 ── */}
         <div className="hero-cta-block">
-          <div className="hero-cta-block__label-row">
-            <p className="masthead__label">MyGObti</p>
-            <span className="masthead__mini-badge">
-              <StoryBadgeIcon kind="ticket" />
-              MyGO 恶搞人格测试
-            </span>
-          </div>
-          <h1>{`${estimatedMinutes} 分钟测出你最像哪位 MyGO 角色。`}</h1>
-          <p className="hero-cta-block__logline">
-            {`答完 ${questionsCount} 道情境单选题，你会拿到角色匹配、三轴倾向和可分享结果海报。`}
-          </p>
+          <h1>
+            {`${estimatedMinutes} 分钟测出你最像哪位`}{" "}
+            <span className="hero-heading__entity">MyGO</span>{" "}
+            角色。
+          </h1>
           <div className="hero-cta-block__actions">
             <button className="primary-button primary-button--hero" onClick={primaryAction} type="button">
               <StoryBadgeIcon kind="bubble" />
               {primaryActionLabel}
             </button>
-            {stage === "idle" ? (
-              <Link className="ghost-button" to="/test">
-                <StoryBadgeIcon kind="spark" />
-                进入测试页
-              </Link>
-            ) : (
+            {stage !== "idle" ? (
               <button className="ghost-button" onClick={onRestart} type="button">
                 <StoryBadgeIcon kind="spark" />
                 {stage === "answering" ? "重新开始测试" : "再测一次"}
               </button>
-            )}
+            ) : null}
           </div>
           <p className="hero-copy__action-note">
             {stage === "idle"
@@ -133,32 +112,8 @@ export function HomeHeroSection({
           </p>
         </div>
 
-        {/* ── 辅助信息区：预览 + 流程步骤 ── */}
+        {/* ── 辅助信息区：流程步骤 ── */}
         <div className="hero-sub">
-          <aside className="hero-preview" aria-label="quiz preview">
-            <div className="hero-preview__badges">
-              <span className="hero-preview__badge hero-preview__badge--event">
-                <StoryBadgeIcon kind="ticket" />
-                开始后立即进入题流
-              </span>
-              <span className="hero-preview__badge hero-preview__badge--chat">
-                <StoryBadgeIcon kind="bubble" />
-                完成后直接看结果
-              </span>
-            </div>
-            <div className="hero-preview__chat">
-              <p className="hero-preview__title">测试主线</p>
-              <div className="chat-bubble chat-bubble--question">
-                <span>开始</span>
-                <p>点上方主按钮，直接进入第 1 题，不需要先看设定或附页。</p>
-              </div>
-              <div className="chat-bubble chat-bubble--answer">
-                <span>{stage === "idle" ? "完成后" : "当前状态"}</span>
-                <p>{stageSummary}</p>
-              </div>
-            </div>
-          </aside>
-
           <div className="hero-steps" aria-label="test flow">
             <p className="hero-steps__kicker">测试流程</p>
             {stageCopy.map((item, index) => (
@@ -170,7 +125,7 @@ export function HomeHeroSection({
           </div>
         </div>
 
-        <div className="disclaimer-banner">{disclaimerText}</div>
+        <footer className="disclaimer-banner">{disclaimerText}</footer>
       </div>
     </section>
   );
@@ -209,7 +164,7 @@ export function MigrationBoundaryNotice({
         </div>
       </div>
       <p className="migration-boundary__note">
-        开始入口已经放到首屏主按钮，这里只补充必要说明，不再用旁支内容抢注意力。
+        按第一反应作答，全部选完系统会自动跳到结果页。
       </p>
     </section>
   );
@@ -224,20 +179,20 @@ export function IntroStageSection({
   return (
     <section className="intro-room" aria-label="home intro">
       <StorySectionFrame
-        badge={`测试说明 / ${questionsCount} 题`}
-        kicker="测试说明"
-        summary="首屏已经把开始入口给出来，这里只补充玩法、时长和结果结构。"
-        title="开始前只需要知道：怎么答、要多久、做完会拿到什么。"
-      >
+          badge={`测试说明 / ${questionsCount} 题`}
+          kicker="测试说明"
+          summary={`共 ${questionsCount} 道情境题，按第一反应选，答完拿到角色匹配和三轴结果。`}
+          title="开始前只需要知道：怎么答、要多久、做完会拿到什么。"
+        >
         <StoryFactGrid items={[...introFactItems]} />
       </StorySectionFrame>
 
       <div className="intro-grid intro-grid--story">
         <StorySectionFrame
-          badge="开始 -> 答题 -> 结果 -> 分享"
+          badge="开始 → 答题 → 结果 → 分享"
           kicker="完成路径"
-          summary="把体验压缩成一条连续动作，避免在开始前被角色展示或附加阅读打断。"
-          title="整站现在只强调这一条主线"
+          summary="一条线走完，不用绕弯路。"
+          title="点开始，答完题，看结果，分享海报。"
         >
           <StoryMetricStrip items={[...introGuideItems]} />
         </StorySectionFrame>
@@ -248,52 +203,20 @@ export function IntroStageSection({
 
 export function AnsweringStageSection({
   answers,
-  currentQuestion,
+  currentQuestion: _currentQuestion,
   currentQuestionIndex,
   onJumpToQuestion,
   onNext,
   onPrevious,
   onSelectOption,
   onSubmit,
-  progressPercent,
+  progressPercent: _progressPercent,
   questions,
-  questionsCount,
+  questionsCount: _questionsCount,
   submitMessage,
 }: AnsweringStageSectionProps) {
-  const answeredCount = answers.filter((answer) => answer !== null).length;
-  const remainingCount = Math.max(questionsCount - answeredCount, 0);
-  const quizMetricItems = [
-    { label: "当前题号", value: `Q${String(currentQuestion.order).padStart(2, "0")} / ${questionsCount}` },
-    { label: "已完成", value: `${answeredCount} 题` },
-    { label: "写入判断", value: "角色匹配 / 三轴" },
-  ] as const;
-
   return (
     <section className="quiz-room" aria-label="quiz flow">
-      <div className="quiz-room__header">
-        <div className="quiz-room__header-copy">
-          <p className="section-kicker">答题流程</p>
-          <h2>{`人格测试进行中：第 ${currentQuestionIndex + 1} / ${questionsCount} 题`}</h2>
-          <p className="quiz-room__header-note">
-            当前回答会直接参与角色匹配和三轴倾向判断。聊天只是题目容器，你现在的主任务是把整套测试答完。
-          </p>
-        </div>
-        <div className="progress-summary">
-          <span>总体进度</span>
-          <strong>{`${progressPercent}%`}</strong>
-          <p>{remainingCount === 0 ? "全部题目已完成" : `已答 ${answeredCount} 题，还剩 ${remainingCount} 题`}</p>
-        </div>
-      </div>
-
-      <StoryMetricStrip items={[...quizMetricItems]} />
-
-      <div className="progress-rail" aria-hidden="true">
-        <div
-          className="progress-rail__fill"
-          style={{ width: `${Math.max(progressPercent, 6)}%` }}
-        />
-      </div>
-
       <ChatQuizFlow
         answers={answers}
         currentQuestionIndex={currentQuestionIndex}

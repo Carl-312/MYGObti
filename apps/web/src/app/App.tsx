@@ -31,7 +31,7 @@ export function App() {
 }
 
 function TemplateRuntimeLayout() {
-  return <PageShell footer={<ShellFooter />} topbar={<ShellTopbar />} />;
+  return <PageShell topbar={<ShellTopbar />} />;
 }
 
 function ShellTopbar() {
@@ -63,19 +63,6 @@ function ShellTopbar() {
   );
 }
 
-function ShellFooter() {
-  return (
-    <div className="page-footer">
-      <div>
-        <span className="page-footer__eyebrow">测试提示</span>
-        <strong>主线：开始测试 → 答题 → 看结果 → 分享结果</strong>
-      </div>
-      <p>
-        正式体验只保留测试入口、结果页和分享动作；附加阅读与开发预览不再占据一级导航。
-      </p>
-    </div>
-  );
-}
 
 function QuizHomeRoute() {
   const location = useLocation();

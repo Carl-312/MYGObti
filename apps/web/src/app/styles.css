@@ -580,10 +580,25 @@ a:focus-visible,
 .hero-cta-block h1 {
   max-width: 22ch;
   margin: 0;
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-size: clamp(2.6rem, 5.5vw, 5.5rem);
+  font-weight: 700;
   line-height: 0.96;
-  letter-spacing: -0.06em;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-wrap: balance;
+  text-shadow:
+    0 0 32px rgba(218, 185, 255, 0.24),
+    0 0 64px rgba(218, 185, 255, 0.08);
+}
+
+/* 仅对品牌实体「MyGO」施加 display 字体与粉色光晕 */
+.hero-heading__entity {
+  font-family: var(--font-display);
+  color: var(--accent-pink);
+  text-shadow:
+    0 0 20px rgba(255, 175, 215, 0.6),
+    0 0 40px rgba(255, 175, 215, 0.3);
 }
 
 .hero-cta-block__logline {
@@ -599,6 +614,8 @@ a:focus-visible,
   gap: 14px;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 /* 大号主按钮 */
@@ -609,30 +626,24 @@ a:focus-visible,
   letter-spacing: 0.01em;
 }
 
-/* ── Hero Sub: 辅助信息双列区 ── */
+/* ── Hero Sub: 流程步骤居中区 ── */
 .hero-sub {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+  grid-template-columns: 1fr;
   gap: var(--mygo-space-card);
+  max-width: 960px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* ── Hero Steps: 流程步骤卡片 ── */
+/* ── Hero Steps: 三列流程卡片网格 ── */
 .hero-steps {
   display: grid;
-  gap: var(--mygo-space-element);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--mygo-space-card);
   align-content: start;
-  padding: var(--mygo-space-card);
-  border-radius: 28px;
-  border: 1px solid var(--line);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 247, 241, 0.78)),
-    var(--surface);
-  backdrop-filter: blur(16px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.88),
-    0 28px 64px rgba(184, 130, 136, 0.16);
 }
 
 .masthead__label,
@@ -645,6 +656,10 @@ a:focus-visible,
   font-size: 0.7rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+}
+
+.hero-steps__kicker {
+  grid-column: 1 / -1;
 }
 
 .masthead__mini-badge {
@@ -666,8 +681,6 @@ a:focus-visible,
   height: 20px;
 }
 
-.hero-steps,
-.hero-preview,
 .intro-room,
 .quiz-room,
 .question-frame,
@@ -811,18 +824,38 @@ a:focus-visible,
 
 .hero-copy__timeline-item {
   display: grid;
-  grid-template-columns: 40px minmax(0, 1fr);
-  gap: var(--mygo-space-element);
-  align-items: start;
-  padding-top: var(--mygo-space-element);
-  border-top: 1px dashed rgba(255, 154, 135, 0.2);
+  gap: 10px;
+  padding: var(--mygo-space-card);
+  border-radius: var(--mygo-radius);
+  border: 1px solid var(--mygo-border);
+  background: var(--mygo-surface);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    var(--card-shadow-sm);
+  transition:
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.hero-copy__timeline span {
+@media (hover: hover) and (pointer: fine) {
+  .hero-copy__timeline-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--mygo-neon-purple);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 24px 52px rgba(0, 0, 0, 0.28),
+      0 0 16px var(--mygo-glow-purple);
+  }
+}
+
+.hero-copy__timeline-item span {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-height: 30px;
+  width: 30px;
   border-radius: 999px;
   border: 1px solid rgba(111, 168, 255, 0.24);
   background: rgba(111, 168, 255, 0.1);
@@ -831,9 +864,11 @@ a:focus-visible,
   font-size: 0.78rem;
 }
 
-.hero-copy__timeline p {
+.hero-copy__timeline-item p {
   margin: 0;
   color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 .hero-preview {
@@ -937,10 +972,20 @@ a:focus-visible,
 }
 
 .disclaimer-banner {
-  margin-top: var(--mygo-space-element);
-  padding: var(--mygo-space-card);
-  border-radius: 20px;
-  color: var(--mygo-text-muted);
+  margin-top: 3rem;
+  margin-bottom: 0.25rem;
+  padding: 0;
+  border: none;
+  background: none;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 0.78rem;
+  opacity: 0.45;
+  transition: opacity 300ms ease;
+}
+
+.disclaimer-banner:hover {
+  opacity: 0.75;
 }
 
 .content-frame {
@@ -1731,8 +1776,7 @@ a:focus-visible,
     grid-template-columns: 1fr;
   }
 
-  .result-panel,
-  .hero-preview {
+  .result-panel {
     min-height: 0;
   }
 
@@ -1812,8 +1856,6 @@ a:focus-visible,
     grid-template-columns: 1fr;
   }
 
-  .hero-steps,
-  .hero-preview,
   .intro-room,
   .quiz-room,
   .question-frame,
@@ -1822,7 +1864,7 @@ a:focus-visible,
   }
 
   .hero-steps {
-    padding: 16px;
+    grid-template-columns: 1fr;
   }
 
   .hero-cta-block {
@@ -1926,9 +1968,6 @@ a:focus-visible,
 }
 
 .page-footer p,
-.hero-cta-block__logline,
-.hero-copy__timeline p,
-.disclaimer-banner,
 .boot-card__lede,
 .boot-card__hint,
 .migration-boundary__note,
@@ -1947,8 +1986,6 @@ a:focus-visible,
   color: var(--text-soft);
 }
 
-.hero-steps,
-.hero-preview,
 .intro-room,
 .quiz-room,
 .question-frame,
@@ -1966,7 +2003,6 @@ a:focus-visible,
 }
 
 .hero-steps,
-.hero-preview,
 .result-panel,
 .signal-card {
   transition:
@@ -1977,7 +2013,6 @@ a:focus-visible,
 
 @media (hover: hover) and (pointer: fine) {
   .hero-steps:hover,
-  .hero-preview:hover,
   .result-panel:hover,
   .signal-card:hover {
     transform: translateY(-3px);
@@ -1989,7 +2024,6 @@ a:focus-visible,
   }
 }
 
-.hero-cta-block h1,
 .boot-card h1,
 .migration-boundary h2,
 .intro-room__header h2,
@@ -2076,13 +2110,6 @@ a:focus-visible,
   background: linear-gradient(135deg, rgba(255, 175, 215, 0.22), rgba(24, 19, 37, 0.94));
 }
 
-.disclaimer-banner {
-  border-style: solid;
-  border-color: rgba(255, 175, 215, 0.22);
-  background:
-    linear-gradient(180deg, rgba(25, 22, 39, 0.88), rgba(14, 15, 25, 0.94)),
-    radial-gradient(circle at top right, rgba(255, 175, 215, 0.12), transparent 42%);
-}
 
 .primary-button {
   color: var(--shell-bg);
@@ -2262,8 +2289,6 @@ a:focus-visible,
 @media (max-width: 760px) {
   .page-topbar,
   .page-footer,
-  .hero-steps,
-  .hero-preview,
   .intro-room,
   .quiz-room,
   .question-frame,
@@ -2280,10 +2305,6 @@ a:focus-visible,
     padding: 10px 0 16px;
   }
 
-  .hero-steps {
-    padding: 14px 16px;
-    border-radius: 20px;
-  }
 
   .hero-cta-block {
     padding: 24px 0 20px;

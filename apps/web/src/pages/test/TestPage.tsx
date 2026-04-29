@@ -14,10 +14,7 @@ import {
 } from "../../features/share/lib/exportPoster";
 import { sharePoster } from "../../features/share/lib/sharePoster";
 import { DISCLAIMER_TEXT } from "../home/copy";
-import {
-  AnsweringStageSection,
-  MigrationBoundaryNotice,
-} from "../home/sections/HomePageSections";
+import { AnsweringStageSection } from "../home/sections/HomePageSections";
 import {
   describeAxis,
   describeAxisGap,
@@ -294,12 +291,6 @@ export function TestPage({ runtimeContent }: TestPageProps) {
   return (
     <main className={`experience-shell experience-shell--${stage}`}>
       <div className="content-frame">
-        <MigrationBoundaryNotice
-          estimatedMinutes={estimatedMinutes}
-          questionsCount={questions.length}
-          stage={stage}
-        />
-
         {stage === "answering" ? (
           <div id="quiz-flow" ref={quizFlowAnchorRef}>
             <AnsweringStageSection
