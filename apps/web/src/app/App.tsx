@@ -1,3 +1,5 @@
+import type { CSSProperties } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import {
   Link,
   Navigate,
@@ -12,26 +14,261 @@ import { useRuntimeQuizContent } from "../entities/quiz/model/useRuntimeQuizCont
 import { PageShell } from "./shell";
 import { HomePage } from "../pages/home/HomePage";
 import { TestPage } from "../pages/test/TestPage";
-import { ChatAtomsPreviewPage } from "../pages/preview/ChatAtomsPreviewPage";
-import { ResultPreviewPage } from "../pages/preview/ResultPreviewPage";
+
+const DevChatAtomsPreviewPage = import.meta.env.DEV
+  ? lazy(() =>
+      import("../pages/preview/ChatAtomsPreviewPage").then((module) => ({
+        default: module.ChatAtomsPreviewPage,
+      })),
+    )
+  : null;
+const DevResultPreviewPage = import.meta.env.DEV
+  ? lazy(() =>
+      import("../pages/preview/ResultPreviewPage").then((module) => ({
+        default: module.ResultPreviewPage,
+      })),
+    )
+  : null;
+
+// 开发态视觉夹具样式：仅在 dev 构建中按需加载，生产环境不会进入 bundle。
+if (import.meta.env.DEV) {
+  void import("./dev-mobile-frame.css");
+}
 
 export function App() {
   return (
-    <Routes>
-      <Route element={<TemplateRuntimeLayout />}>
-        <Route element={<QuizHomeRoute />} path="/" />
-        <Route element={<QuizTestRoute />} path="/test" />
-        <Route element={<BandStoryPage />} path="/band-story/*" />
-        <Route element={<ChatAtomsPreviewPage />} path="/preview/chat-atoms" />
-        <Route element={<ResultPreviewPage />} path="/preview/results" />
-      </Route>
-      <Route element={<Navigate replace to="/" />} path="*" />
-    </Routes>
+    <>
+      <Routes>
+        <Route element={<TemplateRuntimeLayout />}>
+          <Route element={<QuizHomeRoute />} path="/" />
+          <Route element={<QuizTestRoute />} path="/test" />
+          <Route element={<BandStoryPage />} path="/band-story/*" />
+          {DevChatAtomsPreviewPage && DevResultPreviewPage ? (
+            <>
+              <Route
+                element={
+                  <Suspense fallback={null}>
+                    <DevChatAtomsPreviewPage />
+                  </Suspense>
+                }
+                path="/preview/chat-atoms"
+              />
+              <Route
+                element={
+                  <Suspense fallback={null}>
+                    <DevResultPreviewPage />
+                  </Suspense>
+                }
+                path="/preview/results"
+              />
+            </>
+          ) : null}
+        </Route>
+        <Route element={<Navigate replace to="/" />} path="*" />
+      </Routes>
+      <DevShortcutDock />
+    </>
+  );
+}
+
+/* ---------- dev 移动端 iframe 预览夹具 ---------- */
+
+type DevMobileWidth = 0 | 375 | 390;
+
+function DevShortcutDock() {
+  if (!import.meta.env.DEV) return null;
+
+  // 当前激活的手机视口宽度档位（0 = 关闭预览）。
+  const [mobileWidth, setMobileWidth] = useState<DevMobileWidth>(0);
+  const location = useLocation();
+
+  // Esc 键关闭遮罩。
+  useEffect(() => {
+    if (mobileWidth === 0) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setMobileWidth(0);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileWidth]);
+
+  // 内层 iframe 里不渲染 dock，避免嵌套浮层。
+  // （所有 hooks 必须在条件返回之前调用，确保调用顺序稳定。）
+  if (typeof window !== "undefined" && window.self !== window.top) return null;
+
+  // 切换档位：点同档位关闭，点另一档位直接切换。
+  function toggle(w: 375 | 390) {
+    setMobileWidth((prev) => (prev === w ? 0 : w));
+  }
+
+  // 拼接 iframe src：当前路径 + 已有 query + devFrame=1 标记。
+  function buildIframeSrc(): string {
+    const params = new URLSearchParams(location.search);
+    params.set("devFrame", "1");
+    return `${location.pathname}?${params.toString()}${location.hash}`;
+  }
+
+  /* ---- 通用内联样式 ---- */
+  const dockStyle: CSSProperties = {
+    position: "fixed",
+    right: "0.9rem",
+    bottom: "0.9rem",
+    zIndex: 9999,
+    display: "flex",
+    gap: "0.4rem",
+    padding: "0.45rem 0.7rem",
+    borderRadius: "999px",
+    border: "1px solid rgba(255, 255, 255, 0.18)",
+    background: "rgba(17, 20, 29, 0.78)",
+    backdropFilter: "blur(8px)",
+    boxShadow: "0 8px 24px rgba(0, 0, 0, 0.32)",
+    color: "rgba(242, 244, 255, 0.92)",
+    fontSize: "0.78rem",
+    letterSpacing: "0.04em",
+    pointerEvents: "auto",
+  };
+  const linkStyle: CSSProperties = {
+    color: "inherit",
+    textDecoration: "none",
+    padding: "0.2rem 0.55rem",
+    borderRadius: "999px",
+    background: "rgba(255, 255, 255, 0.08)",
+  };
+  const buttonBase: CSSProperties = {
+    ...linkStyle,
+    border: "none",
+    cursor: "pointer",
+    font: "inherit",
+  };
+  const activeStyle: CSSProperties = {
+    background: "rgba(126, 173, 255, 0.32)",
+    boxShadow: "inset 0 0 0 1px rgba(126, 173, 255, 0.6)",
+  };
+
+  /* ---- 遮罩 + iframe 内联样式 ---- */
+  const overlayStyle: CSSProperties = {
+    position: "fixed",
+    inset: 0,
+    zIndex: 9998,
+    background: "rgba(11, 13, 18, 0.92)",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+  const toolbarStyle: CSSProperties = {
+    height: 36,
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "0.6rem",
+    padding: "0 1rem",
+    color: "rgba(242, 244, 255, 0.82)",
+    fontSize: "0.75rem",
+    fontFamily: "system-ui, sans-serif",
+    background: "rgba(17, 20, 29, 0.95)",
+    borderBottom: "1px solid rgba(255,255,255,0.1)",
+    flexShrink: 0,
+  };
+  const iframeStyle: CSSProperties = {
+    width: mobileWidth || 375,
+    height: "calc(100dvh - 36px)",
+    border: "none",
+    borderRadius: "0 0 12px 12px",
+    background: "#fff",
+    flexShrink: 0,
+    boxShadow: "0 0 0 1px rgba(255,255,255,0.08), 0 24px 64px rgba(0,0,0,0.55)",
+  };
+  const toolBtnStyle: CSSProperties = {
+    ...buttonBase,
+    fontSize: "0.72rem",
+    padding: "0.15rem 0.5rem",
+  };
+
+  return (
+    <>
+      {/* ---- 全屏 iframe 遮罩（仅档位激活时渲染） ---- */}
+      {mobileWidth !== 0 && (
+        <div
+          onClick={(e) => { if (e.target === e.currentTarget) setMobileWidth(0); }}
+          style={overlayStyle}
+        >
+          {/* 顶部工具条 */}
+          <div style={toolbarStyle}>
+            <span style={{ opacity: 0.5 }}>📱 {mobileWidth}px</span>
+            <span style={{ opacity: 0.35 }}>|</span>
+            <span style={{ opacity: 0.6, maxWidth: 260, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              {location.pathname}{location.search}
+            </span>
+            <span style={{ opacity: 0.35 }}>|</span>
+            <button
+              onClick={() => toggle(375)}
+              style={mobileWidth === 375 ? { ...toolBtnStyle, ...activeStyle } : toolBtnStyle}
+              type="button"
+            >375</button>
+            <button
+              onClick={() => toggle(390)}
+              style={mobileWidth === 390 ? { ...toolBtnStyle, ...activeStyle } : toolBtnStyle}
+              type="button"
+            >390</button>
+            <button
+              onClick={() => window.open(buildIframeSrc(), "_blank")}
+              style={toolBtnStyle}
+              title="在新标签页中打开当前 iframe URL"
+              type="button"
+            >↗ 新标签</button>
+            <button
+              onClick={() => setMobileWidth(0)}
+              style={{ ...toolBtnStyle, color: "#f87171" }}
+              title="关闭移动端预览"
+              type="button"
+            >✕ 关闭</button>
+          </div>
+          {/* iframe：key 跟随路由变化以触发重挂载 */}
+          <iframe
+            key={location.pathname + location.search}
+            src={buildIframeSrc()}
+            style={iframeStyle}
+            title="移动端预览"
+          />
+        </div>
+      )}
+
+      {/* ---- 常驻 dock 浮层（遮罩打开时隐藏，toolbar 已含同样控件） ---- */}
+      <div aria-label="dev shortcuts" style={{ ...dockStyle, ...(mobileWidth !== 0 && { display: "none" }) }}>
+        <span style={{ opacity: 0.6 }}>DEV</span>
+        <Link style={linkStyle} title="一键查看结果页 UI" to="/preview/results">
+          结果页 →
+        </Link>
+        <span aria-hidden style={{ opacity: 0.4 }}>📱</span>
+        <button
+          onClick={() => toggle(375)}
+          style={mobileWidth === 375 ? { ...buttonBase, ...activeStyle } : buttonBase}
+          title="iframe 预览 375px（iPhone SE），@media 断点真实触发"
+          type="button"
+        >
+          375
+        </button>
+        <button
+          onClick={() => toggle(390)}
+          style={mobileWidth === 390 ? { ...buttonBase, ...activeStyle } : buttonBase}
+          title="iframe 预览 390px（iPhone 14），@media 断点真实触发"
+          type="button"
+        >
+          390
+        </button>
+      </div>
+    </>
   );
 }
 
 function TemplateRuntimeLayout() {
-  return <PageShell topbar={<ShellTopbar />} />;
+  // dev iframe 预览模式下隐藏顶部导航栏，避免 fixed 定位遮挡页面内容。
+  const hideTopbar =
+    import.meta.env.DEV &&
+    typeof window !== "undefined" &&
+    window.self !== window.top;
+  return <PageShell topbar={hideTopbar ? undefined : <ShellTopbar />} />;
 }
 
 function ShellTopbar() {

@@ -1,0 +1,4 @@
+/* dev-mobile-frame.css — 已废弃旧的"夹窄 #root"方案。
+   移动端预览现在通过 iframe 实现（见 DevShortcutDock），
+   iframe 拥有独立 layout viewport，@media 断点可以真实触发。
+   保留此文件仅为避免 App.tsx 动态 import 报错，内容为空。 */
