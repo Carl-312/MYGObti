@@ -3,6 +3,14 @@
   gap: 1.5rem;
 }
 
+/* 只在桌面端限制宽度，手机端保持流式布局 */
+@media (min-width: 980px) {
+  .result-preview {
+    width: min(1180px, calc(100% - 24px));
+    margin-inline: auto;
+  }
+}
+
 .result-preview__hero,
 .result-preview__selector {
   display: grid;

@@ -1,6 +1,8 @@
 import { toBlob } from "html-to-image";
 
 const EXPORT_PIXEL_RATIO = Math.min(window.devicePixelRatio || 1, 2);
+const POSTER_EXPORT_WIDTH = 540;
+const POSTER_EXPORT_HEIGHT = 720;
 
 export interface ExportedPosterAsset {
   blob: Blob;
@@ -14,8 +16,16 @@ export async function exportPoster(
   const blob = await toBlob(node, {
     backgroundColor: "#0a0c14",
     cacheBust: true,
+    height: POSTER_EXPORT_HEIGHT,
     pixelRatio: EXPORT_PIXEL_RATIO,
     skipFonts: true,
+    style: {
+      borderRadius: "0",
+      boxShadow: "none",
+      height: `${POSTER_EXPORT_HEIGHT}px`,
+      width: `${POSTER_EXPORT_WIDTH}px`,
+    },
+    width: POSTER_EXPORT_WIDTH,
   });
 
   if (!blob) {

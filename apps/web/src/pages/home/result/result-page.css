@@ -3,6 +3,22 @@
   --result-accent: #ff8d86;
   display: grid;
   gap: 1.25rem;
+  padding-inline: 0.75rem;
+}
+
+/* 平板端增加边距 */
+@media (min-width: 760px) {
+  .result-report {
+    padding-inline: 1rem;
+  }
+}
+
+/* 桌面端限制宽度并居中，避免内容过宽 */
+@media (min-width: 980px) {
+  .result-report {
+    max-width: 1200px;
+    margin-inline: auto;
+  }
 }
 
 .result-report__hero,
@@ -540,10 +556,8 @@
 .result-report__poster-stage {
   display: flex;
   justify-content: center;
-}
-
-.result-report__poster-stage .result-poster {
-  width: min(100%, 29rem);
+  width: min(100%, 34rem);
+  margin-inline: auto;
 }
 
 .result-report__footer {
