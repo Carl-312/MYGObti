@@ -60,7 +60,7 @@ $gsd-do 修复 MyGObti 手机端结果页的海报适配问题。必要上下文
 - 当前真正的海报导出尺寸是固定的：`540 x 720`。
 - 当前真正不稳定的地方，不是普通结果页响应式本身，而是“预览态海报布局”和“导出态海报布局”耦合在一起。
 - `/preview/results` 已存在，可直接作为多角色、多宽度浏览器 QA 入口。
-- 当前仓库工作区不是干净状态，`apps/web/src/features/share/**`、`apps/web/src/pages/home/result/**`、`apps/web/src/pages/preview/result-preview.css` 有未提交改动；另外 `questioncollectionV1.md`、`start.md` 当前是删除状态，`troubleshooting.md` 是未跟踪文件。后续会话不要误判为需要恢复这些文件。
+- 当前仓库以 `README.md`、`docs/**`、`questionedit/**` 与 `.planning/**` 为主入口；不要再假设存在 `start.md` 或 `questioncollectionV1.md` 这类旧草案文件。
 
 ## 提示词设计意图
 

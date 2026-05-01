@@ -162,8 +162,7 @@ MYGOBTI_PREVIEW_WEB_HOST=0.0.0.0 MYGOBTI_PREVIEW_WEB_PORT=4174 npm run preview:p
 - 工程阶段路线：`.planning/ROADMAP.md`
 - 当前项目框架：`.planning/PROJECT.md`
 - 当前状态续接点：`.planning/STATE.md`
-- 历史产品草案：`start.md`
-- 历史题库收集草稿：`questioncollectionV1.md`
+- 历史题库候选与评估材料：`questionedit/candidates/`、`questionedit/reports/`
 
 ## 部署说明
 
@@ -177,10 +176,9 @@ MYGOBTI_PREVIEW_WEB_HOST=0.0.0.0 MYGOBTI_PREVIEW_WEB_PORT=4174 npm run preview:p
 
 ## 说明
 
-`start.md` 里的 “Phase 1 / Phase 2” 是产品阶段表述。
 `.planning/ROADMAP.md` 里的 phase 是工程执行阶段表述。
 
 补充说明：
 
-- `start.md` 和 `questioncollectionV1.md` 里保留了早期草案，不应直接当作运行时事实。
+- 早期产品草案文件已经从仓库主入口移除；当前应以 `README.md`、`docs/`、`.planning/` 和 `questionedit/` 下的现有文件为准。
 - 现在浏览器读取的是 `apps/api` 输出的 canonical JSON，不再直接读取本地 Markdown，也不在 web 侧复制匹配算法。

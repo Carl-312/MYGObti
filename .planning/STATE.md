@@ -49,7 +49,7 @@ Plan: 4 of 5
 - Use React + TypeScript + Vite for a lightweight static H5 baseline.
 - Keep the project frontend-first in user experience even after introducing a backend boundary.
 - Keep GSD usage intentionally minimal: only `.planning` core docs and current phase artifacts.
-- Treat `start.md` as product PRD and `.planning/**` as execution truth.
+- Treat `README.md`, `docs/**`, `questionedit/**`, and `.planning/**` as the current project truth surface.
 - Keep the MVP as a single-page state machine first, and defer heavier routing or poster-generation work to later phases.
 - Keep hidden Sakiko as a dedicated triggered signal in UI and poster, but do not let her overwrite the public top-ranked result.
 - Insert Phase `02.1` before Phase 3 so content deepening does not need to be redone against the old frontend-only content model.

@@ -29,7 +29,7 @@ Phase `02.1` 完成前后端分离，Phase `02.2` 完成主入口文档收口；
 - 运行时 canonical 数据源固定为 `questionedit/questionnewV2.md`，当前主线版本固定为 `V2.1D`
 - 浏览器不再直接导入 Markdown；web 通过 `/api/quiz/meta` 与 `/api/quiz/content` 读取运行时内容
 - `apps/web` 只做展示适配与交互状态，不再维护第二份 canonical 题库真相
-- `start.md` 与 `questioncollectionV1.md` 保留为历史材料，不参与现行运行时定义
+- 历史产品草案已经退出当前仓库主入口，不参与现行运行时定义
 - 当前实现不引入数据库、不引入账号系统、不引入 CMS、不引入写接口
 - `.planning/` 只负责执行文档，不能变成产品说明副本
 
