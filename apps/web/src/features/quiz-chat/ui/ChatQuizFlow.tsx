@@ -70,7 +70,7 @@ export function ChatQuizFlow({
         }
       : currentAnswer && currentQuestionIndex === lastQuestionIndex
         ? {
-            label: "查看人格结果",
+            label: "查看人格档案",
             onClick: onSubmit,
           }
         : currentAnswer
@@ -164,8 +164,8 @@ export function ChatQuizFlow({
         <div className="chat-quiz__footer">
           <p className="chat-quiz__hint">
             {currentAnswer
-              ? "想改答案时，直接重选一条消息；系统会用新答案覆盖这一题的旧记录。"
-              : "先选一条最像你的回答。消息发出后会自动衔接测试进度，不需要额外确认。"}
+              ? "想改就重选一条消息，新的回复会接上当前时间线。"
+              : "先选一条最像你的回答。消息发出后会自动衔接进度，不需要额外确认。"}
           </p>
           <div className="chat-quiz__footer-nav">
             <button

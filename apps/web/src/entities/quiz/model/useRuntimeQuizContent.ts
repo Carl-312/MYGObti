@@ -13,8 +13,8 @@ import {
 
 type RuntimeLoadState = "loading" | "ready" | "error";
 
-const META_FETCH_RETRY_LIMIT = 15;
-const META_FETCH_RETRY_DELAY_MS = 400;
+const META_FETCH_RETRY_LIMIT = 20;
+const META_FETCH_RETRY_DELAY_MS = 500;
 
 interface RuntimeQuizContentState {
   runtimeContent: RuntimeQuizContent | null;

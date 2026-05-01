@@ -194,7 +194,7 @@ export function TestPage({ runtimeContent }: TestPageProps) {
     setIsExportingPoster(true);
     setShareStatus({
       tone: "info",
-      message: "正在生成 PNG 海报，稍等一下。",
+      message: "正在生成海报，稍等一下。",
     });
 
     try {
@@ -224,7 +224,7 @@ export function TestPage({ runtimeContent }: TestPageProps) {
     setIsSharingPoster(true);
     setShareStatus({
       tone: "info",
-      message: "正在准备分享海报，如果设备支持会直接打开系统分享面板。",
+      message: "正在准备分享海报，如果设备支持会直接打开分享面板。",
     });
 
     try {
@@ -250,7 +250,7 @@ export function TestPage({ runtimeContent }: TestPageProps) {
         if (outcome === "shared") {
           setShareStatus({
             tone: "success",
-            message: "系统分享面板已经走通，直接选你要发的位置就行。",
+            message: "分享面板已打开，直接选你要发的位置就行。",
           });
           return;
         }

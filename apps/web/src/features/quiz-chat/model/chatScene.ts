@@ -27,7 +27,7 @@ export interface QuizChatScene {
 
 const QUESTION_SPEAKER = {
   characterId: "anon",
-  characterName: "系统提问",
+  characterName: "提问记录",
 } as const;
 
 const SCENE_SPEAKER = {
@@ -160,7 +160,7 @@ export function createQuizChatScene(args: {
       messages.push({
         id: `${question.id}::revision-tip`,
         side: "left",
-        text: "上一版回答已经记下来了。要改答案，就像重新发消息一样再选一次。",
+        text: "上一条回复已经记下来了。想改的话，就像重新发消息一样再选一次。",
         timestamp: formatTimestamp(questionIndex, 3),
         ...REVISION_SPEAKER,
       });

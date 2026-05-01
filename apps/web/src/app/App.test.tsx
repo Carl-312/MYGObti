@@ -40,14 +40,14 @@ describe("App quiz routes", () => {
     );
 
     expect(screen.getByRole("heading", { name: /测出你最像哪位 MyGO 角色/ })).toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: /人格测试进行中/ })).not.toBeInTheDocument();
+    expect(screen.queryByRole("region", { name: /quiz flow/ })).not.toBeInTheDocument();
 
     fireEvent.click(screen.getByRole("button", { name: /开始测试/ }));
 
     await waitFor(() => {
       expect(screen.getByTestId("location-path")).toHaveTextContent("/test");
     });
-    expect(screen.getAllByRole("heading", { name: /人格测试进行中/ }).length).toBeGreaterThan(0);
+    expect(screen.getByRole("region", { name: /quiz flow/ })).toBeInTheDocument();
   });
 
   it("redirects the old start query to the standalone test route", async () => {
@@ -78,7 +78,7 @@ describe("App quiz routes", () => {
     fireEvent.click(screen.getByRole("button", { name: /先观察大家/ }));
 
     await waitFor(() => {
-      expect(screen.getByText(/全部题目都已记录/)).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: /查看人格档案/ })).toBeInTheDocument();
     });
     expect(scrollIntoViewMock).not.toHaveBeenCalled();
   });

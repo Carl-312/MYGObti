@@ -49,9 +49,9 @@ export function ResultStageSection({
   result,
   shareStatus,
   onRestart,
-  restartDescription = "重新测试会清空这轮答案，然后从第 1 题重新开始。",
-  restartHeadline = "想换一套答案，再测一次？",
-  restartLabel = "重新开始测试",
+  restartDescription = "重新开始推演会清空当前选择，然后从第 1 题重新展开。",
+  restartHeadline = "重置时间线？",
+  restartLabel = "重新推演",
   describeAxis,
   describeAxisGap,
   formatAxisValue,
@@ -123,15 +123,15 @@ export function ResultStageSection({
     >
       <section className="result-report__hero">
         <div className="result-report__hero-copy">
-          <p className="section-kicker">人格测试结果</p>
+          <p className="section-kicker">人格档案</p>
           <div className="result-report__eyebrow-row">
-            <span className="result-report__eyebrow">结果已生成</span>
+            <span className="result-report__eyebrow">同步测算完毕</span>
             <span className="result-report__eyebrow result-report__eyebrow--accent">
-              公开榜首 {toPercent(leadResult.score)}
+              契合度 {toPercent(leadResult.score)}
             </span>
           </div>
           <h2>
-            你测出来是{" "}
+            你的共振角色是{" "}
             <span className="result-hero__name-value">{leadResult.name}</span>
           </h2>
           <p className="result-report__title">{leadResult.title}</p>
@@ -144,7 +144,7 @@ export function ResultStageSection({
               onClick={() => void handleSharePoster()}
               type="button"
             >
-              {isSharingPoster ? "正在分享..." : "分享结果"}
+              {isSharingPoster ? "正在分享..." : "分享档案"}
             </button>
             <button
               className="ghost-button"
@@ -152,7 +152,7 @@ export function ResultStageSection({
               onClick={() => void handleDownloadPoster()}
               type="button"
             >
-              {isExportingPoster ? "正在导出..." : "保存海报"}
+              {isExportingPoster ? "正在保存..." : "保存海报"}
             </button>
           </div>
 
@@ -168,8 +168,8 @@ export function ResultStageSection({
         <div className="result-report__hero-visual">
           <div className="result-report__hero-card">
             <div className="result-report__hero-card-head">
-              <span>结果已就绪</span>
-              <strong>你的角色结果</strong>
+              <span>档案已解锁</span>
+              <strong>你的角色档案</strong>
             </div>
             <CharacterLive2DSlot
               characterId={leadResult.id}
@@ -191,10 +191,10 @@ export function ResultStageSection({
       <section className="result-report__section">
         <div className="result-report__section-heading">
           <div>
-            <p className="section-kicker">结果解释</p>
-            <h3>{`这次为什么会测成 ${leadResult.name}`}</h3>
+            <p className="section-kicker">档案解读</p>
+            <h3>{`你的性格切片：${leadResult.name}`}</h3>
           </div>
-          <p>先看最像你的地方。</p>
+          <p>先看你们最接近的底层反应。</p>
         </div>
 
         <div className="result-report__readout">
@@ -204,9 +204,9 @@ export function ResultStageSection({
             <p>{leadResult.result.quote}</p>
           </div>
           <div className="result-report__readout-note">
-            <span>结果小结</span>
+            <span>共振小结</span>
             <p>
-              这是根据你这轮答案得到的最接近角色。下面会展开你们相似的地方。
+              基于这一路的选择，你们的底层逻辑在这些地方达成了共识。
             </p>
           </div>
         </div>
@@ -215,10 +215,10 @@ export function ResultStageSection({
       <section className="result-report__section">
         <div className="result-report__section-heading">
           <div>
-            <p className="section-kicker">三轴解释</p>
-            <h3>{`你和 ${leadResult.name} 在哪几条轴上最接近`}</h3>
+            <p className="section-kicker">性格维度拆解</p>
+            <h3>{`你与 ${leadResult.name} 的思维同频点`}</h3>
           </div>
-          <p>这三条轴能看出你和角色最接近的部分。</p>
+          <p>这些维度会显出你和角色真正靠近的部分。</p>
         </div>
 
         <div className="result-report__axis-list">
@@ -242,8 +242,8 @@ export function ResultStageSection({
                 />
               </div>
               <div className="result-report__axis-values">
-                <span>{`你：${formatAxisValue(axis.userValue)}`}</span>
-                <span>{`${leadResult.name}：${formatAxisValue(axis.anchorValue)}`}</span>
+                <span>{`你的倾向：${formatAxisValue(axis.userValue)}`}</span>
+                <span>{`角色锚点：${formatAxisValue(axis.anchorValue)}`}</span>
               </div>
             </div>
           ))}
@@ -253,15 +253,15 @@ export function ResultStageSection({
       <section className="result-report__section result-report__section--share">
         <div className="result-report__section-heading">
           <div>
-            <p className="section-kicker">分享结果</p>
-            <h3>把这次人格测试结果保存下来或直接发出去</h3>
+            <p className="section-kicker">分享档案</p>
+            <h3>生成你的专属性格档案</h3>
           </div>
         </div>
 
         <div className="result-report__share-layout">
           <div className="result-report__share-copy">
             <div className="result-report__share-bullets">
-              <p>海报会带上你的角色结果和三轴摘要。</p>
+              <p>把这份角色档案留存下来，或直接发给同好对照。</p>
             </div>
             <div className="result-report__share-actions">
               <button
@@ -270,7 +270,7 @@ export function ResultStageSection({
                 onClick={() => void handleSharePoster()}
                 type="button"
               >
-                {isSharingPoster ? "正在分享..." : "分享结果"}
+                {isSharingPoster ? "正在分享..." : "分享档案"}
               </button>
               <button
                 className="ghost-button"
@@ -278,7 +278,7 @@ export function ResultStageSection({
                 onClick={() => void handleDownloadPoster()}
                 type="button"
               >
-                {isExportingPoster ? "正在导出..." : "保存海报"}
+                {isExportingPoster ? "正在保存..." : "保存海报"}
               </button>
               {shareStatus ? (
                 <div
@@ -312,10 +312,10 @@ export function ResultStageSection({
       <section className="result-report__section">
         <div className="result-report__section-heading">
           <div>
-            <p className="section-kicker">候选榜单</p>
-            <h3>除了第一名，你还和谁最接近</h3>
+            <p className="section-kicker">其他潜在人格</p>
+            <h3>与你产生共鸣的其他角色</h3>
           </div>
-          <p>看看你还接近哪些角色。</p>
+          <p>看看还有哪些角色与你的反应频率相近。</p>
         </div>
 
         <ol className="result-report__ranking-list">

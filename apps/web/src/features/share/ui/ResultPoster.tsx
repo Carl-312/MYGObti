@@ -15,8 +15,8 @@ export const HIDDEN_TAG_LABELS: Record<string, string> = {
   "status-guard": "高自尊防御",
   caretaker: "照料倾向",
   abandonment: "被抛下警报",
-  "top-rank-hidden": "全量候选已压过公开榜首",
-  "latent-tie-break": "latent 收束后仍偏向祥子",
+  "top-rank-hidden": "深层共鸣浮现",
+  "latent-tie-break": "隐藏倾向收束",
 };
 
 const VISUAL_AXIS_RANGE = 5;
@@ -44,12 +44,12 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
       <div className="result-poster" ref={ref} style={posterStyle}>
         <header className="result-poster__chrome">
           <span className="result-poster__brand">MyGObti</span>
-          <strong className="result-poster__poster-tag">人格测试结果</strong>
+          <strong className="result-poster__poster-tag">人格档案</strong>
         </header>
 
         <section className="result-poster__hero">
           <div className="result-poster__hero-copy">
-            <p className="result-poster__eyebrow">你测出来是</p>
+            <p className="result-poster__eyebrow">共振角色</p>
 
             <div className="result-poster__identity">
               <div className="result-poster__avatar-wrap">
@@ -72,7 +72,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
             </div>
 
             <div className="result-poster__score-badge">
-              <span>公开榜首</span>
+              <span>契合度</span>
               <strong>{toPercent(leadResult.score)}</strong>
             </div>
 
@@ -89,7 +89,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
         </section>
 
         <section className="result-poster__caption">
-          <p className="result-poster__caption-kicker">为什么像你</p>
+          <p className="result-poster__caption-kicker">为什么同频</p>
           <p className="result-poster__caption-text">{leadResult.result.posterCaption}</p>
         </section>
 
@@ -133,7 +133,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
           className={`result-poster__meta${hasSupplement ? "" : " result-poster__meta--single"}`}
         >
           <div className="result-poster__ranking">
-            <p className="result-poster__section-kicker">公开榜单 Top 3</p>
+            <p className="result-poster__section-kicker">共鸣序列 Top 3</p>
             <ol className="result-poster__ranking-list">
               {visibleRanking.map((candidate, index) => (
                 <li className="result-poster__ranking-item" key={candidate.id}>
@@ -173,7 +173,7 @@ export const ResultPoster = forwardRef<HTMLDivElement, ResultPosterProps>(
         </section>
 
         <footer className="result-poster__footer">
-          <p className="result-poster__footer-line">这是一张值得直接保存和转发的人格测试结果海报</p>
+          <p className="result-poster__footer-line">MyGObti 绝密档案归档</p>
           <small className="result-poster__footer-mark">MyGObti</small>
         </footer>
       </div>
@@ -198,7 +198,7 @@ function formatAxisPosterCopy(distance: number, userValue: number): string {
     return `${describeAxisBias(userValue)}，但差异已经拉开`;
   }
 
-  return `${describeAxisBias(userValue)}，这一轴其实不像对方`;
+  return `${describeAxisBias(userValue)}，这个维度其实不像对方`;
 }
 
 function formatAxisDistance(distance: number): string {
@@ -218,7 +218,7 @@ function formatAxisDistance(distance: number): string {
 }
 
 function describeAxisBias(userValue: number): string {
-  return userValue >= 0 ? "你在这一轴偏高" : "你在这一轴偏低";
+  return userValue >= 0 ? "你的倾向偏高" : "你的倾向偏低";
 }
 
 function normalizeAxis(value: number): number {

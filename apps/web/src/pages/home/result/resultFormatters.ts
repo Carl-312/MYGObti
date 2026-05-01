@@ -22,7 +22,7 @@ export function describeAxis(axisId: string, value: number): string {
   const axis = AXIS_DEFINITIONS.find((item) => item.id === axisId);
 
   if (!axis) {
-    return "维度读取中";
+    return "维度校准中";
   }
 
   const leaningLabel = value >= 0 ? axis.highLabel : axis.lowLabel;
@@ -41,11 +41,11 @@ export function describeAxis(axisId: string, value: number): string {
 
 export function describeAxisGap(distance: number): string {
   if (distance <= 0.5) {
-    return "几乎重合";
+    return "高度同频";
   }
 
   if (distance <= 1.2) {
-    return "有一点偏差";
+    return "轻微偏差";
   }
 
   if (distance <= 2) {

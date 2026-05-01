@@ -73,7 +73,7 @@ export function HomeHeroSection({
       ? "开始测试"
       : stage === "answering"
         ? "继续答题"
-        : "查看结果";
+        : "查看档案";
   const primaryAction =
     stage === "idle" ? onStart : stage === "answering" ? onContinue : onViewResult;
   return (
@@ -105,10 +105,10 @@ export function HomeHeroSection({
           </div>
           <p className="hero-copy__action-note">
             {stage === "idle"
-              ? "按第一反应选，不用找标准答案。"
+              ? "按第一反应选，不用猜哪一项更漂亮。"
               : stage === "answering"
-                ? "先回到题流把测试做完，结果页在后面等你。"
-                : "先看结论，再决定是否重测或分享。"}
+                ? "先回到题流把测试做完，档案页在后面等你。"
+                : "先看档案，再决定是否重测或分享。"}
           </p>
         </div>
 
@@ -141,13 +141,13 @@ export function MigrationBoundaryNotice({
       ? "未开始"
       : stage === "answering"
         ? "答题中"
-        : "结果已生成";
+        : "档案已解锁";
 
   return (
     <section className="migration-boundary" aria-label="test brief" id="test-brief">
       <div>
         <p className="migration-boundary__eyebrow">测试说明</p>
-        <h2>{`先完成 ${questionsCount} 题，再查看你的结果和分享海报。`}</h2>
+        <h2>{`先完成 ${questionsCount} 题，再解锁你的档案和分享海报。`}</h2>
       </div>
       <div className="migration-boundary__meta">
         <div>
@@ -160,11 +160,11 @@ export function MigrationBoundaryNotice({
         </div>
         <div>
           <span>完成后得到</span>
-          <strong>角色结果 / 三轴 / 海报</strong>
+          <strong>角色档案 / 维度画像 / 海报</strong>
         </div>
       </div>
       <p className="migration-boundary__note">
-        按第一反应作答，全部选完系统会自动跳到结果页。
+        按第一反应作答，全部选完就会进入你的角色档案。
       </p>
     </section>
   );
@@ -181,7 +181,7 @@ export function IntroStageSection({
       <StorySectionFrame
           badge={`测试说明 / ${questionsCount} 题`}
           kicker="测试说明"
-          summary={`共 ${questionsCount} 道情境题，按第一反应选，答完拿到角色匹配和三轴结果。`}
+          summary={`共 ${questionsCount} 道情境题，按第一反应选，答完拿到角色档案和维度画像。`}
           title="开始前只需要知道：怎么答、要多久、做完会拿到什么。"
         >
         <StoryFactGrid items={[...introFactItems]} />
@@ -192,7 +192,7 @@ export function IntroStageSection({
           badge="开始 → 答题 → 结果 → 分享"
           kicker="完成路径"
           summary="一条线走完，不用绕弯路。"
-          title="点开始，答完题，看结果，分享海报。"
+          title="点开始，答完题，解锁档案，分享海报。"
         >
           <StoryMetricStrip items={[...introGuideItems]} />
         </StorySectionFrame>

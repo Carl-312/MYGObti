@@ -66,7 +66,7 @@ export function ResultPreviewPage() {
             <h1>结果页开发态验收入口</h1>
             <p>
               这个页面会用真实角色数据生成可切换的结果态，方便反复检查 8 个角色的 hero、
-              素材、榜单和海报导出。
+              素材、共鸣序列和海报导出。
             </p>
           </div>
           <div className="result-preview__status-card">
@@ -158,7 +158,7 @@ export function ResultPreviewPage() {
         if (outcome === "shared") {
           setShareStatus({
             tone: "success",
-            message: "系统分享面板已打开，可以继续检查原生分享链路。",
+            message: "分享面板已打开，可以继续检查原生分享链路。",
           });
           return;
         }
@@ -201,7 +201,7 @@ export function ResultPreviewPage() {
           <h1>快速切换角色结果态，直接验完整终章页面。</h1>
           <p>
             这里不会让你重做整套题。点任意角色就会生成对应的开发态结果，专门用来检查
-            hero、三轴解释、候选榜单、Live2D、圆形头像和分享链路。
+            hero、维度拆解、共鸣序列、Live2D、圆形头像和分享链路。
           </p>
         </div>
         <div className="result-preview__status-card">

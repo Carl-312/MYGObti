@@ -54,12 +54,19 @@ npm run preview:prod
 脚本会自动：
 
 - 用正确的 `VITE_API_BASE_URL` 重新构建 web
-- 复用健康的本地 API，或在默认端口不可用时自动挑下一个空闲端口
+- 复用健康的本地 API
+- 如果 `4173` 已被本仓库旧的 `vite preview` 占用，会先自动回收再重启，避免入口漂到 `4175`
+- 默认把正式预览绑定到 `0.0.0.0`，同时输出 WSL / browser / network 三种访问地址
 - 启动 `vite preview` 并输出一行可供代码解析的 ready 标记：
 
 ```text
-[preview:prod:ready] {"webUrl":"http://127.0.0.1:4173/","apiBaseUrl":"http://127.0.0.1:3001/api","apiHealthUrl":"http://127.0.0.1:3001/api/health"}
+[preview:prod:ready] {"wslUrl":"http://127.0.0.1:4173/","browserUrl":"http://<preferred-browser-url>:4173/","localhostUrl":"http://localhost:4173/","routeUrl":"http://<route-src-ip>:4173/","networkUrl":"http://<wsl-ip>:4173/","wslInteropHealthy":false,"apiBaseUrl":"http://127.0.0.1:3001/api","apiHealthUrl":"http://127.0.0.1:3001/api/health"}
 ```
+
+访问优先级：
+
+- 如果 `wslInteropHealthy` 是 `true`，优先用 `browserUrl`，通常就是 `http://localhost:4173/`
+- 如果 `wslInteropHealthy` 是 `false`，优先用 `browserUrl` / `routeUrl`，不要优先假设 `localhost` 可用
 
 常用校验命令：
 
@@ -102,6 +109,9 @@ npm run build --workspace apps/web
 - `VITE_API_PROXY_TARGET`
   - 仅用于 Vite 开发代理目标
   - 默认值是 `http://127.0.0.1:3001`
+- `WEB_ORIGIN`
+  - 仅用于 `apps/api` 的 CORS 白名单
+  - 云上分域部署时必须显式设置成前端域名，多个域名可用逗号分隔
 
 示例：
 
@@ -111,13 +121,18 @@ VITE_API_BASE_URL=/api
 VITE_API_PROXY_TARGET=http://127.0.0.1:3001
 ```
 
+```bash
+# apps/api/.env
+WEB_ORIGIN=https://your-web.example.com
+```
+
 正式预览脚本还支持这些覆盖项：
 
 - `MYGOBTI_PREVIEW_API_ORIGIN`
   - 默认 `http://127.0.0.1:3001`
   - 用于指定正式预览时 web 要连到哪个 API origin
 - `MYGOBTI_PREVIEW_WEB_HOST`
-  - 默认 `127.0.0.1`
+  - 默认 `0.0.0.0`
   - 用于指定 `vite preview` 绑定 host
 - `MYGOBTI_PREVIEW_WEB_PORT`
   - 默认 `4173`
@@ -154,7 +169,10 @@ MYGOBTI_PREVIEW_WEB_HOST=0.0.0.0 MYGOBTI_PREVIEW_WEB_PORT=4174 npm run preview:p
 
 - `apps/web` 可以作为静态站点部署，但需要把 `VITE_API_BASE_URL` 指到可访问的 API 前缀
 - `apps/api` 是轻量只读 Node 服务，当前暴露 `GET /api/health`、`GET /api/quiz/meta`、`GET /api/quiz/content`
+- `apps/api` 生产启动入口是 `node dist/server.js`
 - 如果 web 与 api 同域部署，推荐让反向代理把 `/api/*` 转发给 `apps/api`
+- 如果 API 单独部署到云上，部署前至少执行一次 `npm run build --workspace apps/api`
+- 如果 API 与 Web 分域部署，记得同时设置 `VITE_API_BASE_URL=https://your-api.example.com/api` 和 `WEB_ORIGIN=https://your-web.example.com`
 - 这个阶段仍然不引入数据库、登录、后台写入或管理台
 
 ## 说明

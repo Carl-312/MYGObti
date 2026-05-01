@@ -22,7 +22,10 @@ export class QuizContentApiError extends Error {
 }
 
 export function isRetryableQuizContentError(error: unknown): boolean {
-  return error instanceof QuizContentApiError && error.status === undefined;
+  return (
+    error instanceof QuizContentApiError &&
+    (error.status === undefined || error.status === 429 || error.status >= 500)
+  );
 }
 
 function trimTrailingSlash(value: string): string {
@@ -33,6 +36,10 @@ export function getQuizApiBaseUrl(): string {
   const configuredBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
   if (!configuredBaseUrl) {
     return "/api";
+  }
+
+  if (configuredBaseUrl === "/api") {
+    return configuredBaseUrl;
   }
 
   return trimTrailingSlash(configuredBaseUrl);

@@ -16,8 +16,8 @@ export function HomePage({
   const estimatedMinutes = Math.max(2, Math.ceil(questions.length / 4));
   const stageCopy = [
     `${questions.length} 道情境单选，预计 ${estimatedMinutes} 分钟答完`,
-    "按第一反应作答，系统会持续累计角色匹配和三轴判断",
-    "完成后立即查看结果，并把海报保存或分享出去",
+    "按第一反应作答，你的选择会逐步拼出角色共振画像",
+    "完成后解锁角色档案，也可以保存成专属海报",
   ] as const;
 
   return (
