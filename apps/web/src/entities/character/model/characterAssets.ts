@@ -1,6 +1,6 @@
 import type { CharacterProfile } from "@mygobti/quiz-core";
-import live2dManifest from "../../../../public/live2d/manifest.json";
-import roundIconManifest from "../../../../public/round-icons/manifest.json";
+import live2dManifest from "./live2dManifest.json";
+import roundIconManifest from "./roundIconManifest.json";
 
 interface RoundIconManifestEntry {
   id: string;

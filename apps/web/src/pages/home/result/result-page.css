@@ -554,10 +554,23 @@
 }
 
 .result-report__poster-stage {
-  display: flex;
-  justify-content: center;
+  display: grid;
   width: min(100%, 34rem);
   margin-inline: auto;
+}
+
+.result-report__poster-preview {
+  position: relative;
+  width: 100%;
+  min-height: var(--poster-preview-height, 720px);
+}
+
+.result-report__poster-preview > .result-poster {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(var(--poster-preview-scale, 1));
+  transform-origin: top center;
 }
 
 .result-report__footer {

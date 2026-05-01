@@ -40,6 +40,27 @@ npm run dev:web
 npm run dev
 ```
 
+本地正式预览用单入口：
+
+```bash
+npm run preview:prod
+```
+
+默认会收口成：
+
+- 正式预览页：`http://127.0.0.1:4173/`
+- API 前缀：`http://127.0.0.1:3001/api`
+
+脚本会自动：
+
+- 用正确的 `VITE_API_BASE_URL` 重新构建 web
+- 复用健康的本地 API，或在默认端口不可用时自动挑下一个空闲端口
+- 启动 `vite preview` 并输出一行可供代码解析的 ready 标记：
+
+```text
+[preview:prod:ready] {"webUrl":"http://127.0.0.1:4173/","apiBaseUrl":"http://127.0.0.1:3001/api","apiHealthUrl":"http://127.0.0.1:3001/api/health"}
+```
+
 常用校验命令：
 
 ```bash
@@ -68,6 +89,7 @@ npm run build --workspace apps/web
 - Web 监听 `http://127.0.0.1:5173`
 - Web 开发环境会通过 Vite `server.proxy` 把 `/api/*` 代理到 `VITE_API_PROXY_TARGET`
 - `VITE_API_PROXY_TARGET` 默认值是 `http://127.0.0.1:3001`
+- 正式预览默认入口是 `npm run preview:prod`，默认页面地址是 `http://127.0.0.1:4173/`
 
 ## Web 环境变量
 
@@ -87,6 +109,24 @@ npm run build --workspace apps/web
 # apps/web/.env.local
 VITE_API_BASE_URL=/api
 VITE_API_PROXY_TARGET=http://127.0.0.1:3001
+```
+
+正式预览脚本还支持这些覆盖项：
+
+- `MYGOBTI_PREVIEW_API_ORIGIN`
+  - 默认 `http://127.0.0.1:3001`
+  - 用于指定正式预览时 web 要连到哪个 API origin
+- `MYGOBTI_PREVIEW_WEB_HOST`
+  - 默认 `127.0.0.1`
+  - 用于指定 `vite preview` 绑定 host
+- `MYGOBTI_PREVIEW_WEB_PORT`
+  - 默认 `4173`
+  - 用于指定正式预览页端口
+
+示例：
+
+```bash
+MYGOBTI_PREVIEW_WEB_HOST=0.0.0.0 MYGOBTI_PREVIEW_WEB_PORT=4174 npm run preview:prod
 ```
 
 ## 目录地图

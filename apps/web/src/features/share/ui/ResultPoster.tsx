@@ -19,6 +19,9 @@ export const HIDDEN_TAG_LABELS: Record<string, string> = {
   "latent-tie-break": "latent 收束后仍偏向祥子",
 };
 
+const VISUAL_AXIS_RANGE = 5;
+const ACTIVE_AXIS_RANGE = 1;
+
 interface ResultPosterProps {
   leadResult: MatchResult;
   ranking: MatchResult[];
@@ -219,5 +222,7 @@ function describeAxisBias(userValue: number): string {
 }
 
 function normalizeAxis(value: number): number {
-  return ((Math.tanh(value / 3) + 1) / 2) * 100;
+  const clampedValue = Math.max(-ACTIVE_AXIS_RANGE, Math.min(ACTIVE_AXIS_RANGE, value));
+
+  return ((clampedValue + VISUAL_AXIS_RANGE) / (VISUAL_AXIS_RANGE * 2)) * 100;
 }

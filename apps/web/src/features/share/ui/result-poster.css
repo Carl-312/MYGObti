@@ -1,7 +1,10 @@
 .result-poster {
   --poster-accent: #ff8d86;
-  width: 100%;
-  min-height: 45rem;
+  width: var(--poster-width, 540px);
+  min-width: var(--poster-width, 540px);
+  max-width: var(--poster-width, 540px);
+  min-height: var(--poster-height, 720px);
+  flex: 0 0 auto;
   box-sizing: border-box;
   display: grid;
   grid-template-rows: auto auto auto 1fr auto auto;

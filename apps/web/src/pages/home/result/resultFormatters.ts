@@ -1,7 +1,13 @@
 import { AXIS_DEFINITIONS } from "@mygobti/quiz-core";
 
+const VISUAL_AXIS_RANGE = 5;
+const ACTIVE_AXIS_RANGE = 1;
+
 export function normalizeAxis(value: number): number {
-  return ((Math.tanh(value / 3) + 1) / 2) * 100;
+  // Stretch the rail to look like -3..+3, while actual result motion stays in the middle -1..+1 band.
+  const clampedValue = Math.max(-ACTIVE_AXIS_RANGE, Math.min(ACTIVE_AXIS_RANGE, value));
+
+  return ((clampedValue + VISUAL_AXIS_RANGE) / (VISUAL_AXIS_RANGE * 2)) * 100;
 }
 
 export function toPercent(score: number): string {

@@ -1,4 +1,4 @@
-import type { CSSProperties, RefObject } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type RefObject } from "react";
 import type { MatchComputation } from "@mygobti/quiz-core";
 import {
   getCharacterAccent,
@@ -7,7 +7,11 @@ import {
   CharacterLive2DSlot,
   CharacterRoundAvatar,
 } from "../../../entities/character/ui";
-import { HIDDEN_TAG_LABELS, ResultPoster } from "../../../features/share/ui/ResultPoster";
+import {
+  POSTER_EXPORT_HEIGHT,
+  POSTER_EXPORT_WIDTH,
+} from "../../../features/share/lib/exportPoster";
+import { ResultPoster } from "../../../features/share/ui/ResultPoster";
 import type { ShareStatus } from "../types";
 import "./result-page.css";
 
@@ -54,17 +58,62 @@ export function ResultStageSection({
   normalizeAxis,
   toPercent,
 }: ResultStageSectionProps) {
+  const posterPreviewRef = useRef<HTMLDivElement | null>(null);
+  const [posterPreviewScale, setPosterPreviewScale] = useState(1);
+  const [posterPreviewHeight, setPosterPreviewHeight] = useState(POSTER_EXPORT_HEIGHT);
   const accentColor = getCharacterAccent(leadResult.id);
   const rankingPreview = result.ranking.slice(0, 4);
   const heroStyle = {
     "--result-accent": accentColor,
   } as CSSProperties;
-  const hiddenSignalSummary = result.hiddenMatch
-    ? `你还有一点接近 ${result.hiddenMatch.name} 的倾向，不过最像的还是 ${leadResult.name}。`
-    : "这轮结果比较集中，没有明显的补充倾向。";
-  const tieBreakSummary = result.tieBreak
-    ? `前两名很接近，最后更偏向「${result.tieBreak.primaryTrait}」。`
-    : "这轮第一名比较明确。";
+  const posterPreviewStyle = {
+    "--poster-preview-height": `${Math.round(posterPreviewHeight * posterPreviewScale)}px`,
+    "--poster-preview-scale": `${posterPreviewScale}`,
+  } as CSSProperties;
+
+  useEffect(() => {
+    const previewNode = posterPreviewRef.current;
+    const posterNode = posterRef.current;
+
+    if (!previewNode || !posterNode) {
+      return;
+    }
+
+    const updatePosterPreviewMetrics = () => {
+      const nextScale = previewNode.clientWidth
+        ? Math.min(previewNode.clientWidth / POSTER_EXPORT_WIDTH, 1)
+        : 1;
+      const nextHeight = Math.max(posterNode.offsetHeight, POSTER_EXPORT_HEIGHT);
+
+      setPosterPreviewScale((currentScale) =>
+        Math.abs(currentScale - nextScale) < 0.01 ? currentScale : nextScale,
+      );
+      setPosterPreviewHeight((currentHeight) =>
+        Math.abs(currentHeight - nextHeight) < 1 ? currentHeight : nextHeight,
+      );
+    };
+
+    updatePosterPreviewMetrics();
+
+    if (typeof ResizeObserver !== "function") {
+      window.addEventListener("resize", updatePosterPreviewMetrics);
+
+      return () => {
+        window.removeEventListener("resize", updatePosterPreviewMetrics);
+      };
+    }
+
+    const resizeObserver = new ResizeObserver(() => {
+      updatePosterPreviewMetrics();
+    });
+
+    resizeObserver.observe(previewNode);
+    resizeObserver.observe(posterNode);
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [leadResult.id, posterRef, result.hiddenMatch, result.tieBreak]);
 
   return (
     <section
@@ -243,13 +292,19 @@ export function ResultStageSection({
           </div>
 
           <div className="result-report__poster-stage">
-            <ResultPoster
-              hiddenMatch={result.hiddenMatch}
-              leadResult={leadResult}
-              ranking={result.ranking}
-              ref={posterRef}
-              tieBreak={result.tieBreak}
-            />
+            <div
+              className="result-report__poster-preview"
+              ref={posterPreviewRef}
+              style={posterPreviewStyle}
+            >
+              <ResultPoster
+                hiddenMatch={result.hiddenMatch}
+                leadResult={leadResult}
+                ranking={result.ranking}
+                ref={posterRef}
+                tieBreak={result.tieBreak}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -281,41 +336,6 @@ export function ResultStageSection({
             </li>
           ))}
         </ol>
-      </section>
-
-      <section className="result-report__section">
-        <div className="result-report__section-heading">
-          <div>
-            <p className="section-kicker">补充说明</p>
-            <h3>这轮结果还有哪些补充倾向</h3>
-          </div>
-          <p>有些倾向会藏在第一名之外。</p>
-        </div>
-
-        <div className="result-report__signal-grid">
-          <article className="result-report__signal-card">
-            <span>公开榜首</span>
-            <strong>{`${leadResult.name} / ${leadResult.title}`}</strong>
-            <p>这是这轮最接近你的角色。</p>
-          </article>
-          <article className="result-report__signal-card result-report__signal-card--accent">
-            <span>补充倾向</span>
-            <strong>{result.hiddenMatch ? "有一点相近倾向" : "倾向比较集中"}</strong>
-            <p>{hiddenSignalSummary}</p>
-            {result.hiddenMatch ? (
-              <div className="result-report__signal-tags">
-                {result.hiddenMatch.matchedTags.map((tag) => (
-                  <span key={tag}>{HIDDEN_TAG_LABELS[tag] ?? tag}</span>
-                ))}
-              </div>
-            ) : null}
-          </article>
-          <article className="result-report__signal-card">
-            <span>接近程度</span>
-            <strong>{result.tieBreak ? `更偏向 ${result.tieBreak.primaryTrait}` : "第一名比较明确"}</strong>
-            <p>{tieBreakSummary}</p>
-          </article>
-        </div>
       </section>
 
       <div className="result-report__footer">
